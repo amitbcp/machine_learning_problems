@@ -4,6 +4,9 @@ text8.zip
 text8_backup.txt
 trained.model
 trained.word2vec
+internal
+backup
+para model
 
 
 # Distribution / packaging
