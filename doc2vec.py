@@ -10,17 +10,24 @@ import random
 import zipfile
 import glob
 import sys
+from nltk.corpus import stopwords
+
 
 
 def read_corpus(directory, tokens_only=False):
     shakelist = glob.glob(directory, recursive=True)
+    stops=stopwords.words('english')
+    #stops=[]
     for file in shakelist:
         #print("File Name - {}".format(file))
         type = file.split('.')
         if not (type[1].startswith('p')):
             continue
         with smart_open.smart_open(file, encoding="utf-8") as f:
-            yield gensim.models.doc2vec.TaggedDocument(gensim.utils.simple_preprocess(f.read()), [file])
+            texts = f.read().decode('utf-8')
+            texts = ' '.join([word for word in texts.split() if word not in (stops)])
+            yield gensim.models.doc2vec.TaggedDocument(gensim.utils.simple_preprocess(texts), [file])
+            #yield gensim.models.doc2vec.TaggedDocument(gensim.utils.simple_preprocess(f.read()), [file])
 
 
             '''for i, line in enumerate(f):
@@ -85,10 +92,12 @@ def test_doc2_vec():
         #print(u'%s %s: «%s»\n' % (label, sims[index], ' '.join(documents[sims[index][0]].words)))
     #for i in range(5):
         #print(u'%s %s: «%s»\n' % (i, sims[i], ' '.join(documents[sims[i][0]].words)))
-
+    stops = stopwords.words('english')
     with smart_open.smart_open('templates.csv', encoding="utf-8") as f:
         for _, line in enumerate(f):
             tokens = gensim.utils.simple_preprocess(line)
+            texts = ' '.join([word for word in tokens if word not in (stops)])
+            tokens = gensim.utils.simple_preprocess(texts)
             print("Tokens :: ", ' '.join(tokens))
             new_vector = model.infer_vector(tokens)
             sims = model.docvecs.most_similar([new_vector])  # gives you top 10 document tags and their cosine similarity
