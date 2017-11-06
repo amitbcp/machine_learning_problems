@@ -16,6 +16,9 @@ def read_corpus(directory, tokens_only=False):
     shakelist = glob.glob(directory, recursive=True)
     for file in shakelist:
         #print("File Name - {}".format(file))
+        type = file.split('.')
+        if not (type[1].startswith('p')):
+            continue
         with smart_open.smart_open(file, encoding="utf-8") as f:
             yield gensim.models.doc2vec.TaggedDocument(gensim.utils.simple_preprocess(f.read()), [file])
 
@@ -31,7 +34,7 @@ def doc2vec(documents):
     '''Traning Doc2Vec model'''
     print("Training Model...")
     print("Size of Documents - {}".format(len(documents)))
-    model = gensim.models.doc2vec.Doc2Vec(size=300,dm=0,iter =100, min_count=2,  window=10 ,alpha= 0.02, min_alpha=0.002,workers=3)
+    model = gensim.models.doc2vec.Doc2Vec(size=300,dm=0,iter =1000, min_count=2,  window=5,alpha= 0.02, min_alpha=0.002,workers=4,negative=2)
     model.build_vocab(documents)
     model.train(documents, total_examples=model.corpus_count, epochs=model.iter)
     model.save('trained.model')
@@ -92,7 +95,7 @@ def test_doc2_vec():
             for i in range(5):
                 #print("Document {}  : {} \nContent {} ".format(i, sims[i][0], ' '.join(documents[i].words)))
                 with smart_open.smart_open(sims[i][0], encoding="utf-8") as para:
-                    print("Document : {}".format(para.read()))
+                    print("Document ({}) : {}".format(sims[i][1],para.read()))
                 #print("Document : {}".format(' '.join(documents[i].words)))
             print("-"*25)
 
