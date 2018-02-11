@@ -1,0 +1,4 @@
+embeddings {
+  tensor_name: "embeddings/Variable:0"
+  metadata_path: "E:\\Users\\amita\\JupyterNotebooks\\sckit-learn usage\\Examples-TensorFlow\\log\\metadata.tsv"
+}
