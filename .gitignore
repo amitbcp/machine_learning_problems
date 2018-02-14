@@ -3,7 +3,7 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 #NMT TensorFlow Example 
-#Examples-TensorFlow/nmt/
+Examples-TensorFlow/nmt/
 Examples-TensorFlow/word2vec/data/
 Examples-TensorFlow/word2vec/log/
 
