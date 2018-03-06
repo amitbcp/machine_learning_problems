@@ -3,10 +3,10 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 #NMT TensorFlow Example 
-Examples-TensorFlow/nmt/data/
-Examples-TensorFlow/nmt/model/
-Examples-TensorFlow/nmt/data_proper_run/
-Examples-TensorFlow/nmt/model_proper_run/
+Examples-TensorFlow/nmt_tutorial_practice/data/
+Examples-TensorFlow/nmt_tutorial_practice/model/
+Examples-TensorFlow/nmt_tutorial_practice/data_proper_run/
+Examples-TensorFlow/nmt_tutorial_practice/model_proper_run/
 Examples-TensorFlow/word2vec/data/
 Examples-TensorFlow/word2vec/log/
 
