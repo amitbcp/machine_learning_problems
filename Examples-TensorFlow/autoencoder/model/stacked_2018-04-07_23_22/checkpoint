@@ -1,0 +1,2 @@
+model_checkpoint_path: "E:\\Users\\amita\\JupyterNotebooks\\machine_learning_with_Scikit_Learn_and_TensorFlow\\Examples-TensorFlow\\autoencoder\\model\\stacked_2018-04-07_23_22\\my_model_all_layers.ckpt"
+all_model_checkpoint_paths: "E:\\Users\\amita\\JupyterNotebooks\\machine_learning_with_Scikit_Learn_and_TensorFlow\\Examples-TensorFlow\\autoencoder\\model\\stacked_2018-04-07_23_22\\my_model_all_layers.ckpt"

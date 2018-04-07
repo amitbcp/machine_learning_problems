@@ -11,7 +11,7 @@ LOGDIR = os.path.join(os.getcwd(),'log')
 LOGDIR_EVAL = os.path.join(os.getcwd(),'log_eval')
 DATADIR =  os.path.join(os.getcwd(),'data')
 MODELDIR = os.path.join(os.getcwd(),'model')
-
+TIMESTAMP=datetime.now().strftime('%Y-%m-%d_%H_%M')
 if not os.path.exists(MODELDIR):
     os.mkdir(MODELDIR)
 
@@ -85,9 +85,9 @@ def autoencoder_model():
 
     with tf.Session() as sess:
         init.run()
-        writer = tf.summary.FileWriter(LOGDIR+datetime.now().strftime('_%Y-%m-%d_%H:%M:%S'))
+        writer = tf.summary.FileWriter(os.path.join(LOGDIR,'old',TIMESTAMP))
         writer.add_graph(sess.graph)
-        writer1 = tf.summary.FileWriter(LOGDIR_EVAL+datetime.now().strftime('_%Y-%m-%d_%H:%M:%S'))
+        writer1 = tf.summary.FileWriter(os.path.join(LOGDIR_EVAL,'old',TIMESTAMP))
         writer1.add_graph(sess.graph)
         for epoch in range(n_epoch):
             n_batches = mnist.train.num_examples // batch_size
