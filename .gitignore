@@ -25,6 +25,7 @@ assignment1/.idea/
 *.pickle
 *.conll
 *.ckpt
+*.pkl
 
 #Zip Files
 *.zip
