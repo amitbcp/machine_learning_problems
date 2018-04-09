@@ -6,6 +6,7 @@ from datetime import datetime
 
 LOGDIR = os.path.join(os.getcwd(),'log')
 LOGDIR_EVAL = os.path.join(os.getcwd(),'log_eval')
+DATASET='mnist'
 DATADIR =  os.path.join(os.getcwd(),'data')
 MODELDIR = os.path.join(os.getcwd(),'model')
 TIMESTAMP=datetime.now().strftime('%Y-%m-%d_%H_%M')
@@ -24,7 +25,7 @@ def bias_init(shape,name):
     bias = tf.get_variable(name=name,dtype=tf.float64,shape=shape,initializer=tf.contrib.layers.variance_scaling_initializer())
     return bias
 
-def autoencoder(x,test,type='stacked',layer=2,activation=tf.nn.relu,regularization=tf.contrib.layers.l2_regularizer(0.0001)):
+def autoencoder(x,test,type='stacked',layer=2,activation=tf.nn.relu,regularization=tf.contrib.layers.l2_regularizer(0.0005)):
     x_image = tf.reshape(x, [-1, 28, 28, 1])
     tf.summary.image('input', x_image, 3)
 
@@ -107,13 +108,13 @@ def main():
     loss , output ,encoding,x_image = autoencoder(x=x,test=test)
 
     #Training Step
-    train_step = tf.train.AdamOptimizer(0.005).minimize(loss)
+    train_step = tf.train.AdamOptimizer(0.004).minimize(loss)
 
     # We want to use Tensorboard to visualize some stuff
     writer, writer1,summary_op = create_summaries(loss, x, encoding, output)
     saver = tf.train.Saver()
     #Start Training
-    n_epoch = 30
+    n_epoch = 200
     batch_size = 100
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
@@ -125,19 +126,19 @@ def main():
                 print("\r{}%".format(100 * iteration // n_batches), end="")  # not shown in the book
                 sys.stdout.flush()
                 X_batch, Y_batch = mnist.train.next_batch(batch_size)
-                if iteration % 5 == 0:
+                if iteration % 100 == 0:
                     _, s = sess.run([train_step, summary_op], feed_dict={x: X_batch})
                     writer.add_summary(s, iteration)
             loss_train = loss.eval(feed_dict={x: X_batch})
             print("\r{}".format(epoch), "Train MSE:", loss_train)  # not shown
-        model_path = os.path.join(MODELDIR,type+'_'+TIMESTAMP)
+        model_path = os.path.join(MODELDIR,DATASET,type+'_'+TIMESTAMP)
         if not os.path.exists(model_path):
-            os.mkdir(model_path)
+            os.makedirs(model_path)
         saver.save(sess, os.path.join(model_path, "my_model_all_layers.ckpt"))
         X_test = mnist.test.images[0:5]
         # evalaution
         _, sum1 = sess.run([x_image, summary_op], feed_dict={x: X_test})
-        _, sum2 = sess.run([output, summary_op], feed_dict={x: X_test})
+        _, sum2 = sess.run([output,summary_op], feed_dict={x: X_test})
         writer1.add_summary(sum1)
         writer1.add_summary(sum2)
 
