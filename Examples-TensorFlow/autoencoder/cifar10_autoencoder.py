@@ -1,5 +1,5 @@
-import cifar10
-from cifar10 import img_size, num_channels, num_classes
+from utility import cifar10
+from utility.cifar10 import img_size
 import sys
 import os
 import tensorflow as tf
@@ -11,10 +11,10 @@ DATADIR =  os.path.join(os.getcwd(),'data')
 MODELDIR = os.path.join(os.getcwd(),'model')
 TIMESTAMP=datetime.now().strftime('%Y-%m-%d_%H_%M')
 
-INPUT = 1024
-HIDDEN_LAYER1= 400
-HIDDEN_LAYER2 = 200
-HIDDEN_LAYER3=300
+INPUT = 3072
+HIDDEN_LAYER1= 600
+HIDDEN_LAYER2 = 300
+HIDDEN_LAYER3=600
 OUTPUT = INPUT
 
 def prepare_data():
@@ -25,10 +25,11 @@ def prepare_data():
     print("- Training-set:\t\t{}".format(len(images_train)))
     print("- Test-set:\t\t{}".format(len(images_test)))
     print(img_size)
-    print('Converting to Grayscale')
-    images_train=tf.image.rgb_to_grayscale(images_train[:10000])
+    # print('Converting to Grayscale')
+    # images_train=tf.image.rgb_to_grayscale(images_train[:10])
     #images_test=tf.image.rgb_to_grayscale(images_test)
-    return tf.Session().run(images_train),images_test
+    # return tf.Session().run(images_train),images_test
+    return images_train,images_test
 
 
 def weight_init(shape,name):
@@ -40,7 +41,7 @@ def bias_init(shape,name):
     return bias
 
 def autoencoder(x,test,type='stacked',layer=2,activation=tf.nn.relu,regularization=tf.contrib.layers.l2_regularizer(0.0001)):
-    x_image = tf.reshape(x, [-1, 32, 32, 1])
+    x_image = tf.reshape(x, [-1, 32, 32, 3])
     tf.summary.image('input', x_image, 3)
 
     #Layer 1 : Input X HIDDEN_LAYER1
@@ -84,7 +85,7 @@ def autoencoder(x,test,type='stacked',layer=2,activation=tf.nn.relu,regularizati
         tf.summary.histogram("output", out)
         tf.summary.histogram("weight4", weight4)
         tf.summary.histogram("bias4", bias4)
-        x_eval_image = tf.reshape(out, [-1, 32, 32, 1])
+        x_eval_image = tf.reshape(out, [-1, 32, 32, 3])
         tf.summary.image('reconstructed', x_eval_image, 3)
 
 
@@ -112,7 +113,7 @@ def main():
     type='stacked'
     #Get Data
     cifar_train, cifar_test = prepare_data()
-    cifar_train_reshaped = cifar_train.reshape(10000,-1)
+    cifar_train_reshaped = cifar_train.reshape(cifar_train.shape[0],-1)
     #cifar_train_reshaped = tf.reshape(cifar_train,shape=(50,-1))
     #Placeholder for data
     x = tf.placeholder(tf.float64,shape=[None,INPUT])
@@ -129,7 +130,7 @@ def main():
     saver = tf.train.Saver()
     #Start Training
     n_epoch = 50
-    batch_size = 500
+    batch_size = 1000
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
         writer.add_graph(sess.graph)
@@ -141,10 +142,10 @@ def main():
             for iteration in range(n_batches):
                 print("\r{}%".format(100 * iteration // n_batches), end="")  # not shown in the book
                 sys.stdout.flush()
-                X_batch = cifar_train_reshaped[idx:n_batches]
+                X_batch = cifar_train_reshaped[idx:idx+batch_size]
                 #X = X_batch.eval()
                 #print( type(X))
-                idx +=n_batches
+                idx +=batch_size
                 if iteration % 10 == 0:
                     _, s = sess.run([train_step, summary_op], feed_dict={x: X_batch})
                     writer.add_summary(s, iteration)
@@ -154,13 +155,15 @@ def main():
         if not os.path.exists(model_path):
             os.makedirs(model_path)
         saver.save(sess, os.path.join(model_path, "my_model_all_layers.ckpt"))
-        # X_test = mnist.test.images[0:5]
+        sample_test= cifar_test[0:5]
+        X_test  = sample_test.reshape(sample_test.shape[0],-1)
         # # evalaution
-        # _, sum1 = sess.run([x_image, summary_op], feed_dict={x: X_test})
-        # _, sum2 = sess.run([output, summary_op], feed_dict={x: X_test})
-        # writer1.add_summary(sum1)
-        # writer1.add_summary(sum2)
+        _, sum1 = sess.run([x_image, summary_op], feed_dict={x: X_test})
+        _, sum2 = sess.run([output, summary_op], feed_dict={x: X_test})
+        writer1.add_summary(sum1)
+        writer1.add_summary(sum2)
 
 
 if __name__ == '__main__':
     main()
+    # prepare_data()

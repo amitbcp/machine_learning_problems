@@ -21,7 +21,7 @@
 import numpy as np
 import os
 import shutil
-from cache import cache
+from utility.cache import cache
 
 ########################################################################
 
