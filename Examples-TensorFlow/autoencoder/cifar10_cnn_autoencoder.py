@@ -24,7 +24,7 @@ def prepare_data():
     print("Size of:")
     print("- Training-set:\t\t{}".format(len(images_train)))
     print("- Test-set:\t\t{}".format(len(images_test)))
-    return images_train[:50],images_test
+    return images_train,images_test
 
 
 def weight_init(shape,name):
@@ -120,6 +120,9 @@ def autoencoder(x,type='stacked',layer=2,activation=tf.nn.relu,regularization=tf
     with tf.name_scope('Output_layer'):
         output = tf.identity(l6, name="encoded_representation")  # the latent representation of the input image.
         # print("-----------output ", output.shape)
+        x_eval_image = tf.reshape(output, [-1, 32, 32, 3])
+        tf.summary.image('reconstructed', x_eval_image, 3)
+
     #Loss
     with tf.name_scope('Loss'):
         #loss = tf.sqrt(tf.reduce_mean(tf.square(output - x)), name="loss")
@@ -160,8 +163,8 @@ def main():
     writer, writer1,summary_op = create_summaries(loss, x, encoding, output)
     saver = tf.train.Saver()
     #Start Training
-    n_epoch = 5
-    batch_size = 5
+    n_epoch = 50
+    batch_size = 1000
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
         writer.add_graph(sess.graph)
@@ -178,7 +181,7 @@ def main():
                 #print("idx : {} - n_batches : {}".format(idx,n_batches))
                 X_batch = cifar_train[idx:idx+batch_size]
                 #X = X_batch.eval()
-                print(X_batch.shape)
+                #print(X_batch.shape)
                 idx +=batch_size
                 if iteration % 10 == 0:
                     _, s = sess.run([train_step, summary_op], feed_dict={x: X_batch})
@@ -189,12 +192,13 @@ def main():
         if not os.path.exists(model_path):
             os.makedirs(model_path)
         saver.save(sess, os.path.join(model_path, "my_model_all_layers.ckpt"))
-        # X_test = mnist.test.images[0:5]
+        X_test = cifar_test[0:5]
+        #X_test = sample_test.reshape(sample_test.shape[0],32,32,3)
         # # evalaution
-        # _, sum1 = sess.run([x_image, summary_op], feed_dict={x: X_test})
-        # _, sum2 = sess.run([output, summary_op], feed_dict={x: X_test})
-        # writer1.add_summary(sum1)
-        # writer1.add_summary(sum2)
+        _, sum1 = sess.run([x_image, summary_op], feed_dict={x: X_test})
+        _, sum2 = sess.run([output, summary_op], feed_dict={x: X_test})
+        writer1.add_summary(sum1)
+        writer1.add_summary(sum2)
 
 
 if __name__ == '__main__':
