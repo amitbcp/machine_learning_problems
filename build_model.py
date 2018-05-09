@@ -15,7 +15,7 @@ def save_model(model,model_name):
     with open(model_file, 'wb') as f:
         pickle.dump(model, f)
 if __name__=="__main__":
-    X_train, y_train, X_test, y_test=benchmark.load_data()
+    X_train, y_train, X_test, y_test=benchmark.load_data(file='questions.txt')
     clf = RidgeClassifier(tol=1e-2, solver="sag")
     benchmark.benchmark(clf, X_train, y_train, X_test, y_test)
 

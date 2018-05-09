@@ -7,8 +7,8 @@ from sklearn import metrics
 
 from time import time
 
-def load_data():
-    df = pd.read_csv("questions.txt", sep=",,,", header=None,
+def load_data(file="questions.txt"):
+    df = pd.read_csv(file, sep=",,,", header=None,
                      names=['question', 'label'],engine="python")
     labelled_file = open('questions.txt')
     data = labelled_file.readlines()
