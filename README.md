@@ -22,6 +22,22 @@ Python packages :
 
 This would print the statistics of the various models and the final ensemble model.
 
+>train time: 1.059s\
+>test time:  0.047s\
+>accuracy:   0.964\
+>classification report:
+
+
+Type |precision | recall     | f1-score | support
+--------- |--------- | ---------- | ------- | --------
+affirmation|   1.00   |   0.90    |  0.95   |     31
+unknown| 0.95  |    0.95   |   0.95   |     81
+what |      0.96   |   0.98  |    0.97  |     183
+when   |    0.96   |   0.79  |    0.87   |     29
+who   |    0.98  |    1.00  |    0.99  |     121
+avg / total   |    0.96  |    0.96   |   0.96   |    445
+
+
 ## For Testing
 > python test_model.py  -q "Are you hungry ?"
 
