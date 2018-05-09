@@ -1,14 +1,10 @@
-import numpy as np
-import nltk
+
 import pandas as pd
-from sklearn.model_selection import train_test_split, StratifiedShuffleSplit
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.externals import joblib
+from sklearn.model_selection import  StratifiedShuffleSplit
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn import metrics
-from optparse import OptionParser
-import sys
+
 from time import time
 
 def load_data():
