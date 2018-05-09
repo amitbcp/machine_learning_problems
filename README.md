@@ -25,7 +25,7 @@ This would print the statistics of the various models and the final ensemble mod
 ## For Testing
 > python test_model.py  -q "Are you hungry ?"
 
-You need to pass your question with `-q` argument from terminal/command prompt . And output is printed at terminal/cmd like this -
-`Question Type : <User Query>`
-`Type : <Answer>`
+You need to pass your question with `-q` argument from terminal/command prompt . And output is printed at terminal/cmd like this -\
+`Question Type : <User Query>`\
+`Type : <Answer>`\
 
