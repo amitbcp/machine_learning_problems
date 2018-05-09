@@ -41,7 +41,7 @@ avg / total   |    0.96  |    0.96   |   0.96   |    445
 ## For Testing
 > python test_model.py  -q "Are you hungry ?"
 
-You need to pass your question with `-q` argument from terminal/command prompt . And output is printed at terminal/cmd like this -\
+You need to pass your question with `-q` argument from terminal/command prompt . And output is printed on the terminal like this -\
 `Question : <User Query>`\
 `Type : <Answer>`
 
