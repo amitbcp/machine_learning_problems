@@ -6,7 +6,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import VotingClassifier
 import benchmark
-import  pickle
+import pickle
 import os
 
 
@@ -19,16 +19,16 @@ if __name__=="__main__":
     clf = RidgeClassifier(tol=1e-2, solver="sag")
     benchmark.benchmark(clf, X_train, y_train, X_test, y_test)
 
-    clf1 = Perceptron(max_iter=50,random_state=42)
+    clf1 = Perceptron(max_iter=100,random_state=42)
     benchmark.benchmark(clf1, X_train, y_train, X_test, y_test)
 
-    clf2 = PassiveAggressiveClassifier(max_iter=50)
+    clf2 = PassiveAggressiveClassifier(max_iter=100)
     benchmark.benchmark(clf2, X_train, y_train, X_test, y_test)
 
     clf3 = KNeighborsClassifier(n_neighbors=50)
     benchmark.benchmark(clf3, X_train, y_train, X_test, y_test)
 
-    clf4 = RandomForestClassifier(n_estimators=100)
+    clf4 = RandomForestClassifier(n_estimators=200)
     benchmark.benchmark(clf4, X_train, y_train, X_test, y_test)
 
     clf5 = BernoulliNB(alpha=.01)

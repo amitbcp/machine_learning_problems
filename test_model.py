@@ -1,7 +1,7 @@
 import os
 import pickle
 import argparse
-from sklearn.feature_extraction.text import CountVectorizer
+
 
 def load_model(model_name):
     model_file = os.path.join(os.getcwd(),model_name+'.pkl')
@@ -17,7 +17,6 @@ args = vars(parser.parse_args())
 
 model = load_model(model_name='ensembel_model')
 vectorizer = load_model(model_name='count_vector')
-#vectorizer = CountVectorizer(analyzer='word',lowercase=True)
 text = args['query']
 query =  vectorizer.transform([text])
 pred = model.predict(query)
