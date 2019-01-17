@@ -1,0 +1,72 @@
+All macro invocations begin with # followed by the macro name bracketed by a delimeter which determines the macro's type/scope. 
+
+- 'Expanding' macros are bracketed with $ e.g. #$TUTORIAL_URL(5)$
+- Line-level macros are bracketed with _ e.g. #_COMMENT_IF(PROD)_
+- Cell-level macros are bracketed with %% e.g. #%%RM%%
+    - (Exception: HIDE* macros, for historical reasons)
+
+## Expanding macros
+
+cf. nb_utils/lesson_preprocessor.py methods
+
+NEXT_NOTEBOOK_URL
+
+# N in the signatures below is the number of the corresponding lesson (starting from 1)
+# Unless you are referencing a previous lesson, you should typically use NEXT_NOTEBOOK_URL instead
+TUTORIAL_URL(N)
+EXERCISE_URL(N)
+EXERCISE_FORKING_URL(N)
+# With no argument, we take N to be the current lesson.
+EXERCISE_FORKING_URL
+
+# Some standard boilerplate for beginning and ending exercises/tutorials.
+KEEP_GOING
+EXERCISE_PREAMBLE
+YOURTURN
+
+## Line-level macros
+
+cf. nb_utils/line_macros.py
+
+(Many of these can also be used as cell-level macros)
+
+- COMMENT
+- UNCOMMENT
+- COMMENT_IF(condition)
+- UNCOMMENT_IF(condition)
+- RM
+- RM_IF(condition)
+
+Valid conditions:
+- PROD (i.e. testing=false in track_config.yaml)
+
+## Cell-level macros
+
+cf. nb_utils/macro_processing.py (and nb_utils/lesson_preprocess.py for hide macros)
+
+# Used at the top of a code cell. Equivalent to the "hide output" / "hide input" buttons in the Kaggle Kernels UI.
+HIDE_INPUT
+HIDE_OUTPUT
+# Hide both input and output
+HIDE
+
+- RM_BELOW
+
+## Common use cases
+
+```
+#_COMMENT_IF(PROD)_
+q3.solution()
+```
+
+The above is a common pattern. When testing an exercise, we want to be able to easily run calls to `.hint()` and `.solution()`, but in the production notebook we serve to users, we want these calls to start commented (so they need to put in a small amount of effort to peek, and won't accidentally get spoiled if they run all cells)
+
+```
+#%%RM_IF(PROD)%%
+# [some example solution code (correct or incorrect)
+q3.check()
+```
+
+Useful for testing checking logic against sample solutions. When creating the production notebook to ship to users, we should remove these cells entirely.
+
+

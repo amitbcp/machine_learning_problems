@@ -1,2 +1,4 @@
-# sckit-learn-examples
-This repository contains samples of using Sckit learn for KNN &amp; Logistic regression in Python 3.6 using Iris Dataset for demonstration
+
+# Deep Learning Tutorials
+This repository contains solutions to various problem statements and courses using Sckit-learn  & TensorFlow.
+Course work also includes Kaggle Learn project that was completed.
