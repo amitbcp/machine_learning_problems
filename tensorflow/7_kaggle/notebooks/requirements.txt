@@ -1,0 +1,5 @@
+titlecase
+nbformat
+nbconvert>=5.4.0
+PyYAML
+kaggle

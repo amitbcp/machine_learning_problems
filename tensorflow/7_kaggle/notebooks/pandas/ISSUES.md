@@ -1,0 +1,15 @@
+
+- None of the lessons seem to cover modifying dataframes, which is pretty important.
+    - Adding a column to a dataframe
+    - Inplace operations like resetting index, dropping null values, renaming
+- Would benefit from at least one example where index labels aren't just range(n)
+- How many records have condition X?
+- Would be fun to change up the format of questions sometimes. e.g.
+    - Give them a broken pandas expression and have them fix it
+    - Write a function that works with arbitrary dataframes/serieses
+    - 'pepper' questions
+- iterating over dfs/series (I know, anathema to pandas purists, but sometimes it's just the path of least resistance)
+- `reset_index`/`set_index` could use a slightly more in-depth treatment
+- Currently no problems have hints. Worth adding some to trickier questions.
+- Summary functions and maps 'centered points' question is an exact dupe of something shown in ref notebook, which is not ideal.
+- Summary functions and maps reference: should maybe briefly show using df.apply returning a series (rather than df) to prepare them for q7 in the workbook.
