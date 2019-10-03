@@ -4,6 +4,7 @@ import pickle
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import pickle
 import tensorflow as tf
 from sklearn import metrics
 from sklearn.metrics import confusion_matrix
@@ -30,13 +31,51 @@ def read_csv():
   return train_df, orig_train_df, test_df
 
 
-def feature_filtering(train_df, orig_train_df, test_df, columns_path=None):
+def feature_importance(df, threshold=0.7):
 
-  if columns_path is None:
-    columns = columns = train_df.columns.tolist()
-  else:
-    with open(columns_path, 'rb') as f:
-      columns = pickle.load(f)
+  # Feature Importance Filtering
+  feature_imp = pd.read_csv(feature_imp_path)
+  feature_imp = feature_imp.sort_values(by='imp_score', ascending=False)
+
+  print("Feature Importance from Random Forest {}".format(feature_imp.shape))
+
+  high_imp = feature_imp[feature_imp.imp_score > 0.001]
+
+  # Correleation Matrix to Eliminate Highly Co-related values
+  corr_matrix = df.corr().abs()
+  upper = corr_matrix.where(
+    np.triu(np.ones(corr_matrix.shape), k=1).astype(np.bool))
+
+  to_drop = [
+    column for column in upper.columns if any(upper[column] > threshold)
+  ]
+  print("Rows to drop {}".format(len(to_drop)))
+  to_retain = set(df.columns) - set(to_drop)
+  print("Rows to retain {}".format(len(to_retain)))
+
+  # Merging both of the above
+  final_columns = to_retain.union(set(high_imp['feature_name'].tolist()))
+  final_columns = list(final_columns)
+  print("Final Number of Features : {}".format(len(final_columns)))
+
+  with open('columns.pickle', 'wb') as f:
+    pickle.dump(final_columns, f)
+
+  return final_columns
+
+
+def feature_filtering(train_df,
+                      orig_train_df,
+                      test_df,
+                      columns=None,
+                      columns_path='columns.pickle'):
+
+  if columns is None:
+    if columns_path is None:
+      columns = columns = train_df.columns.tolist()
+    else:
+      with open(columns_path, 'rb') as f:
+        columns = pickle.load(f)
 
   train_features = np.array(train_df[columns])
   train_labels = np.array(orig_train_df['Col2'])
