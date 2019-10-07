@@ -16,31 +16,36 @@ import models
 import evaluation
 import data_loader
 
-train_df, orig_test_df, test_df = data_loader.read_csv()
-train_features, train_labels, test_features = data_loader.feature_filtering(
-  train_df, orig_test_df, test_df)
 
-model = models.make_model(features=train_features)
+def train_neural_network():
 
-checkpoint_cb, tensorboard_cb = models.callbacks(
-  model_name='nn_submission03_s_1_m1_f_2165.ckpt')
-EPOCHS = 1
-BATCH_SIZE = 32
+  train_df, orig_test_df, test_df = data_loader.read_csv()
+  train_features, train_labels, test_features = data_loader.feature_filtering(
+    train_df, orig_test_df, test_df)
 
-history = model.fit(
-  train_features,
-  train_labels,
-  batch_size=BATCH_SIZE,
-  epochs=EPOCHS,
-  callbacks=[checkpoint_cb, tensorboard_cb]
-  #     validation_data=(val_features, val_labels)
-)
+  model = models.make_model(features=train_features)
 
-evaluation.evaluation(model, train_features, train_labels)
-evaluation.plot_metrices(EPOCHS, history, if_val=False)
-evaluation.plot_confusion_matrix(model, train_features, train_labels)
-evaluation.submission(
-  model=model,
-  test_features=test_features,
-  orig_test_df=orig_test_df,
-  submission_name='nn_submission03_s_1_m1_f_2165.csv')
+  checkpoint_cb, tensorboard_cb = models.callbacks(
+    model_name='nn_submission03_s_1_m1_f_2165.ckpt')
+  EPOCHS = 1
+  BATCH_SIZE = 32
+
+  history = model.fit(train_features,
+                      train_labels,
+                      batch_size=BATCH_SIZE,
+                      epochs=EPOCHS,
+                      callbacks=[checkpoint_cb, tensorboard_cb]
+                      #     validation_data=(val_features, val_labels)
+                     )
+
+  evaluation.evaluation(model, train_features, train_labels)
+  evaluation.plot_metrices(EPOCHS, history, if_val=False)
+  evaluation.plot_confusion_matrix(model, train_features, train_labels)
+  evaluation.submission(model=model,
+                        test_features=test_features,
+                        orig_test_df=orig_test_df,
+                        submission_name='nn_submission03_s_1_m1_f_2165.csv')
+
+
+if __name__ == "__main__":
+  train_neural_network()
