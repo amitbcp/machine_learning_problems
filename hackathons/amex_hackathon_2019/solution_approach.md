@@ -26,10 +26,9 @@ The most challenging aspect of the Hackathon was to create feature by linnking t
 
 1. **Campaign based features**
 2. **Coupon based features**
-3. **Redemtption based features**
+3. **Redemption based features**
 4. **Item based features**
 5. **Customer Purchasing Power based features**
-
 
 #### Campaign Based Features
 
@@ -40,3 +39,28 @@ These features were created from the Campaign Data. The features are described a
 3. Campaign Weekends - Number of Weekends the Campaign was running.
 
 #### Coupon Based Features
+
+#### Redemption based features
+
+These features were created from the **Item Data**. These were mapped to Customer Transaction & Coupon Item Mapping, to generate the following features :
+
+1. XYZ
+2. XYZ
+3. ABC
+
+#### Item based features
+
+These features were created from the **Item Data**. These were mapped to Customer Transaction & Coupon Item Mapping, to generate the following features :
+
+1. XYZ
+2. XYZ
+3. ABC
+
+#### Customer Purchasing Power based features
+
+## Feature Selection
+
+Based on multiple evaluations we found the following features did not much value to the model performance:
+
+1. Customer Demographics
+2. Item-Coupon group features : Distribution &
