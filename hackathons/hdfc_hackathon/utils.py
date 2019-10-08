@@ -9,6 +9,7 @@ config_general = config_all.get_sub_config('general')
 config = config_all.get_sub_config('general')
 model_path = config_general['hackathon']
 
+
 def model_save(model):
   """
   Dumps model into sav file
@@ -22,6 +23,8 @@ def model_save(model):
 	Raises:
 		Exception: File not found exception
   """
-  model_file_path = os.path.join(model_path, time.strftime("run_%Y_%m_%d-%H_%M_%S") + ".sav")
+  model_file_path = os.path.join(
+    model_path,
+    time.strftime("run_%Y_%m_%d-%H_%M_%S") + ".sav")
   pickle.dump(model, open(model_file_path, 'wb'))
   return model_file_path

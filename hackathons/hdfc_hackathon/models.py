@@ -123,8 +123,9 @@ def make_model2(features,
 
   return model
 
+
 def xgboost_model(x_train, y_train, params=None):
-	"""
+  """
 	Trains a xgboost model and stores it in a file.
 
 	Args:
@@ -138,6 +139,6 @@ def xgboost_model(x_train, y_train, params=None):
 	Raises:
 		Exception: If dimensions of x_train and y_train donot match
 	"""
-	xgb_model = XGBClassifier(params)
-	xgb_model.fit(x_train, y_train)
-	return model_save(xgb_model)
+  xgb_model = XGBClassifier(params)
+  xgb_model.fit(x_train, y_train)
+  return model_save(xgb_model)
