@@ -50,7 +50,9 @@ def train_neural_network():
 
 def train_lightgbm():
   """
-  [summary]
+  read imputed features
+  trains NUM light gbm model and saves to an pickle object
+  call submission_lgbm to predict and create submission dataframe
   """
   train_df, orig_test_df, test_df = data_loader.read_csv()
   train_features, train_labels, test_features = data_loader.feature_filtering(
