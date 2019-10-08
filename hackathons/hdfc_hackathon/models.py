@@ -12,7 +12,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from tensorflow import keras
 from common.config_files.config import CGNConfigParser
-
+import lightgbm as lgb
 # from imblearn.over_sampling import SMOTE
 
 tf.keras.backend.clear_session()
@@ -123,3 +123,10 @@ def make_model2(features,
   model.compile(optimizer='adam', loss='binary_crossentropy', metrics=metrics)
 
   return model
+
+# "initialting a lightgm"
+# "the hyper params are tune to final submission. need hyper parameter turner in future"
+def make_model_lgbm(n_estimators=900, max_depth=7,learning_rate=0.01,random_state=42,colsample_bytree=0.1,reg_lambda=15,reg_alpha=10):
+  lgbc = lgb.LGBMClassifier(n_estimators=n_estimators, max_depth=max_depth, learning_rate=learning_rate, random_state=random_state, colsample_bytree=colsample_bytree,
+                            reg_lambda=reg_lambda, reg_alpha=reg_alpha)
+  return lgbc
