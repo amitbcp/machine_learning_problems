@@ -30,7 +30,8 @@ def train_neural_network(x_train, train_labels, x_test):
 
   model = models.make_model(features=train_features)
 
-  checkpoint_cb, tensorboard_cb = models.callbacks(model_name='nn_submission03_s_1_m1_f_2165.ckpt')
+  checkpoint_cb, tensorboard_cb = models.callbacks(
+    model_name='nn_submission03_s_1_m1_f_2165.ckpt')
   epochs = 1
   batch_size = 32
 
@@ -69,8 +70,9 @@ def train_lightgbm(x_train, train_labels, x_test, orig_test):
     colsample_bytree = 0.1
     reg_lambda = 15
     reg_alpha = 10
-    lgbc = models.make_model_lgbm(n_estimators, max_depth, learning_rate, random_state,
-                                  colsample_bytree, reg_lambda, reg_alpha)
+    lgbc = models.make_model_lgbm(n_estimators, max_depth, learning_rate,
+                                  random_state, colsample_bytree, reg_lambda,
+                                  reg_alpha)
     lgbc.fit(x_train, train_labels)
     lgb_forests.append(lgbc)
 
@@ -84,6 +86,6 @@ def train_lightgbm(x_train, train_labels, x_test, orig_test):
 
 
 if __name__ == "__main__":
-  X_train, Y_train, X_test,O_test = data_loader.load_data()
+  X_train, Y_train, X_test, O_test = data_loader.load_data()
   train_neural_network(X_train, Y_train, X_test)
   train_lightgbm(X_train, Y_train, X_test, O_test)
