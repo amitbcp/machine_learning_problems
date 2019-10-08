@@ -1,18 +1,20 @@
+"""
+Training models
+"""
 import os
-import pickle
 import time
 
-import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
 import tensorflow as tf
-from sklearn import metrics
-from sklearn.metrics import confusion_matrix
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
 from tensorflow import keras
+
 from common.config_files.config import CGNConfigParser
 import lightgbm as lgb
+from sklearn import metrics
+from xgboost import XGBClassifier
+
+from common.config_files.config import CGNConfigParser
+from utils import model_save
 # from imblearn.over_sampling import SMOTE
 
 tf.keras.backend.clear_session()
@@ -130,3 +132,22 @@ def make_model_lgbm(n_estimators=900, max_depth=7,learning_rate=0.01,random_stat
   lgbc = lgb.LGBMClassifier(n_estimators=n_estimators, max_depth=max_depth, learning_rate=learning_rate, random_state=random_state, colsample_bytree=colsample_bytree,
                             reg_lambda=reg_lambda, reg_alpha=reg_alpha)
   return lgbc
+
+def xgboost_model(x_train, y_train, params=None):
+  """
+	Trains a xgboost model and stores it in a file.
+
+	Args:
+		x_train: train dataset.
+		y_train: train labels.
+		params: input parameters for the model
+
+	Returns:
+		Filepath of the model file
+
+	Raises:
+		Exception: If dimensions of x_train and y_train donot match
+	"""
+  xgb_model = XGBClassifier(params)
+  xgb_model.fit(x_train, y_train)
+  return model_save(xgb_model)

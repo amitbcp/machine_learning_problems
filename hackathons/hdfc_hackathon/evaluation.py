@@ -37,8 +37,10 @@ def plot_metrices(EPOCHS, history, if_val=True):
   plt.title('Accuracy')
   plt.plot(epochs, history.history['accuracy'], color='blue', label='Train')
   if if_val:
-    plt.plot(
-      epochs, history.history['val_accuracy'], color='orange', label='Val')
+    plt.plot(epochs,
+             history.history['val_accuracy'],
+             color='orange',
+             label='Val')
   plt.xlabel('Epoch')
   plt.ylabel('Accuracy')
   plt.legend()

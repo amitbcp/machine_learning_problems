@@ -4,13 +4,8 @@ import pickle
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import pickle
-import tensorflow as tf
-from sklearn import metrics
-from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from tensorflow import keras
 from common.config_files.config import CGNConfigParser
 # from imblearn.over_sampling import SMOTE
 from sklearn.impute import SimpleImputer
