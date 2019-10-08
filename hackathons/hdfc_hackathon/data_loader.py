@@ -13,7 +13,7 @@ from sklearn.preprocessing import StandardScaler
 from tensorflow import keras
 from common.config_files.config import CGNConfigParser
 # from imblearn.over_sampling import SMOTE
-
+from sklearn.impute import SimpleImputer
 config_all = CGNConfigParser()
 config = config_all.get_sub_config('hdfc')
 
@@ -103,3 +103,18 @@ def sampling(labels):
   print(
     '{} positive samples out of {} training samples ({:.2f}% of total)'.format(
       pos, total, 100 * pos / total))
+# strategy supported
+# "mean" : average
+# "median" : med
+# "most frequent" : mode
+# Logic, input train and test. Append them and then do imputation
+def mean_simple_imputation(df_train, df_test, strategy):
+  df = df_train.append(df_test)
+  imputor = SimpleImputer(missing_values=np.nan, strategy=strategy)
+  imputor = imputor.fit(df)
+  col_list = df.columns
+  df_train_scaled = pd.DataFrame(imputor.transform(df_train),
+                                 columns=[str(col) + '_'+ strategy for col in col_list.columns])
+  df_test_scaled = pd.DataFrame(imputor.transform(df_test),
+                                 columns=[str(col) + '_' + strategy for col in col_list.columns])
+  return df_train_scaled, df_test_scaled
