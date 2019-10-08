@@ -68,6 +68,120 @@ def feature_importance(df, threshold=0.7):
   return final_columns
 
 
+def simple_imputation(df_train, df_test, strategy="most_frequent"):
+  """[summary]
+
+
+  Args:
+      df_train ([type]): [description]
+      df_test ([type]): [description]
+      strategy ([type]): [description]
+      strategy supported
+      "mean" : average
+      "median" : med
+      "most frequent" : mode
+      Logic, input train and test. Append them and then do imputation
+
+  Returns:
+      [type]: [description]
+  """
+  ##imputer is fitted on both train and test. remove ".append(df_test)" to fit on only train
+  df = df_train.append(df_test)
+  imputer = SimpleImputer(missing_values=np.nan, strategy=strategy)
+  imputer = imputer.fit(df)
+  col_list = df.columns
+  df_train_imputed = pd.DataFrame(
+    imputer.transform(df_train),
+    columns=[str(col) + '_' + strategy for col in col_list])
+  df_test_imputed = pd.DataFrame(
+    imputer.transform(df_test),
+    columns=[str(col) + '_' + strategy for col in col_list])
+  return df_train_imputed, df_test_imputed
+
+
+def drop_columns(df, missing_col):
+  """
+  drops columns from a database
+  """
+  df = df.drop(missing_col, axis=1)
+  return df
+
+
+def get_null_columns(train, null_threshold=0.4):
+  """
+  finds columns with null values greater than threshold(default=0.4)
+  returns list of columns to be removed
+  """
+  missingcol = train.columns[(train.isnull().sum() /
+                              train.shape[0]) > null_threshold]
+  return missingcol
+
+
+def get_scaled_data(train, test):
+  """
+  Scale train and test data using MinMaxScaler
+  """
+  min_max_scaler = MinMaxScaler()
+  min_max_scaler.fit(train)
+  x_train_scaled = pd.DataFrame(min_max_scaler.transform(train),
+                                columns=train.columns)
+  print(train.shape)
+  print(test.shape)
+  x_test_scaled = pd.DataFrame(min_max_scaler.transform(test),
+                               columns=test.columns)
+  return x_train_scaled, x_test_scaled
+
+
+def get_correlated_cols(train, threshold=0.7):
+  """
+  gets a random column from a pair of columns with correlation greater than some threshold
+  """
+  corr_matrix = train.corr().abs()
+  upper = corr_matrix.where(
+    np.triu(np.ones(corr_matrix.shape), k=1).astype(np.bool))
+  to_drop = [
+    column for column in upper.columns if any(upper[column] > threshold)
+  ]
+  return to_drop
+
+
+def load_data():
+  """main function for loading data
+
+
+  Returns:
+      [type]: returns direct input for training
+  """
+
+  target_col = 'Col2'
+  corr_threshold = 0.7
+  train, test = read_csv()
+  print("Files loaded")
+
+  x_train = train.loc[:, train.columns != target_col]
+  y_train = train.loc[:, train.columns == target_col]
+  x_test = test.loc[:, test.columns != target_col]
+  x_train = x_train.loc[:, x_train.columns != 'Col1']
+  x_test = x_test.loc[:, x_test.columns != 'Col1']
+  missing_col = get_null_columns(x_train)
+  x_train = drop_columns(x_train, missing_col)
+  x_test = drop_columns(x_test, missing_col)
+  print("Null columns dropped ...")
+  x_train, x_test = simple_imputation(x_train, x_test)
+  print("Imputation done ..")
+  x_train, x_test = get_scaled_data(x_train, x_test)
+  print("Scaling completed")
+  correlated_cols = get_correlated_cols(x_train, corr_threshold)
+  print("correlated_cols removed")
+  x_train = drop_columns(x_train, correlated_cols)
+  x_test = drop_columns(x_test, correlated_cols)
+
+  return x_train, y_train, x_test, test
+
+
+## Unused Functions
+
+
 def feature_filtering(train_df,
                       orig_train_df,
                       test_df,
@@ -124,98 +238,3 @@ def sampling(labels):
   print(
     '{} positive samples out of {} training samples ({:.2f}% of total)'.format(
       pos, total, 100 * pos / total))
-
-
-def simple_imputation(df_train, df_test, strategy="most_frequent"):
-  """[summary]
-
-
-  Args:
-      df_train ([type]): [description]
-      df_test ([type]): [description]
-      strategy ([type]): [description]
-      strategy supported
-      "mean" : average
-      "median" : med
-      "most frequent" : mode
-      Logic, input train and test. Append them and then do imputation
-
-  Returns:
-      [type]: [description]
-  """
-  ##imputer is fitted on both train and test. remove ".append(df_test)" to fit on only train
-  df = df_train.append(df_test)
-  imputer = SimpleImputer(missing_values=np.nan, strategy=strategy)
-  imputer = imputer.fit(df)
-  col_list = df.columns
-  df_train_imputed = pd.DataFrame(
-    imputer.transform(df_train),
-    columns=[str(col) + '_' + strategy for col in col_list])
-  df_test_imputed = pd.DataFrame(
-    imputer.transform(df_test),
-    columns=[str(col) + '_' + strategy for col in col_list])
-  return df_train_imputed, df_test_imputed
-
-
-def drop_columns(df, missing_col):
-  """
-  drops columns from a database
-  """
-  df = df.drop(missing_col, axis=1)
-  return df
-
-
-def get_null_columns(train, null_threshold=0.4):
-  """
-  finds columns with null values greater than threshold(default=0.4)
-  returns list of columns to be removed
-  """
-  missingcol = train.columns[(train.isnull().sum() /
-                              train.shape[0]) > null_threshold]
-  return missingcol
-
-
-def get_scaled_data(train, test):
-  """
-  Scale train and test data using MinMaxScaler
-  """
-  min_max_scaler = MinMaxScaler()
-  min_max_scaler.fit(train)
-  x_train_scaled = min_max_scaler.transform(train)
-  x_test_scaled = min_max_scaler.transform(test)
-  return x_train_scaled, x_test_scaled
-
-
-def get_correlated_cols(train, threshold=0.7):
-  """
-  gets a random column from a pair of columns with correlation greater than some threshold
-  """
-  corr_matrix = train.corr().abs()
-  upper = corr_matrix.where(
-    np.triu(np.ones(corr_matrix.shape), k=1).astype(np.bool))
-  to_drop = [
-    column for column in upper.columns if any(upper[column] > threshold)
-  ]
-  return to_drop
-
-
-def load_data():
-  """
-  main function for loading data
-  returns direct input for training
-  """
-  target_col = 'Col2'
-  corr_threshold = 0.7
-  train, test = read_csv()
-  x_train = train.loc[:, train.columns != target_col]
-  y_train = train.loc[:, train.columns == target_col]
-  x_test = test.loc[:, test.columns != target_col]
-  missing_col = get_null_columns(x_train)
-  x_train = drop_columns(x_train, missing_col)
-  x_test = drop_columns(x_test, missing_col)
-  x_train, x_test = simple_imputation(x_train, x_test)
-  x_train, x_test = get_scaled_data(x_train, x_test)
-  correlated_cols = get_correlated_cols(x_train, corr_threshold)
-  x_train = drop_columns(x_train, correlated_cols)
-  x_test = drop_columns(x_test, correlated_cols)
-  return x_train, y_train, x_test, test

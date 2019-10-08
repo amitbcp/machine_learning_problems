@@ -23,7 +23,6 @@ CONFIG_GENERAL = CONFIG_ALL.get_sub_config('general')
 CONFIG = CONFIG_ALL.get_sub_config('general')
 log_path = CONFIG_GENERAL['log_path']
 model_path = CONFIG_GENERAL['hackathon']
-nn_metrics = model_metrics()
 
 
 def get_run_logdir(root_logdir=log_path):
@@ -56,7 +55,7 @@ def model_metrics():
   Returns:
       [type]: [description]
   """
-  metrics = [
+  nn_metrics = [
     keras.metrics.Accuracy(name='accuracy'),
     keras.metrics.TruePositives(name='tp'),
     keras.metrics.FalsePositives(name='fp'),
@@ -67,10 +66,38 @@ def model_metrics():
     keras.metrics.AUC(name='auc')
   ]
 
-  return metrics
+  return nn_metrics
 
 
-def make_model(features, model_name='03_model.ckpt'):
+NN_METRICS = model_metrics()
+
+
+def make_model(params, model_name='light_gbm'):
+
+  if model_name == 'light_gbm':
+    model = lgb.LGBMClassifier(n_estimators=params['n_estimators'],
+                               max_depth=params['max_depth'],
+                               learning_rate=params['learning_rate'],
+                               random_state=params['random_state'],
+                               colsample_bytree=params['colsample_bytree'],
+                               reg_lambda=params['reg_lambda'],
+                               reg_alpha=params['reg_alpha'])
+
+  elif model_name == 'xg_boost':
+    model = XGBClassifier(n_estimators=params['n_estimators'],
+                          max_depth=params['max_depth'],
+                          verbosity=3)
+
+  elif model_name == 'neural_network_1':
+    model = nn_model1(params)
+
+  elif model_name == 'neural_network_2':
+    model = nn_model2(params)
+  print("model initialized")
+  return model
+
+
+def nn_model1(features, model_name='03_model.ckpt'):
 
   #   NN Submission
   model = keras.Sequential([
@@ -94,15 +121,15 @@ def make_model(features, model_name='03_model.ckpt'):
 
   model.compile(optimizer='adam',
                 loss='binary_crossentropy',
-                metrics=nn_metrics)
+                metrics=NN_METRICS)
 
   return model
 
 
-def make_model2(features,
-                model_name='03_model.ckpt',
-                activation='elu',
-                intializer='he_normal'):
+def nn_model2(features,
+              model_name='03_model.ckpt',
+              activation='elu',
+              intializer='he_normal'):
 
   #   NN Submission
   model = keras.Sequential([
@@ -130,46 +157,6 @@ def make_model2(features,
 
   model.compile(optimizer='adam',
                 loss='binary_crossentropy',
-                metrics=nn_metrics)
+                metrics=NN_METRICS)
 
   return model
-
-
-def make_model_lgbm(n_estimators=900,
-                    max_depth=7,
-                    learning_rate=0.01,
-                    random_state=42,
-                    colsample_bytree=0.1,
-                    reg_lambda=15,
-                    reg_alpha=10):
-  """
-  initiating a lightgm
-  the hyper params are tune to final submission. need hyperparameter turner in future
-  """
-  lgbc = lgb.LGBMClassifier(n_estimators=n_estimators,
-                            max_depth=max_depth,
-                            learning_rate=learning_rate,
-                            random_state=random_state,
-                            colsample_bytree=colsample_bytree,
-                            reg_lambda=reg_lambda,
-                            reg_alpha=reg_alpha)
-  return lgbc
-
-
-def xgboost_model(n_estimators, max_depth):
-  """
-	Trains a xgboost model and stores it in a file.
-
-	Args:
-		x_train: train dataset.
-		y_train: train labels.
-		params: input parameters for the model
-
-	Returns:
-		Filepath of the model file
-
-	Raises:
-		Exception: If dimensions of x_train and y_train do not match
-	"""
-  xgb_model = XGBClassifier(n_estimators=n_estimators, max_depth=max_depth)
-  return xgb_model

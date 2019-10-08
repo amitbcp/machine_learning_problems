@@ -28,7 +28,8 @@ def train_neural_network(x_train, train_labels, x_test):
   test_features = np.array(x_test)
   train_labels = np.array(train_labels['Col2'])
 
-  model = models.make_model(features=train_features)
+  model = models.make_model(params=train_features,
+                            model_name='neural_network_1')
 
   checkpoint_cb, tensorboard_cb = models.callbacks(
     model_name='nn_submission03_s_1_m1_f_2165.ckpt')
@@ -47,9 +48,9 @@ def train_neural_network(x_train, train_labels, x_test):
   evaluation.plot_metrices(epochs, history, if_val=False)
   evaluation.plot_confusion_matrix(model, train_features, train_labels)
   evaluation.submission_nn(model=model,
-                        test_features=test_features,
-                        orig_test_df=x_test,
-                        submission_name='nn_submission03_s_1_m1_f_2165.csv')
+                           test_features=test_features,
+                           orig_test_df=x_test,
+                           submission_name='nn_submission03_s_1_m1_f_2165.csv')
 
 
 def train_lightgbm(x_train, train_labels, x_test, orig_test):
@@ -63,16 +64,17 @@ def train_lightgbm(x_train, train_labels, x_test, orig_test):
   lgb_forests = []
   for i in range(num_lgbm_ensemble):
     print("training LGBC model {}".format(i))
-    n_estimators = 900
-    max_depth = 7
-    learning_rate = 0.01
-    random_state = i
-    colsample_bytree = 0.1
-    reg_lambda = 15
-    reg_alpha = 10
-    lgbc = models.make_model_lgbm(n_estimators, max_depth, learning_rate,
-                                  random_state, colsample_bytree, reg_lambda,
-                                  reg_alpha)
+    params = {
+      'n_estimators': 900,
+      'max_depth': 7,
+      'learning_rate': 0.01,
+      'random_state': i,
+      'colsample_bytree': 0.1,
+      'reg_lambda': 15,
+      'reg_alpha': 10
+    }
+
+    lgbc = models.make_model(params=params, model_name='light_gbm')
     lgbc.fit(x_train, train_labels)
     lgb_forests.append(lgbc)
 
@@ -87,20 +89,23 @@ def train_lightgbm(x_train, train_labels, x_test, orig_test):
 
 def train_xg_boost(x_train, train_labels, x_test, orig_test):
   train_labels = train_labels['Col2']
-  n_estimators = 200
+  n_estimators = 2
   max_depth = 4
-  xgb = models.xgboost_model(n_estimators, max_depth)
+  params = {'n_estimators': n_estimators, 'max_depth': max_depth}
+  xgb = models.make_model(params, model_name='xg_boost')
   xgb.fit(x_train, train_labels)
   model_file_path = os.path.join(MODEL_PATH, "xgb", "xgb.pkl")
+
   pickle.dump(xgb, open(model_file_path, 'wb'))
   evaluation.submission_default(model_file_path,
-                             x_test,
-                             orig_test,
-                             submission_name='submission_xgb.csv')
+                                x_test,
+                                orig_test,
+                                submission_name='submission_xgb.csv')
 
 
 if __name__ == "__main__":
-  X_train, Y_train, X_test,Orig_test = data_loader.load_data()
-  train_neural_network(X_train, Y_train, X_test)
-  train_lightgbm(X_train, Y_train, X_test, Orig_test)
+  X_train, Y_train, X_test, Orig_test = data_loader.load_data()
+  # print(Orig_test.shape)
+  # train_neural_network(X_train, Y_train, X_test)
+  # train_lightgbm(X_train, Y_train, X_test, Orig_test)
   train_xg_boost(X_train, Y_train, X_test, Orig_test)

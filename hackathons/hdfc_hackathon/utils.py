@@ -44,6 +44,6 @@ def model_read(model_file_path):
   		Exception: File not found exception
     """
   with open(model_file_path, 'rb') as f:
-    model_object = pickle.load(f)
+    model = pickle.load(f)
 
-  return model_path
+  return model
