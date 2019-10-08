@@ -4,11 +4,13 @@ import pickle
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from common.config_files.config import CGNConfigParser
 # from imblearn.over_sampling import SMOTE
 from sklearn.impute import SimpleImputer
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+from common.config_files.config import CGNConfigParser
+
 config_all = CGNConfigParser()
 config = config_all.get_sub_config('hdfc')
 
@@ -27,6 +29,15 @@ def read_csv():
 
 
 def feature_importance(df, threshold=0.7):
+  """[summary]
+
+  Args:
+      df ([type]): [description]
+      threshold (float, optional): [description]. Defaults to 0.7.
+
+  Returns:
+      [type]: [description]
+  """
 
   # Feature Importance Filtering
   feature_imp = pd.read_csv(feature_imp_path)
@@ -64,6 +75,18 @@ def feature_filtering(train_df,
                       test_df,
                       columns=None,
                       columns_path='columns.pickle'):
+  """[summary]
+
+  Args:
+      train_df ([type]): [description]
+      orig_train_df ([type]): [description]
+      test_df ([type]): [description]
+      columns ([type], optional): [description]. Defaults to None.
+      columns_path (str, optional): [description]. Defaults to 'columns.pickle'.
+
+  Returns:
+      [type]: [description]
+  """
 
   if columns is None:
     if columns_path is None:
@@ -92,24 +115,44 @@ def feature_filtering(train_df,
 
 
 def sampling(labels):
+  """[summary]
+
+  Args:
+      labels ([type]): [description]
+  """
   neg, pos = np.bincount(labels)
 
   total = neg + pos
   print(
     '{} positive samples out of {} training samples ({:.2f}% of total)'.format(
       pos, total, 100 * pos / total))
-# strategy supported
-# "mean" : average
-# "median" : med
-# "most frequent" : mode
-# Logic, input train and test. Append them and then do imputation
+
+
 def mean_simple_imputation(df_train, df_test, strategy):
+  """[summary]
+
+
+  Args:
+      df_train ([type]): [description]
+      df_test ([type]): [description]
+      strategy ([type]): [description]
+      strategy supported
+      "mean" : average
+      "median" : med
+      "most frequent" : mode
+      Logic, input train and test. Append them and then do imputation
+
+  Returns:
+      [type]: [description]
+  """
   df = df_train.append(df_test)
   imputor = SimpleImputer(missing_values=np.nan, strategy=strategy)
   imputor = imputor.fit(df)
   col_list = df.columns
-  df_train_scaled = pd.DataFrame(imputor.transform(df_train),
-                                 columns=[str(col) + '_'+ strategy for col in col_list.columns])
-  df_test_scaled = pd.DataFrame(imputor.transform(df_test),
-                                 columns=[str(col) + '_' + strategy for col in col_list.columns])
+  df_train_scaled = pd.DataFrame(
+    imputor.transform(df_train),
+    columns=[str(col) + '_' + strategy for col in col_list.columns])
+  df_test_scaled = pd.DataFrame(
+    imputor.transform(df_test),
+    columns=[str(col) + '_' + strategy for col in col_list.columns])
   return df_train_scaled, df_test_scaled

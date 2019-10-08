@@ -1,5 +1,5 @@
-import pickle
 import os
+import pickle
 import time
 
 from common.config_files.config import CGNConfigParser
@@ -12,7 +12,7 @@ model_path = config_general['hackathon']
 
 def model_save(model):
   """
-  Dumps model into sav file
+  Dumps model into pickle file
 
   Args:
 		model: Model to be saved
@@ -25,6 +25,6 @@ def model_save(model):
   """
   model_file_path = os.path.join(
     model_path,
-    time.strftime("run_%Y_%m_%d-%H_%M_%S") + ".sav")
+    time.strftime("run_%Y_%m_%d-%H_%M_%S") + ".pickle")
   pickle.dump(model, open(model_file_path, 'wb'))
   return model_file_path
