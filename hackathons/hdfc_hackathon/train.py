@@ -46,7 +46,7 @@ def train_neural_network(x_train, train_labels, x_test):
   evaluation.evaluation(model, train_features, train_labels)
   evaluation.plot_metrices(epochs, history, if_val=False)
   evaluation.plot_confusion_matrix(model, train_features, train_labels)
-  evaluation.submission(model=model,
+  evaluation.submission_nn(model=model,
                         test_features=test_features,
                         orig_test_df=x_test,
                         submission_name='nn_submission03_s_1_m1_f_2165.csv')
@@ -58,7 +58,7 @@ def train_lightgbm(x_train, train_labels, x_test, orig_test):
   trains NUM light gbm model and saves to an pickle object
   call submission_lgbm to predict and create submission dataframe
   """
-  train_labels = np.array(train_labels['Col2'])
+  train_labels = train_labels['Col2']
   num_lgbm_ensemble = 17
   lgb_forests = []
   for i in range(num_lgbm_ensemble):
@@ -85,7 +85,22 @@ def train_lightgbm(x_train, train_labels, x_test, orig_test):
                              submission_name='submission_lgb.csv')
 
 
+def train_xg_boost(x_train, train_labels, x_test, orig_test):
+  train_labels = train_labels['Col2']
+  n_estimators = 200
+  max_depth = 4
+  xgb = models.xgboost_model(n_estimators, max_depth)
+  xgb.fit(x_train, train_labels)
+  model_file_path = os.path.join(MODEL_PATH, "xgb", "xgb.pkl")
+  pickle.dump(xgb, open(model_file_path, 'wb'))
+  evaluation.submission_default(model_file_path,
+                             x_test,
+                             orig_test,
+                             submission_name='submission_xgb.csv')
+
+
 if __name__ == "__main__":
-  X_train, Y_train, X_test, O_test = data_loader.load_data()
+  X_train, Y_train, X_test,Orig_test = data_loader.load_data()
   train_neural_network(X_train, Y_train, X_test)
-  train_lightgbm(X_train, Y_train, X_test, O_test)
+  train_lightgbm(X_train, Y_train, X_test, Orig_test)
+  train_xg_boost(X_train, Y_train, X_test, Orig_test)
