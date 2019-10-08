@@ -17,11 +17,12 @@ from common.config_files.config import CGNConfigParser
 tf.keras.backend.clear_session()
 np.random.seed(42)
 tf.random.set_seed(42)
-config_all = CGNConfigParser()
-config_general = config_all.get_sub_config('general')
-config = config_all.get_sub_config('general')
-log_path = config_general['log_path']
-model_path = config_general['hackathon']
+
+CONFIG_ALL = CGNConfigParser()
+CONFIG_GENERAL = CONFIG_ALL.get_sub_config('general')
+CONFIG = CONFIG_ALL.get_sub_config('general')
+log_path = CONFIG_GENERAL['log_path']
+model_path = CONFIG_GENERAL['hackathon']
 nn_metrics = model_metrics()
 
 
@@ -155,7 +156,7 @@ def make_model_lgbm(n_estimators=900,
   return lgbc
 
 
-def xgboost_model(params=None):
+def xgboost_model(n_estimators, max_depth):
   """
 	Trains a xgboost model and stores it in a file.
 
@@ -170,5 +171,5 @@ def xgboost_model(params=None):
 	Raises:
 		Exception: If dimensions of x_train and y_train do not match
 	"""
-  xgb_model = XGBClassifier(params)
+  xgb_model = XGBClassifier(n_estimators=n_estimators, max_depth=max_depth)
   return xgb_model
