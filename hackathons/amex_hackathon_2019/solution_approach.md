@@ -3,12 +3,19 @@
 The given dataset has been described in the [README.md](). The major challenge for the Hackathon was creating features to train a model. The approach has been divided into the following sections.
 
 ## Contents
-1. Data Imputation
-2. Feature Creation
-3. Feature Selection
-4. Model Training
-5. Ensembling
-6. Submission
+- [Solution Approach](#solution-approach)
+  - [Contents](#contents)
+  - [Data Imputation](#data-imputation)
+  - [Feature Creation](#feature-creation)
+      - [Campaign Based Features](#campaign-based-features)
+      - [Coupon Based Features](#coupon-based-features)
+      - [Redemption based features](#redemption-based-features)
+      - [Item based features](#item-based-features)
+      - [Customer Purchasing Power based features](#customer-purchasing-power-based-features)
+  - [Feature Selection](#feature-selection)
+  - [Model Training](#model-training)
+  - [Ensembling](#ensembling)
+  - [Submission](#submission)
 
 ## Data Imputation
 
@@ -60,7 +67,27 @@ These features were created from the **Item Data**. These were mapped to Custome
 
 ## Feature Selection
 
-Based on multiple evaluations we found the following features did not much value to the model performance:
+Based on multiple evaluations we found the following features **did not** much value to the model performance:
 
 1. Customer Demographics
-2. Item-Coupon group features : Distribution &
+2. Item-Coupon group features : Distribution Count of Categories/Brands per Coupon ID
+3. Item-Campaign group features : Distribution Count of Categories/Brands per Campaign ID
+
+All the other featrues were included.
+
+## Model Training
+
+The following models where experimented with during the event.
+
+1. LightGBM
+2. XGBoost
+3. Neural Networks
+
+
+## Ensembling
+
+MLExtend ensemble pipeline was experimented with but was not finally used.
+
+## Submission
+
+The final submission was done using LightGBM.
