@@ -6,14 +6,12 @@ import time
 
 import numpy as np
 import tensorflow as tf
-from sklearn import metrics
 from tensorflow import keras
-
+from sklearn import metrics
 import lightgbm as lgb
-from common.config_files.config import CGNConfigParser
-from utils import model_save
 from xgboost import XGBClassifier
 
+from common.config_files.config import CGNConfigParser
 # from imblearn.over_sampling import SMOTE
 
 tf.keras.backend.clear_session()
@@ -138,9 +136,6 @@ def make_model2(features,
 
   return model
 
-
-# "initialting a lightgm"
-# "the hyper params are tune to final submission. need hyper parameter turner in future"
 def make_model_lgbm(n_estimators=900,
                     max_depth=7,
                     learning_rate=0.01,
@@ -148,6 +143,10 @@ def make_model_lgbm(n_estimators=900,
                     colsample_bytree=0.1,
                     reg_lambda=15,
                     reg_alpha=10):
+  """
+  initiating a lightgm
+  the hyper params are tune to final submission. need hyperparameter turner in future
+  """
   lgbc = lgb.LGBMClassifier(n_estimators=n_estimators,
                             max_depth=max_depth,
                             learning_rate=learning_rate,
@@ -158,7 +157,7 @@ def make_model_lgbm(n_estimators=900,
   return lgbc
 
 
-def xgboost_model(x_train, y_train, params=None):
+def xgboost_model(params=None):
   """
 	Trains a xgboost model and stores it in a file.
 
@@ -171,8 +170,8 @@ def xgboost_model(x_train, y_train, params=None):
 		Filepath of the model file
 
 	Raises:
-		Exception: If dimensions of x_train and y_train donot match
+		Exception: If dimensions of x_train and y_train do not match
 	"""
   xgb_model = XGBClassifier(params)
-  xgb_model.fit(x_train, y_train)
-  return model_save(xgb_model)
+  return xgb_model
+

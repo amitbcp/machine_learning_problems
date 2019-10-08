@@ -1,4 +1,7 @@
-from sklearn import metrics
+"""
+Model evaluation  module
+"""
+# from sklearn import metrics
 from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 import numpy as np
@@ -8,9 +11,9 @@ import os
 
 from common.config_files.config import CGNConfigParser
 
-config_all = CGNConfigParser()
-config = config_all.get_sub_config('hdfc')
-model_path = config['model_path']
+CONFIG_ALL = CGNConfigParser()
+CONFIG = CONFIG_ALL.get_sub_config('hdfc')
+MODEL_PATH = CONFIG['model_path']
 
 
 # Evaluate baseline Model
@@ -104,7 +107,7 @@ def submission(model,
   submission = submission.rename(columns={0: 'Col2'})
   submission['Col2'].value_counts()
   submission.head()
-  submission.to_csv(model_path + submission_name, index=False)
+  submission.to_csv(MODEL_PATH + submission_name, index=False)
 
   print("Values : ", submission['Col2'].value_counts())
 
@@ -127,7 +130,7 @@ def submission_lgbm(model_file_path,
   submission_df['score'] = preds
   submission_df['Col2'] = 0
   submission_df.loc[submission_df['score'] > 0.28945, 'Col2'] = 1
-  submission_df[['Col1', 'Col2']].to_csv(os.path.join(model_path,
+  submission_df[['Col1', 'Col2']].to_csv(os.path.join(MODEL_PATH,
                                                       submission_name),
                                          index=False)
   print("Values : ", submission_df['Col2'].value_counts())
