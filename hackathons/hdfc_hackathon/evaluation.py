@@ -93,7 +93,7 @@ def plot_confusion_matrix(model, features, labels):
   print('Total Loan Deafulters Customers: ', np.sum(cm[1]))
 
 
-def submission(model,
+def submission_nn(model,
                test_features,
                orig_test_df,
                submission_name='nn_submission_3.csv'):
@@ -134,3 +134,15 @@ def submission_lgbm(model_file_path,
                                                       submission_name),
                                          index=False)
   print("Values : ", submission_df['Col2'].value_counts())
+
+
+def submission_default(model,
+                  test_features,
+                  orig_test_df,
+                  submission_name='nn_submission_3.csv'):
+
+  predictions = model.predict_proba(test_features)[:,1]
+
+  submission = pd.concat([orig_test_df['Col1'], pd.Series(predictions, name='Col2')], axis=1)
+  submission.to_csv(MODEL_PATH + submission_name, index=False)
+  print("Values : ", submission['Col2'].value_counts())
