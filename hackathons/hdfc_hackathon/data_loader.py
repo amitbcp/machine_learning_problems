@@ -16,6 +16,7 @@ from common.config_files.config import CGNConfigParser
 CONFIG_ALL = CGNConfigParser()
 CONFIG = CONFIG_ALL.get_sub_config('hdfc')
 
+
 def read_csv():
   """
   Loads train and test csv files
@@ -163,14 +164,16 @@ def drop_columns(df, missing_col):
   df = df.drop(missing_col, axis=1)
   return df
 
+
 def get_null_columns(train, null_threshold=0.4):
   """
   finds columns with null values greater than threshold(default=0.4)
   returns list of columns to be removed
   """
-  missingcol = train.columns[(
-      train.isnull().sum()/train.shape[0]) > null_threshold]
+  missingcol = train.columns[(train.isnull().sum() /
+                              train.shape[0]) > null_threshold]
   return missingcol
+
 
 def get_scaled_data(train, test):
   """
@@ -182,16 +185,19 @@ def get_scaled_data(train, test):
   x_test_scaled = min_max_scaler.transform(test)
   return x_train_scaled, x_test_scaled
 
+
 def get_correlated_cols(train, threshold=0.7):
   """
   gets a random column from a pair of columns with correlation greater than some threshold
   """
   corr_matrix = train.corr().abs()
   upper = corr_matrix.where(
-      np.triu(np.ones(corr_matrix.shape), k=1).astype(np.bool))
-  to_drop = [column for column in upper.columns if any(
-      upper[column] > threshold)]
+    np.triu(np.ones(corr_matrix.shape), k=1).astype(np.bool))
+  to_drop = [
+    column for column in upper.columns if any(upper[column] > threshold)
+  ]
   return to_drop
+
 
 def load_data():
   """

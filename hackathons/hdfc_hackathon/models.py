@@ -22,7 +22,7 @@ config_general = config_all.get_sub_config('general')
 config = config_all.get_sub_config('general')
 log_path = config_general['log_path']
 model_path = config_general['hackathon']
-metrics = model_metrics()
+nn_metrics = model_metrics()
 
 
 def get_run_logdir(root_logdir=log_path):
@@ -91,7 +91,9 @@ def make_model(features, model_name='03_model.ckpt'):
     keras.layers.Dense(1, activation='sigmoid'),
   ])
 
-  model.compile(optimizer='adam', loss='binary_crossentropy', metrics=metrics)
+  model.compile(optimizer='adam',
+                loss='binary_crossentropy',
+                metrics=nn_metrics)
 
   return model
 
@@ -112,29 +114,25 @@ def make_model2(features,
     keras.layers.Dense(1024,
                        activation=activation,
                        kernel_initializer=intializer),
-    #kernel_regularizer=keras.regularizers.l1(0.01)),
-
-    #keras.layers.AlphaDropout(0.6),
     keras.layers.Dense(
       512,
       activation=activation,
       kernel_initializer=intializer,
     ),
-    #kernel_regularizer=keras.regularizers.l1(0.01)),
-
-    #keras.layers.AlphaDropout(0.3),
     keras.layers.Dense(
       256,
       activation=activation,
       kernel_initializer=intializer,
     ),
-    #kernel_regularizer=keras.regularizers.l1(0.01)),
     keras.layers.Dense(1, activation='sigmoid')
   ])
 
-  model.compile(optimizer='adam', loss='binary_crossentropy', metrics=metrics)
+  model.compile(optimizer='adam',
+                loss='binary_crossentropy',
+                metrics=nn_metrics)
 
   return model
+
 
 def make_model_lgbm(n_estimators=900,
                     max_depth=7,
@@ -174,4 +172,3 @@ def xgboost_model(params=None):
 	"""
   xgb_model = XGBClassifier(params)
   return xgb_model
-
