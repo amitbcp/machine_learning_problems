@@ -23,6 +23,7 @@ config_general = config_all.get_sub_config('general')
 config = config_all.get_sub_config('general')
 log_path = config_general['log_path']
 model_path = config_general['hackathon']
+metrics = model_metrics()
 
 
 def get_run_logdir(root_logdir=log_path):
@@ -32,8 +33,8 @@ def get_run_logdir(root_logdir=log_path):
 
 
 def callbacks(model_path=model_path, model_name='model.h5'):
-  checkpoint_cb = tf.keras.callbacks.ModelCheckpoint(
-    model_path + model_name, save_best_only=True)
+  checkpoint_cb = tf.keras.callbacks.ModelCheckpoint(model_path + model_name,
+                                                     save_best_only=True)
   run_logdir = get_run_logdir()
   print("Log Dir {}".format(run_logdir))
   tensorboard_cb = tf.keras.callbacks.TensorBoard(run_logdir)
@@ -41,26 +42,7 @@ def callbacks(model_path=model_path, model_name='model.h5'):
   return checkpoint_cb, tensorboard_cb
 
 
-def make_model(features, model_name='03_model.ckpt'):
-
-  #   NN Submission
-  model = keras.Sequential([
-    keras.layers.Dense(
-      2166,
-      activation="selu",
-      kernel_initializer="lecun_normal",
-      input_shape=(features.shape[-1],)),
-    keras.layers.Dense(
-      1024, activation="selu", kernel_initializer="lecun_normal"),
-    keras.layers.Dropout(0.3),
-    keras.layers.Dense(
-      512, activation="selu", kernel_initializer="lecun_normal"),
-    keras.layers.Dropout(0.3),
-    keras.layers.Dense(
-      256, activation="selu", kernel_initializer="lecun_normal"),
-    keras.layers.Dense(1, activation='sigmoid'),
-  ])
-
+def model_metrics():
   metrics = [
     keras.metrics.Accuracy(name='accuracy'),
     keras.metrics.TruePositives(name='tp'),
@@ -71,6 +53,31 @@ def make_model(features, model_name='03_model.ckpt'):
     keras.metrics.Recall(name='recall'),
     keras.metrics.AUC(name='auc')
   ]
+
+  return metrics
+
+
+def make_model(features, model_name='03_model.ckpt'):
+
+  #   NN Submission
+  model = keras.Sequential([
+    keras.layers.Dense(2166,
+                       activation="selu",
+                       kernel_initializer="lecun_normal",
+                       input_shape=(features.shape[-1],)),
+    keras.layers.Dense(1024,
+                       activation="selu",
+                       kernel_initializer="lecun_normal"),
+    keras.layers.Dropout(0.3),
+    keras.layers.Dense(512,
+                       activation="selu",
+                       kernel_initializer="lecun_normal"),
+    keras.layers.Dropout(0.3),
+    keras.layers.Dense(256,
+                       activation="selu",
+                       kernel_initializer="lecun_normal"),
+    keras.layers.Dense(1, activation='sigmoid'),
+  ])
 
   model.compile(optimizer='adam', loss='binary_crossentropy', metrics=metrics)
 
@@ -90,8 +97,9 @@ def make_model2(features,
       kernel_initializer=intializer,
       #kernel_regularizer=keras.regularizers.l1(0.01),
       input_shape=(features.shape[-1],)),
-    keras.layers.Dense(
-      1024, activation=activation, kernel_initializer=intializer),
+    keras.layers.Dense(1024,
+                       activation=activation,
+                       kernel_initializer=intializer),
     #kernel_regularizer=keras.regularizers.l1(0.01)),
 
     #keras.layers.AlphaDropout(0.6),
@@ -111,17 +119,6 @@ def make_model2(features,
     #kernel_regularizer=keras.regularizers.l1(0.01)),
     keras.layers.Dense(1, activation='sigmoid')
   ])
-
-  metrics = [
-    keras.metrics.Accuracy(name='accuracy'),
-    keras.metrics.TruePositives(name='tp'),
-    keras.metrics.FalsePositives(name='fp'),
-    keras.metrics.TrueNegatives(name='tn'),
-    keras.metrics.FalseNegatives(name='fn'),
-    keras.metrics.Precision(name='precision'),
-    keras.metrics.Recall(name='recall'),
-    keras.metrics.AUC(name='auc')
-  ]
 
   model.compile(optimizer='adam', loss='binary_crossentropy', metrics=metrics)
 
