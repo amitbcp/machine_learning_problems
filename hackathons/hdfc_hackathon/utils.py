@@ -29,6 +29,7 @@ def model_save(model):
   pickle.dump(model, open(model_file_path, 'wb'))
   return model_file_path
 
+
 def model_read(model_file_path):
   """
     Reads the model and return the object

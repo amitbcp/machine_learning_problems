@@ -11,7 +11,7 @@ Exciting prizes up for grabs! Best performers also get a chance to get interview
 
 Don’t hold on to the buzzing ideas in your mind. Just wear your thinking hats and display the spectrum of your creativity!
 
-
+# [Solution Approach]()
 # Problem Statement
 
 ## Predicting Coupon Redemption
@@ -140,14 +140,14 @@ Submissions are evaluated on area under the ROC curve between the predicted prob
 
 ### Leaderboard
 
-* **[Public LB]
-* **[Private LB]
+* **[Public LB] :
+* **[Private LB] :
 
 (6K participants)
 
 ### Things to Learn
-* StratifiedKFold for Imbalanced dataset
-* Feature Importance and Selection
-* Removing correlated Features
-* Ensemble and Stacking
-* Feature Engineering
+
+1. StratifiedKFold for Imbalanced dataset
+2. Feature Importance and Selection
+3. Removing correlated Features
+4. Ensemble and Stacking

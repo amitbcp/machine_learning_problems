@@ -1,0 +1,42 @@
+# Solution Approach
+
+The given dataset has been described in the [README.md](). The major challenge for the Hackathon was creating features to train a model. The approach has been divided into the following sections.
+
+## Contents
+1. Data Imputation
+2. Feature Creation
+3. Feature Selection
+4. Model Training
+5. Ensembling
+6. Submission
+
+## Data Imputation
+
+Missing data points were imputed in the  **Customer Demographics** only.
+
+1. 50% of the customers did not have any demographic details
+2. Categorical Values were present like Single/Married , Age-Range
+3. Many of the fields were missing among the customers which were custom imputed.
+
+Details can be review in _____________________
+
+## Feature Creation
+
+The most challenging aspect of the Hackathon was to create feature by linnking the various data sources. The following features were created for testing Hypothesis.
+
+1. **Campaign based features**
+2. **Coupon based features**
+3. **Redemtption based features**
+4. **Item based features**
+5. **Customer Purchasing Power based features**
+
+
+#### Campaign Based Features
+
+These features were created from the Campaign Data. The features are described as below :
+
+1. Campaign Duration - Number of Days the Campaign was running.
+2. Campaign Month - Months during which the Campaign was running.
+3. Campaign Weekends - Number of Weekends the Campaign was running.
+
+#### Coupon Based Features

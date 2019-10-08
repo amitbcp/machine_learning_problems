@@ -108,6 +108,7 @@ def submission(model,
 
   print("Values : ", submission['Col2'].value_counts())
 
+
 def submission_lgbm(model_file_path,
                     test_features,
                     orig_test_df,
@@ -126,5 +127,7 @@ def submission_lgbm(model_file_path,
   submission_df['score'] = preds
   submission_df['Col2'] = 0
   submission_df.loc[submission_df['score'] > 0.28945, 'Col2'] = 1
-  submission_df[['Col1', 'Col2']].to_csv(os.path.join(model_path , submission_name), index=False)
+  submission_df[['Col1', 'Col2']].to_csv(os.path.join(model_path,
+                                                      submission_name),
+                                         index=False)
   print("Values : ", submission_df['Col2'].value_counts())
