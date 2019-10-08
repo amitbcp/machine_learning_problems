@@ -28,3 +28,21 @@ def model_save(model):
     time.strftime("run_%Y_%m_%d-%H_%M_%S") + ".pickle")
   pickle.dump(model, open(model_file_path, 'wb'))
   return model_file_path
+
+def model_read(model_file_path):
+  """
+    Reads the model and return the object
+
+    Args:
+  		model_file_path: Model file path to be read
+
+  	Returns:
+  		model object
+
+  	Raises:
+  		Exception: File not found exception
+    """
+  with open(model_file_path, 'rb') as f:
+    model_object = pickle.load(f)
+
+  return model_path

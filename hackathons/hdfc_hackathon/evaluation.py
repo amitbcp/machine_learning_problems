@@ -3,6 +3,8 @@ from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import utils
+import os
 
 from common.config_files.config import CGNConfigParser
 
@@ -105,3 +107,24 @@ def submission(model,
   submission.to_csv(model_path + submission_name, index=False)
 
   print("Values : ", submission['Col2'].value_counts())
+
+def submission_lgbm(model_file_path,
+                    test_features,
+                    orig_test_df,
+                    submission_name='submission_lgb.csv'):
+  lgb_forest = utils.model_read(model_file_path)
+  num_lgbm_ensemble = len(lgb_forest)
+  preds = np.zeros((len(test_features), 1))
+  for lgbc in lgb_forest:
+    preds = preds + lgbc.predict_proba(test_features)[:, 1].reshape(-1, 1)
+
+  preds = preds / num_lgbm_ensemble
+
+  submission_df = pd.DataFrame()
+  sub_list = {'Col1': orig_test_df['Col1']}
+  submission_df = pd.DataFrame(sub_list)
+  submission_df['score'] = preds
+  submission_df['Col2'] = 0
+  submission_df.loc[submission_df['score'] > 0.28945, 'Col2'] = 1
+  submission_df[['Col1', 'Col2']].to_csv(os.path.join(model_path , submission_name), index=False)
+  print("Values : ", submission_df['Col2'].value_counts())
