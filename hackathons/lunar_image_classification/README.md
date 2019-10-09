@@ -41,3 +41,64 @@ ground0004.png,Small
 
 
 ## Solution Approach
+
+Three different approaches were tried for the challenge :
+
+1. Binary Image Classification
+2. Binary Image Classification with Data Augmentation
+3. Binary Image Classification with Transfer Learning
+
+The images were 480 X 720 which was resized to 480 X 480 to feed to the network. The iamge also had the following characteristics :
+
+* Red Color Specified Sky
+* Green Color was mainly for Caters
+* Blue color for Rocks/boulders
+
+### Binary Image Classification
+The pipeline flow is as described :
+
+* Loading Images using ImageGenerator.
+* Since we don't have a separate validation dataset,we split the training data validation.
+* We scale the image by dividing it by 255.
+* Two models architectures were tested while training.
+* The final layer had 1 node with Sigmoid for prediction.
+* The **Binary Cross Entropy** loss was used for the model design.
+* Thresholds was tweaked to make predictions to improve F1 Score.
+* With the result, the model was re-trained with the entire training data.
+* The final model was used for submission.
+
+### Binary Image Classification with Data Augmentation
+
+The [above](#binary-image-classification) pipeline resulted in high F1 scores. Though some extent of overfitting was visible.
+
+To address the same, image augmentation was used. Though the selection of augmentation parameters were limited based on the nature of the image.
+
+The following techniques were used for augmentation :
+
+1. Horizontal Flip
+2. Vertical Flip
+3. Rotation by 45 degree
+
+
+All the above menthods, don't change the nature of the image like brightness/shear etc. This makes the model to avoid biasness like, only if rocks are present on the left/right side , detect that as a Large Rock.
+
+### Binary Image Classification with Transfer Learning
+
+Transfer Learning was used to experiment with the pipeline flow and see if it adds any difference as for other Image Classification problems.
+
+Though the hypothesis was :
+
+1. Pre-trained models should give poor results.
+2. As the first layers capture simple featuers like line/edges/corners/circles
+3. Layers to the end of the network capture Patterns and shapes.
+4. Since the given the images dont have a lot of complex shapes and patters along with RGB colour specifically, the pre-trained model might perform poorly.
+
+
+#### Observations
+
+1. Pre-trained VGG-16 model with last 4 layers trainable + 2 Dense Layers, was not classifying all images as **Small**.
+2. pre-trained VGG-16 model with last 2 layers trainable + 2 Dense Layers was also classifying all images as **Small**.
+3. VGG-16 with all the layers freezed + 2 Dense Layers , showed high performance equivalent to the other two approaches.
+
+
+The observations validate our hypothesis that the last layers of the pre-trained network are not usefull in this case.
