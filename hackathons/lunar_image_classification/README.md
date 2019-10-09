@@ -1,3 +1,15 @@
+## Table Of Contents
+- [Classify the Lunar Rock](#classify-the-lunar-rock)
+  - [Data:](#data)
+  - [Data Description:](#data-description)
+  - [Evaluation Metric :](#evaluation-metric)
+  - [Leader Board Rank :](#leader-board-rank)
+  - [Solution Approach](#solution-approach)
+    - [Binary Image Classification](#binary-image-classification)
+    - [Binary Image Classification with Data Augmentation](#binary-image-classification-with-data-augmentation)
+    - [Binary Image Classification with Transfer Learning](#binary-image-classification-with-transfer-learning)
+      - [Observations](#observations)
+
 # Classify the Lunar Rock
 
 This challenge is powered by DataQuest & Hackerearth. [Challenge Link](https://www.hackerearth.com/challenges/competitive/lunar-rock-hackerearth-data-science-competition/)
@@ -42,13 +54,7 @@ ground0004.png,Small
 
 ## Solution Approach
 
-Three different approaches were tried for the challenge :
-
-1. Binary Image Classification
-2. Binary Image Classification with Data Augmentation
-3. Binary Image Classification with Transfer Learning
-
-The images were 480 X 720 which was resized to 480 X 480 to feed to the network. The iamge also had the following characteristics :
+Three different approaches which were tried for the challenge. The images were 480 X 720 which was resized to 480 X 480 to feed to the network. The image also had the following characteristics :
 
 * Red Color Specified Sky
 * Green Color was mainly for Caters

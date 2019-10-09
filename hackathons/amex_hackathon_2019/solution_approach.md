@@ -1,10 +1,5 @@
-# Solution Approach
-
-The given dataset has been described in the [README.md](). The major challenge for the Hackathon was creating features to train a model. The approach has been divided into the following sections.
-
 ## Contents
 - [Solution Approach](#solution-approach)
-  - [Contents](#contents)
   - [Data Imputation](#data-imputation)
   - [Feature Creation](#feature-creation)
       - [Campaign Based Features](#campaign-based-features)
@@ -16,6 +11,12 @@ The given dataset has been described in the [README.md](). The major challenge f
   - [Model Training](#model-training)
   - [Ensembling](#ensembling)
   - [Submission](#submission)
+
+# Solution Approach
+
+The given dataset has been described in the [README.md](). The major challenge for the Hackathon was creating features to train a model. The approach has been divided into the following sections.
+
+
 
 ## Data Imputation
 
