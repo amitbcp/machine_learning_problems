@@ -168,13 +168,13 @@ def load_data():
   x_test = drop_columns(x_test, missing_col)
   print("Null columns dropped ...")
   x_train, x_test = simple_imputation(x_train, x_test)
-  print("Imputation done ..")
+  print("Imputation done ...")
   x_train, x_test = get_scaled_data(x_train, x_test)
   print("Scaling completed")
   correlated_cols = get_correlated_cols(x_train, corr_threshold)
-  print("correlated_cols removed")
   x_train = drop_columns(x_train, correlated_cols)
   x_test = drop_columns(x_test, correlated_cols)
+  print("Correlated_cols removed ...")
 
   return x_train, y_train, x_test, test
 

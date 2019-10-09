@@ -5,6 +5,8 @@ import os
 import pickle
 
 import numpy as np
+import pandas as pd
+from xgboost import XGBClassifier
 # from imblearn.over_sampling import SMOTE
 import models
 import evaluation
@@ -16,7 +18,7 @@ CONFIG = CONFIG_ALL.get_sub_config('hdfc')
 MODEL_PATH = CONFIG['model_path']
 
 
-def train_neural_network(x_train, train_labels, x_test):
+def train_neural_network(x_train, train_labels, x_test, orig_test):
   """
   Trains neural network ready-to-use dataframes
   Args:
@@ -33,7 +35,7 @@ def train_neural_network(x_train, train_labels, x_test):
 
   checkpoint_cb, tensorboard_cb = models.callbacks(
     model_name='nn_submission03_s_1_m1_f_2165.ckpt')
-  epochs = 1
+  epochs = 6
   batch_size = 32
 
   history = model.fit(train_features,
@@ -49,7 +51,7 @@ def train_neural_network(x_train, train_labels, x_test):
   evaluation.plot_confusion_matrix(model, train_features, train_labels)
   evaluation.submission_nn(model=model,
                            test_features=test_features,
-                           orig_test_df=x_test,
+                           orig_test_df=orig_test,
                            submission_name='nn_submission03_s_1_m1_f_2165.csv')
 
 
@@ -90,12 +92,11 @@ def train_lightgbm(x_train, train_labels, x_test, orig_test):
 def train_xg_boost(x_train, train_labels, x_test, orig_test):
   train_labels = train_labels['Col2']
   n_estimators = 2
-  max_depth = 4
+  max_depth = 2
   params = {'n_estimators': n_estimators, 'max_depth': max_depth}
   xgb = models.make_model(params, model_name='xg_boost')
-  xgb.fit(x_train, train_labels)
+  xgb.fit(x_train, pd.DataFrame(train_labels, columns=['Col2']))
   model_file_path = os.path.join(MODEL_PATH, "xgb", "xgb.pkl")
-
   pickle.dump(xgb, open(model_file_path, 'wb'))
   evaluation.submission_default(model_file_path,
                                 x_test,
@@ -106,6 +107,6 @@ def train_xg_boost(x_train, train_labels, x_test, orig_test):
 if __name__ == "__main__":
   X_train, Y_train, X_test, Orig_test = data_loader.load_data()
   # print(Orig_test.shape)
-  # train_neural_network(X_train, Y_train, X_test)
+  # train_neural_network(X_train, Y_train, X_test, Orig_test)
   # train_lightgbm(X_train, Y_train, X_test, Orig_test)
   train_xg_boost(X_train, Y_train, X_test, Orig_test)
