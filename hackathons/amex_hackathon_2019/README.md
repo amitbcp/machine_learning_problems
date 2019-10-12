@@ -11,7 +11,7 @@ Exciting prizes up for grabs! Best performers also get a chance to get interview
 
 Don’t hold on to the buzzing ideas in your mind. Just wear your thinking hats and display the spectrum of your creativity!
 
-# [Solution Approach]()
+# [Solution Approach](https://github.com/amitbcp/machine_learning_problems/blob/master/hackathons/amex_hackathon_2019/solution_approach.md)
 # Problem Statement
 
 ## Predicting Coupon Redemption
