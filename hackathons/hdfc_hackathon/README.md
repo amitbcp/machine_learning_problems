@@ -67,3 +67,13 @@ The project is divided into the following section :
 3. models.py : Includes functions for the different models explored
 4. train.py : Includes functions for training different models
 5. data_loader.py : Includes functions to read input data and feature selection
+
+## Team
+
+The team who worked for the hackathon are  :
+
+1. [Amit Agarwal](https://github.com/amitbcp)
+2. [Ishant Wankhede](https://github.com/IshantWankhede)
+3. [Keshav Kumar](https://github.com/keshav787)
+4. [Pranshu Anand](https://github.com/pranshu-anand)
+5. [Shivam Singla](https://github.com/smatrix017)

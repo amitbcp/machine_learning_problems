@@ -11,6 +11,7 @@
   - [Model Training](#model-training)
   - [Ensembling](#ensembling)
   - [Submission](#submission)
+  - [Team](#team)
 
 # Solution Approach
 
@@ -92,3 +93,14 @@ MLExtend ensemble pipeline was experimented with but was not finally used.
 ## Submission
 
 The final submission was done using LightGBM.
+
+## Team
+
+The team who worked for the hackathon are  :
+
+1. [Ishant Wankhede](https://github.com/IshantWankhede)
+2. [Pranshu Anand](https://github.com/pranshu-anand)
+3. [Ruhama Ahale]()
+4. [Shivam Singla](https://github.com/smatrix017)
+5. [Keshav Kumar](https://github.com/keshav787)
+6. [Amit Agarwal](https://github.com/amitbcp)
