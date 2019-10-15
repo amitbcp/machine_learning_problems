@@ -49,6 +49,14 @@ These features were created from the Campaign Data. The features are described a
 
 #### Coupon Based Features
 
+These features were created from the coupon to item mapping Data. The features are described as below :
+
+1. Mean Coupon Price: Average price of items covered by a coupon.
+2. Std mean Coupon Price: Standard Deviation of price across items covered by a coupon.
+3. Average Std Deviation: Average of Standard Deviation in price of items  covered by a coupon
+
+* Items based features were used for creating these features.
+
 #### Redemption based features
 
 These features were created from the **Item Data**. These were mapped to Customer Transaction & Coupon Item Mapping, to generate the following features :
@@ -61,11 +69,25 @@ These features were created from the **Item Data**. These were mapped to Custome
 
 These features were created from the **Item Data**. These were mapped to Customer Transaction & Coupon Item Mapping, to generate the following features :
 
-1. XYZ
-2. XYZ
-3. ABC
+1. Mean Item Cost Price: Mean Cost price of each item.
+2. Standard deviation of cost price: Standard Deviation of cost price of each item.
+3. Latest Cost price: Latest cost price of an item.
+4. Price Range: Price range of each item
+
+* Cost price of an item was computed using customer_transaction_data table. Assuming selling_price to be the price at which an item was sold, we computed cost price of an item in a transaction by adding total discounts to the selling price and dividing the sum by quantity for that particular transaction. So, the Mean Item Cost Price feature becomes the average of these cost prices of an item across all it's transactions.
 
 #### Customer Purchasing Power based features
+
+These features were created by combining user details with other tables:
+
+1. coupon user common items: Count of Common items between a user and and a coupon
+2. coupon user common items ratio: Ratio of coupon user common items to the number of items a user is interested in
+3. coupon user common brands: Count of Common brands between a user and and a coupon
+4. coupon user common brands ratio: Ratio of coupon user common brands to the number of brands a user is interested in
+5. coupon user common categories: Count of Common categories between a user and and a coupon
+6. coupon user common categories ratio: Ratio of coupon user common categories to the number of items a user is interested in
+7. coupon user common items with discount: Intersection of items a user availed coupon discount on and items covered by a coupon
+8. coupon user common items with discount ratio: Ratio of coupon user common items to the number of items a user is interested in
 
 ## Feature Selection
 

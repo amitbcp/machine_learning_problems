@@ -98,7 +98,7 @@ def train_xg_boost(x_train, train_labels, x_test, orig_test):
   xgb.fit(x_train, pd.DataFrame(train_labels, columns=['Col2']))
   model_file_path = os.path.join(MODEL_PATH, "xgb", "xgb.pkl")
   pickle.dump(xgb, open(model_file_path, 'wb'))
-  evaluation.submission_default(model_file_path,
+  evaluation.submission_default(xgb,
                                 x_test,
                                 orig_test,
                                 submission_name='submission_xgb.csv')
