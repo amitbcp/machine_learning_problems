@@ -67,7 +67,7 @@ def train_lightgbm(x_train, train_labels, x_test, orig_test):
   for i in range(num_lgbm_ensemble):
     print("training LGBC model {}".format(i))
     params = {
-      'n_estimators': 900,
+      'n_estimators': 17,
       'max_depth': 7,
       'learning_rate': 0.01,
       'random_state': i,
@@ -95,8 +95,9 @@ def train_xg_boost(x_train, train_labels, x_test, orig_test):
   max_depth = 2
   params = {'n_estimators': n_estimators, 'max_depth': max_depth}
   xgb = models.make_model(params, model_name='xg_boost')
-  xgb.fit(x_train, pd.DataFrame(train_labels, columns=['Col2']))
   model_file_path = os.path.join(MODEL_PATH, "xgb", "xgb.pkl")
+  print(model_file_path)
+  xgb.fit(x_train, pd.DataFrame(train_labels, columns=['Col2']).values.ravel())
   pickle.dump(xgb, open(model_file_path, 'wb'))
   evaluation.submission_default(xgb,
                                 x_test,

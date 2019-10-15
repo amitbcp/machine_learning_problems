@@ -93,7 +93,7 @@ def make_model(params, model_name='light_gbm'):
 
   elif model_name == 'neural_network_2':
     model = nn_model2(params)
-  print("model initialized")
+  print("Model Initialized : {}".format(model_name))
   return model
 
 

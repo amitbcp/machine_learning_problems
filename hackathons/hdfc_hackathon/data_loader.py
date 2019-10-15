@@ -21,8 +21,8 @@ def read_csv():
   """
   Loads train and test csv files
   """
-  train_df = pd.read_csv(CONFIG['train'])
-  test_df = pd.read_csv(CONFIG['test'])
+  train_df = pd.read_csv(CONFIG['train'], nrows=2000)
+  test_df = pd.read_csv(CONFIG['test'], nrows=2000)
   return train_df, test_df
 
 

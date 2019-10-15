@@ -55,7 +55,7 @@ These features were created from the coupon to item mapping Data. The features a
 2. Std mean Coupon Price: Standard Deviation of price across items covered by a coupon.
 3. Average Std Deviation: Average of Standard Deviation in price of items  covered by a coupon
 
-* Items based features were used for creating these features.
+Items based features were used for creating these features.
 
 #### Redemption based features
 
@@ -74,7 +74,9 @@ These features were created from the **Item Data**. These were mapped to Custome
 3. Latest Cost price: Latest cost price of an item.
 4. Price Range: Price range of each item
 
-* Cost price of an item was computed using customer_transaction_data table. Assuming selling_price to be the price at which an item was sold, we computed cost price of an item in a transaction by adding total discounts to the selling price and dividing the sum by quantity for that particular transaction. So, the Mean Item Cost Price feature becomes the average of these cost prices of an item across all it's transactions.
+ **Cost price** of an item was computed using customer_transaction_data table. Assuming selling_price to be the price at which an item was sold, we computed cost price of an item in a transaction by adding total discounts to the selling price and dividing the sum by quantity for that particular transaction.
+
+ So, the Mean Item Cost Price feature becomes the average of these cost prices of an item across all it's transactions.
 
 #### Customer Purchasing Power based features
 
