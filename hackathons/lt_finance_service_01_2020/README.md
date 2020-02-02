@@ -1,4 +1,4 @@
-![title](ltfs.jpg)
+![title](ltfs.jpeg)
 
 # LTFS_DataScince_Finhack_2
 
