@@ -1,4 +1,4 @@
-![title](ltfs.png)
+![title](images/ltfs.png)
 
 # LTFS_DataScince_Finhack_2
 
@@ -17,43 +17,43 @@ The train data has been provided in the following way:
 
 ## Train File
 
-| Variable             |  Definition        |
-| ---------------------| -------------------|
-| application_date     | Date of application     |
-| segment              | Business Segment (1/2)     |
-| branch_id            | Anonymised id for branch at which application was received     |
-| state                | State in which application was received (Karnataka, MP etc.)     |
-| zone                 | Zone of state in which application was received (Central, East etc.)     |
-| case_count           | (Target) Number of cases/applications received  |
+| Variable         | Definition                                                           |
+| ---------------- | -------------------------------------------------------------------- |
+| application_date | Date of application                                                  |
+| segment          | Business Segment (1/2)                                               |
+| branch_id        | Anonymised id for branch at which application was received           |
+| state            | State in which application was received (Karnataka, MP etc.)         |
+| zone             | Zone of state in which application was received (Central, East etc.) |
+| case_count       | (Target) Number of cases/applications received                       |
 
 ## Test File
 Forecasting needs to be done at country level for the dates provided in test set for each segment.
 
-| Variable             |  Definition        |
-| ---------------------| -------------------|
-| id                   | Unique id for each sample in test set     |
-| application_date     | Date of application     |
-| segment              | Business Segment (1/2)     |
+| Variable         | Definition                            |
+| ---------------- | ------------------------------------- |
+| id               | Unique id for each sample in test set |
+| application_date | Date of application                   |
+| segment          | Business Segment (1/2)                |
 
 ## Sample Submission
 This file contains the exact submission format for the forecasts. Please submit csv file only.
 
-| Variable             |  Definition        |
-| ---------------------| -------------------|
-| id                   | Unique id for each sample in test set     |
-| application_date     | Date of application     |
-| segment              | Business Segment (1/2)     |
-| case_count           | (Target) Predicted values for test set  |
+| Variable         | Definition                             |
+| ---------------- | -------------------------------------- |
+| id               | Unique id for each sample in test set  |
+| application_date | Date of application                    |
+| segment          | Business Segment (1/2)                 |
+| case_count       | (Target) Predicted values for test set |
 
 ## Evaluation
 The evaluation metric for scoring the forecasts is MAPE (Mean Absolute Percentage Error) M with the formula:
 
-![title](MAPE.png)
+![title](images/MAPE.png)
 
 Where At is the actual value and Ft is the forecast value.
 The Final score is calculated using MAPE for both the segments using the formula:
 
-![title](final_score.png)
+![title](images/final_score.png)
 
 ## Public and Private Split
 Test data is further divided into Public (1st Month) and Private (Next 2 months)
@@ -64,21 +64,20 @@ The final rankings would be based on your private score which will be published 
 
 I have chosen a regression based approach instead of a time series approach.
 
-Feature engineering
-year from date
-month from date
-day of the week
-day
-quarter
-is month starting
-is month ending
-is quarter starting
-is quarter ending
+### Feature Engineering
+1. year from date
+2. month from date
+3. day of the week
+4. day
+5. quarter
+6. is month starting
+7. is month ending
+8. is quarter starting
+9. is quarter ending
 
-Modelling Approach.
+## Modelling Approach.
 An ensemble of 7 LightGBM trees with MeanVoting.
-Parameters tunes by hand
-Cross validation not done.
+Parameters tuned by hand, Cross validation was not done.
 
 ### Leaderboard
 
@@ -86,3 +85,7 @@ Cross validation not done.
 * **[Private LB] : 163
 
 (6K participants)
+
+### Participant
+
+1. [Ishant Wankhede](https://github.com/IshantWankhede)
