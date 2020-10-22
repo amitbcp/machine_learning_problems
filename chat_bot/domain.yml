@@ -1,0 +1,59 @@
+session_config:
+  session_expiration_time: 0
+  carry_over_slots_to_new_session: true
+intents:
+  - restaurant_search
+  - goodbye
+  - stop
+  - greet
+  - affirm
+entities:
+  - cuisine
+  - location
+  - people
+  - price
+slots:
+  check_op:
+    type: bool
+    influence_conversation: true
+  cuisine:
+    type: text
+    influence_conversation: true
+  location:
+    type: text
+    influence_conversation: true
+responses:
+  utter_ask_cuisine:
+    - buttons:
+        - payload: Chinese
+          title: Chinese
+        - payload: Italian
+          title: Italian
+        - payload: South Indian
+          title: South Indian
+        - payload: North Indian
+          title: North Indian
+      text: what kind of cuisine would you like?
+  utter_ask_howcanhelp:
+    - text: how can I help you?
+  utter_ask_location:
+    - text: In what location?
+  utter_default:
+    - text: i cannot understand
+  utter_goodbye:
+    - text: goodbye :(
+    - text: Bye-bye
+  utter_greet:
+    - text: hey there! How may i help you
+    - text: Hi, How can I help you!
+    - text: Hey, How is it going How May I help you Today
+actions:
+  - action_search_restaurants
+  - check_location
+  - utter_ask_cuisine
+  - utter_ask_howcanhelp
+  - utter_ask_location
+  - utter_default
+  - utter_goodbye
+  - utter_greet
+version: "2.0"
