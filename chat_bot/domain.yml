@@ -36,18 +36,34 @@ slots:
   email:
     type: text
     influence_conversation: true
+  check_cuisine_validity:
+    type: categorical
+    values:
+    - valid
+    - invalid
+    influence_conversation: true
+  check_location_validity:
+    type: categorical
+    values:
+    - valid
+    - invalid
+    influence_conversation: true
 
 responses:
   utter_ask_cuisine:
     - buttons:
-        - payload: Chinese
-          title: Chinese
-        - payload: Italian
-          title: Italian
-        - payload: South Indian
-          title: South Indian
-        - payload: North Indian
-          title: North Indian
+      - title: Chinese
+        payload: Chinese
+      - title: Mexican
+        payload: Mexican
+      - title: Italian
+        payload: Italian
+      - title: American
+        payload: American
+      - title: South Indian
+        payload: South Indian
+      - title: North Indian
+        payload: North Indian
       text: what kind of cuisine would you like to eat today?
   utter_ask_howcanhelp:
     - text: how can I help you?
@@ -83,19 +99,30 @@ responses:
   utter_ask_email:
     - text: Please provide your email id.
     - text: Enter you email id, so that an confirmation can be sent.
+  utter_cuisine_invalid:
+    - text: Sorry. Currently we don't support that cuisine. Please chose from Chinese, Italian, South Indian, North Indian
+  utter_location_invalid:
+    - text: We're Sorry. Currently we don't operate in this location.
 
 actions:
   - action_search_restaurants
-  - check_location
-  - utter_ask_cuisine
-  - utter_ask_howcanhelp
-  - utter_ask_location
-  - utter_default
-  - utter_goodbye
-  - utter_greet
-  - utter_get_budget
-  - utter_ask_email
-  - utter_confirm_email
+  - action_check_location
   - action_restart
   - action_restaurant
   - action_send_email
+  - action_cuisine_valid
+  - action_location_valid
+  - utter_ask_howcanhelp
+  - utter_greet
+  - utter_ask_cuisine
+  - utter_get_budget
+  - utter_ask_location
+  - utter_ask_email
+  - utter_confirm_email
+  - utter_cuisine_invalid
+  - utter_location_invalid
+  - utter_default
+  - utter_goodbye
+
+
+

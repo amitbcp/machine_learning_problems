@@ -67,6 +67,31 @@
 - fine
 - i will take that
 - that sounds just right
+- yes please
+- why not
+- yes please proceed further with booking
+- yes i would love to book
+- ya
+- ya carry on with booking
+- it would be amazing if you can do the booking here
+- oh great, please do it for me
+- yes
+- indeed
+- of course
+- that sounds good
+- correct
+- thanks
+- thanks a lot
+- yes thanks a lot
+- yes it helped a lot..thanks
+- yes it did,thanks a lot
+- yup thanks
+- yes thanks
+- yes it did
+- na
+- its ok
+- yes why not
+- yes please go ahead
 
 ## intent:goodbye
 - bye
@@ -93,6 +118,23 @@
 - ciao
 - Bye bye
 - bye!
+- bye
+- goodbye
+- see you around
+- see you later
+- bbye
+- bye see you
+- bbye take care
+- bye tc
+- bye take care see you soon
+- bye see you soon
+- bbye nice talking to you
+- bye talk to you later
+- bye see you soon
+- bbye talk to you later
+- bye meet you soon
+- bbye meet you soon
+- yes thank you
 
 ## intent:greet
 - hey
@@ -167,6 +209,29 @@
 - hi there it's me
 - good evening
 - good afternoon
+- hey
+- hello
+- hi
+- good morning
+- good evening
+- hey there
+- hey are you there
+- hey bot
+- hi bot are you there
+- hii
+- hellooo
+- hey how are you
+- hey i hope you are doing good
+- hi bot
+- hey dude
+- hello bot
+- hi wassup
+- hi whatsup
+- hey wassup
+- hey whatsup
+- i hope you are doing great
+- hey bot how are you
+- hello how are you
 
 ## intent:get_budget
  - I want to eat at a place between 300 and 700
@@ -386,6 +451,60 @@
 - I'm gonna need help finding a restaurant
 - Show me an open restaurant
 - Find a restaurant for me to eat
+- please tell me some food points here
+- get me some restaurants neary by
+- get me some food points
+- find some food places near to me
+- get me some restaurants near to me
+- i am looking for some food points
+- i am looking for restaurants
+- get me some flight details
+- ok get me some restaurants nearby
+- get me some restaurants nearby
+- get me some restaurants in chennai
+- get me some restaurants i am hungry
+- i am hungry please get me some restaurants
+- need food
+- please get me pizza stores
+- get me some restaurants near
+- get  me some restaurants
+- please get me a list of restaurants near by
+- please help me find some restaurants
+- get me some restaurants near by
+- get me some restaurants near me
+- i am hungry get me some restaurants near by
+- please get me some restaurants near by
+- please get me a list of all restaurants near by
+- please get me all the restaurants near by
+- please give me a list of restaurants
+- get me a list of restaurants
+- please find me some restaurants
+- please get me a list of all restaurants
+- get me a list of all restaurants near to me
+- tell me some restaurants here
+- i am hungry please tell me some restaurants near to me
+- i want to eat something please tell me some location near by
+- please get me some restaurants near me
+- please get me some restaurants
+- i am looking for some restaurants  near me
+- i am looking for some restaurants
+- get me some restaurants
+- looking for some restaurants
+- get me some restaurants please
+- hey i am looking for some restaurants
+- looking for some restraunts
+- get me few restaurants
+- please provide me a list of restaurants
+- looking for some food points
+- i am hungry
+- tell me some food points near to me
+- give me some food stalls
+- tell me some restaurants
+- give me some restaurants
+- get me a list of restaurants near to me
+- provide me some restaurants
+- hey can you help me to find some restaurants nearby
+- please get me a list of restaurants
 
 
 ## synonym:chinese
