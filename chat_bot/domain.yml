@@ -4,10 +4,12 @@ session_config:
   session_expiration_time: 0
   carry_over_slots_to_new_session: true
 intents:
+  - greet
   - restaurant_search
+  - get_budget
+  - get_email
   - goodbye
   - stop
-  - greet
   - affirm
 
 entities:
@@ -15,6 +17,8 @@ entities:
   - location
   - people
   - price
+  - budget
+  - email
 
 slots:
   check_op:
@@ -24,6 +28,12 @@ slots:
     type: text
     influence_conversation: true
   location:
+    type: text
+    influence_conversation: true
+  budget:
+    type: text
+    influence_conversation: true
+  email:
     type: text
     influence_conversation: true
 
@@ -38,20 +48,41 @@ responses:
           title: South Indian
         - payload: North Indian
           title: North Indian
-      text: what kind of cuisine would you like?
+      text: what kind of cuisine would you like to eat today?
   utter_ask_howcanhelp:
     - text: how can I help you?
   utter_ask_location:
     - text: In what location?
+    - text: Where are you looking to eat today?
+    - text: Can you tell me the location you are looking for?
   utter_default:
     - text: i cannot understand
+    - text: Pardon! I am not able to understand
+  utter_confirm_email:
+    - text: We have sent you an confirmation email, Please check.
   utter_goodbye:
     - text: goodbye :(
     - text: Bye-bye
+    - text: Adios Amigos!
+    - text: See ya!
+    - text: See you when I see you
   utter_greet:
     - text: hey there! How may i help you
     - text: Hi, How can I help you!
     - text: Hey, How is it going How May I help you Today
+  utter_get_budget:
+    - text: What would be your preferred budget?
+    - text: What is the budget prince range?
+    buttons:
+    - title: upto 300 INR
+      payload: '/get_budget{"budget": "299"}'
+    - title: 300 - 700 INR
+      payload: '/get_budget{"budget": "700"}'
+    - title: 700 INR and above
+      payload: '/get_budget{"budget": "701"}'
+  utter_ask_email:
+    - text: Please provide your email id.
+    - text: Enter you email id, so that an confirmation can be sent.
 
 actions:
   - action_search_restaurants
@@ -62,3 +93,9 @@ actions:
   - utter_default
   - utter_goodbye
   - utter_greet
+  - utter_get_budget
+  - utter_ask_email
+  - utter_confirm_email
+  - action_restart
+  - action_restaurant
+  - action_send_email
