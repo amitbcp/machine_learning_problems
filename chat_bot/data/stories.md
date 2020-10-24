@@ -129,3 +129,16 @@
     - slot{"location": "delhi"}
 * affirm
     - utter_goodbye
+
+* greet
+    - utter_greet
+* restaurant_search
+    - utter_ask_location
+* restaurant_search{"location": "Bengaluru"}
+    - slot{"location": "Bengaluru"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "American"}
+    - slot{"cuisine": "American"}
+    - action_search_restaurants
+    - slot{"location": "Bengaluru"}
+    - utter_goodbye
