@@ -1,4 +1,5 @@
 language: en
+
 pipeline:
   - name: SpacyNLP
   - name: SpacyTokenizer
@@ -15,6 +16,7 @@ pipeline:
   - name: EntitySynonymMapper
   - name: ResponseSelector
     epochs: 100
+
 policies:
   - name: MemoizationPolicy
   - name: KerasPolicy
