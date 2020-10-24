@@ -19,5 +19,7 @@ pipeline:
 
 policies:
   - name: MemoizationPolicy
-  - name: KerasPolicy
-  - name: MappingPolicy
+  - name: TEDPolicy
+    max_history: 5
+    epochs: 200
+  - name: RulePolicy

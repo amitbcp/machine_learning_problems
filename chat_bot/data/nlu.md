@@ -67,7 +67,6 @@
 - fine
 - i will take that
 - that sounds just right
-- yes please
 - why not
 - yes please proceed further with booking
 - yes i would love to book
@@ -75,13 +74,7 @@
 - ya carry on with booking
 - it would be amazing if you can do the booking here
 - oh great, please do it for me
-- yes
-- indeed
-- of course
 - that sounds good
-- correct
-- thanks
-- thanks a lot
 - yes thanks a lot
 - yes it helped a lot..thanks
 - yes it did,thanks a lot
@@ -107,19 +100,14 @@
 - see ya
 - toodle-oo
 - gotta go
-- farewell
 - catch you later
 - bye for now
-- bye
 - bye was nice talking to you
 - bye bye bot
 - bye bot
 - talk to you later
 - ciao
-- Bye bye
 - bye!
-- bye
-- goodbye
 - see you around
 - see you later
 - bbye
@@ -130,7 +118,6 @@
 - bye see you soon
 - bbye nice talking to you
 - bye talk to you later
-- bye see you soon
 - bbye talk to you later
 - bye meet you soon
 - bbye meet you soon
@@ -145,7 +132,6 @@
 - good morning
 - good evening
 - dear sir
-- hello
 - Hi
 - Hey
 - Hi bot
@@ -165,11 +151,8 @@
 - hallo
 - heeey
 - hi hi
-- hey
 - hey hey
 - hello there
-- hi
-- hello
 - yo
 - hola
 - ola
@@ -179,7 +162,6 @@
 - hii
 - hello sweet boy
 - yoo
-- hey there
 - hiihihi
 - hello sweatheart
 - hellooo
@@ -188,7 +170,6 @@
 - Hallo
 - heya
 - hey bot
-- howdy
 - Hellllooooooo
 - whats up
 - Hei
@@ -203,27 +184,14 @@
 - hello it is me again
 - what up
 - hi there
-- hi
 - jop
 - hi friend
 - hi there it's me
-- good evening
 - good afternoon
-- hey
-- hello
-- hi
-- good morning
-- good evening
-- hey there
 - hey are you there
-- hey bot
 - hi bot are you there
-- hii
-- hellooo
 - hey how are you
 - hey i hope you are doing good
-- hi bot
-- hey dude
 - hello bot
 - hi wassup
 - hi whatsup
@@ -232,23 +200,23 @@
 - i hope you are doing great
 - hey bot how are you
 - hello how are you
+- Hola
 
 ## intent:get_budget
- - I want to eat at a place between 300 and 700
- - I am fine with an expensive place
- - I am looking for a dinner place at less than 300
- - I am looking for a cheap breakfast option
- - I am looking for mid range hotels to have a lunch
- - I am looking for place to eat and expensive lunch
- - expensive
- - costly
- - pricey
- - cheap
- - reasonable
- - economical
+- I want to eat at a place between 300 and 700
+- I am fine with an expensive place
+- I am looking for a dinner place at less than 300
+- I am looking for a cheap breakfast option
+- I am looking for mid range hotels to have a lunch
+- I am looking for place to eat and expensive lunch
+- expensive
+- costly
+- pricey
+- cheap
+- reasonable
+- economical
 
- ## intent:get_email
-<!-- with 'email' entity -->
+## intent:get_email
 - can u mail me the information to [abc@abc.com](email)?
 - can u mail to [test@tes.com](email)?
 - can u mail me at [test-123.456@dom.123.co.in](email)?
@@ -263,7 +231,6 @@
 - send to [abc_123-email@abc123.com](email)
 - this is my email address - [email-abc_123@abc.com.edu](email). send me an email.
 - [email1_34-ret@host-name.123.com](email)
-<!-- no entity -->
 - can u share this information over email?
 - can u send me an email?
 - mail me the list
@@ -276,9 +243,6 @@
 - share this over mail
 - share this information with me over email
 
-## regex:email
-- ([\w\.-]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)
-
 ## intent:restaurant_search
 - i'm looking for a place to eat
 - I want to grab lunch
@@ -286,7 +250,7 @@
 - I am looking for some restaurants in [Delhi](location).
 - I am looking for some restaurants in [Bangalore](location)
 - show me [chinese](cuisine) restaurants
-- show me [chines](cuisine:chinese) restaurants in the [New Delhi](location:Delhi)
+- show me [chines]{"entity": "cuisine", "value": "chinese"} restaurants in the [New Delhi]{"entity": "location", "value": "Delhi"}
 - show me a [mexican](cuisine) place in the [centre](location)
 - i am looking for an [indian](cuisine) spot called olaolaolaolaolaola
 - search for restaurants
@@ -297,22 +261,19 @@
 - [South Indian](cuisine)
 - [North Indian](cuisine)
 - [Italian](cuisine)
-- [Chinese](cuisine:chinese)
+- [Chinese]{"entity": "cuisine", "value": "chinese"}
 - [chinese](cuisine)
 - [Lithuania](location)
 - Oh, sorry, in [Italy](location)
 - in [delhi](location)
 - I am looking for some restaurants in [Mumbai](location)
 - I am looking for [mexican indian fusion](cuisine)
-- can you book a table in [rome](location) in a [moderate](price:mid) price range with [british](cuisine) food for [four](people:4) people
+- can you book a table in [rome](location) in a [moderate]{"entity": "price", "value": "mid"} price range with [british](cuisine) food for [four]{"entity": "people", "value": "4"} people
 - [central](location) [indian](cuisine) restaurant
 - please help me to find restaurants in [pune](location)
 - Please find me a restaurantin [bangalore](location)
 - [mumbai](location)
-- [Chinese](cuisine:chinese)
 - show me restaurants
-- [mumbai](location)
-- [Italian](cuisine)
 - please find me [chinese](cuisine) restaurant in [delhi](location)
 - can you find me a [chinese](cuisine) restaurant
 - [delhi](location)
@@ -349,15 +310,15 @@
 - Help me find a restaurant in [Surat](location)
 - Recommend me a restaurant around [Pune](location)
 - [Goa](location)
-- Could you find a restaurant for me in [Belgaum](location)? 
+- Could you find a restaurant for me in [Belgaum](location)?
 - [Chandigarh](location)
 - [Rajahmundry](location)
 - [Ujjain](location)
-- Could you find a restaurant for me in [Bengaluru](location)? 
+- Could you find a restaurant for me in [Bengaluru](location)?
 - Would you find me a restaurant in [Allahabad](location)??
 - [vadodara](location)
 - [Srinagar](location)
-- Could you find me a restaurant in [Agra](location)? 
+- Could you find me a restaurant in [Agra](location)?
 - Pick a restaurant for me, please in [Kochi](location)
 - [Mysuru](location)
 - How can you help me find a restaurant in [Jamshedpur](location)?
@@ -378,13 +339,11 @@
 - [Allahabad](location)
 - [raurkela](location)
 - Can you suggest some good restaurants in [bombay](location)
-<!-- only 'cuisine' entity : 26 training samples -->
 - I'm gonna need help finding a [indian](cuisine) restaurant
 - [american](cuisine)
 - i'm looking for a [Chinese](cuisine) restaurant
 - Hey, can you help me with locating a [mexican](cuisine) restaurant
 - i want a [french](cuisine) restaurant
-- [chinese](cuisine)
 - What's a good place to eat [mexican](cuisine) food
 - Find a restaurant for me where I can eat [north indian](cuisine)
 - Find a restaurant for me to eat [mexican](cuisine)
@@ -404,8 +363,6 @@
 - A place to have [italian](cuisine) food
 - Suggest me a good [mexican](cuisine) restaurant
 - how can you help me find a [french](cuisine) restaurant?
-- [italian](cuisine)
-<!-- location + cuisine entities : 50 training samples -->
 - I'm gonna need help finding a [indian](cuisine) restaurant in [Mysore](location)
 - i'm looking for a [Chinese](cuisine) restaurant in [Lucknow](location)
 - Hey, can you help me with locating a [mexican](cuisine) restaurant in [Lakhanpur](location)
@@ -428,7 +385,6 @@
 - Okay. I want to eat [south indian](cuisine) in [allahabad](location)
 - Okay. Show me some [north indian](cuisine) restaurants in [prayagraj](location)
 - What's a good place to eat [mexican](cuisine) food in [chandighar](location)
-<!-- no entity : 50 training samples -->
 - I need to find a restaurant
 - Can you find me a good restaurant?
 - Would you be able to search a place to eat?
@@ -505,153 +461,23 @@
 - provide me some restaurants
 - hey can you help me to find some restaurants nearby
 - please get me a list of restaurants
+- I’m hungry. Looking out for some good restaurants
+- [bengaluru]{"entity": "location", "value": "Bengaluru"}
+- [American](cuisine)
 
+## synonym:4
+- four
 
-## synonym:chinese
-- chines
-- Chinese
-- Chines
-
-## synonym:mid
-- moderate
-
-## synonym:vegetarian
-- veggie
-- vegg
-
-## regex:greet
-- hey[^\s]*
-
-## regex:pincode
-- [0-9]{6}
-
-## intent:ask_restaurant
-<!-- only 'location' entity : 58 training samples-->
-
-
-## lookup:location
-<!-- tier 1 cities -->
-- Bangalore
-- Chennai
-- Delhi
-- Hyderabad
-- Kolkata
-- Mumbai
-<!-- tier 2 cities -->
-- Agra 
-- Ajmer 
-- Aligarh
+## synonym:Allahabad
+- prayagraj
+- Prayagraj
 - Allahabad
-- Amravati 
-- Amritsar 
-- Asansol 
-- Ahmedabad 
-- Bareilly 
-- Belgaum 
-- Bhavnagar 
-- Bhiwandi 
-- Bhopal 
-- Bhubaneswar 
-- Bikaner 
-- Chandigarh 
-- Coimbatore 
-- Nagpur 
-- Cuttack 
-- Dehradun 
-- Dhanbad 
-- Durgapur 
-- Erode 
-- Faridabad 
-- Firozabad 
-- Gulbarga 
-- Guntur 
-- Gwalior 
-- Gurgaon 
-- Guwahati 
-- Indore 
-- Jabalpur 
-- Jaipur 
-- Jalandhar 
-- Jammu 
-- Jamnagar 
-- Jamshedpur 
-- Jhansi 
-- Jodhpur 
-- Kakinada 
-- Kannur 
-- Kanpur 
-- Kochi 
-- Kottayam 
-- Kolhapur 
-- Kollam 
-- Kozhikode 
-- Kurnool 
-- Lucknow
-- Ludhiana 
-- Madurai 
-- Malappuram 
-- Mathura 
-- Goa 
-- Mangalore 
-- Meerut 
-- Moradabad 
-- Mysore 
-- Nanded 
-- Nashik 
-- Nellore 
-- Noida 
-- Palakkad 
-- Patna 
-- Pondicherry 
-- Pune 
-- Raipur 
-- Rajkot 
-- Rajahmundry 
-- Ranchi 
-- Rourkela 
-- Sangli 
-- Siliguri 
-- Solapur 
-- Srinagar 
-- Surat 
-- Thiruvananthapuram 
-- Thrissur 
-- Tiruchirappalli 
-- Tirunelveli 
-- Tiruppur 
-- Tiruvannamalai 
-- Ujjain 
-- Bijapur 
-- Vadodara 
-- Varanasi 
-- Vijayawada 
-- Visakhapatnam 
-- Vellore 
-- Warangal
+- allahabad
 
-## lookup:cuisine
-- american
-- chinese
-- italian
-- mexican
-- north indian
-- south indian
-
-## synonym:chinese
-- Chinese
-- Chinase
-
-## synonym:south indian
-- south-indian
-- southindian
-- south-indina
-- South Indian
-
-## synonym:north indian
-- north-indian
-- northindian
-- north-indina
-- North Indian
+## synonym:Amritsar
+- amritsar
+- Amratsar
+- amratsar
 
 ## synonym:Bengaluru
 - Bangalore
@@ -660,6 +486,16 @@
 - Bangalor
 - bangalore
 - bengaluru
+
+## synonym:Chandigarh
+- chandigarh
+- Chandighar
+- chandighar
+
+## synonym:Chennai
+- chennai
+- madras
+- Madras
 
 ## synonym:Delhi
 - New Delhi
@@ -672,10 +508,17 @@
 - new delhi
 - new Delhi
 
-## synonym:Mumbai
-- Bombay
-- mumbai
-- bombay
+## synonym:Hyderabad
+- hyderabad
+- Secunderabad
+- secunderabad
+- cyberabad
+- Cyberabad
+
+## synonym:Jamshedpur
+- jamshedpur
+- Jamsedpur
+- jamsedpur
 
 ## synonym:Kolkata
 - Calcutta
@@ -684,57 +527,36 @@
 - calcutta
 - calcuta
 
-## synonym:Chennai
-- chennai
-- madras
-- Madras
-
-## synonym:Hyderabad
-- hyderabad
-- Secunderabad
-- secunderabad
-- cyberabad
-- Cyberabad
-
 ## synonym:Lucknow
 - Lakhanpur
-
-## synonym:Mysore
-- mysore
-- mysuru
-- Mysuru
-
-## synonym Kochi
-- kochi
-- cochin
-- Cochin
 
 ## synonym:Mangalore
 - mangalore
 - mangaluru
 - Mangaluru
 
-## synonym:Visakhapatnam
-- visakhapatnam
-- Vizag
-- vizag
+## synonym:Mumbai
+- Bombay
+- mumbai
+- bombay
 
-## synonym:Thiruvananthapuram
-- thiruvananthapuram
-- trivandrum
-- Trivandrum
-- Travancore
-- travancore
+## synonym:Mysore
+- mysore
+- mysuru
+- Mysuru
+- kochi
+- cochin
+- Cochin
 
-## synonym:Vadodara
-- vadodara
-- Vadodra
-- vadodra
+## synonym:Nashik
+- nashik
+- Nasik
+- nasik
 
-## synonym:Jamshedpur
-- jamshedpur
-- Jamsedpur
-- jamsedpur
+## synonym:Pondicherry
+- pondicherry
+- puducherry
+- Puducherry
 
 ## synonym:Rajahmundry
 - rajahmundry
@@ -750,28 +572,159 @@
 - Raurkela
 - raurkela
 
-## synonym:Amritsar
-- amritsar
-- Amratsar
-- amratsar
+## synonym:Thiruvananthapuram
+- thiruvananthapuram
+- trivandrum
+- Trivandrum
+- Travancore
+- travancore
 
-## synonym:Chandigarh
-- chandigarh
-- Chandighar
-- chandighar
+## synonym:Vadodara
+- vadodara
+- Vadodra
+- vadodra
 
-## synonym:Allahabad
-- prayagraj
-- Prayagraj
+## synonym:Visakhapatnam
+- visakhapatnam
+- Vizag
+- vizag
+
+## synonym:chinese
+- chines
+- Chinese
+- Chines
+- Chinase
+
+## synonym:mid
+- moderate
+
+## synonym:north indian
+- north-indian
+- northindian
+- north-indina
+- North Indian
+
+## synonym:south indian
+- south-indian
+- southindian
+- south-indina
+- South Indian
+
+## synonym:vegetarian
+- veggie
+- vegg
+
+## regex:email
+- ([\w\.-]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)
+
+## regex:greet
+- hey[^\s]*
+
+## regex:pincode
+- [0-9]{6}
+
+## lookup:location
+- Bangalore
+- Chennai
+- Delhi
+- Hyderabad
+- Kolkata
+- Mumbai
+- Agra
+- Ajmer
+- Aligarh
 - Allahabad
-- allahabad
+- Amravati
+- Amritsar
+- Asansol
+- Ahmedabad
+- Bareilly
+- Belgaum
+- Bhavnagar
+- Bhiwandi
+- Bhopal
+- Bhubaneswar
+- Bikaner
+- Chandigarh
+- Coimbatore
+- Nagpur
+- Cuttack
+- Dehradun
+- Dhanbad
+- Durgapur
+- Erode
+- Faridabad
+- Firozabad
+- Gulbarga
+- Guntur
+- Gwalior
+- Gurgaon
+- Guwahati
+- Indore
+- Jabalpur
+- Jaipur
+- Jalandhar
+- Jammu
+- Jamnagar
+- Jamshedpur
+- Jhansi
+- Jodhpur
+- Kakinada
+- Kannur
+- Kanpur
+- Kochi
+- Kottayam
+- Kolhapur
+- Kollam
+- Kozhikode
+- Kurnool
+- Lucknow
+- Ludhiana
+- Madurai
+- Malappuram
+- Mathura
+- Goa
+- Mangalore
+- Meerut
+- Moradabad
+- Mysore
+- Nanded
+- Nashik
+- Nellore
+- Noida
+- Palakkad
+- Patna
+- Pondicherry
+- Pune
+- Raipur
+- Rajkot
+- Rajahmundry
+- Ranchi
+- Rourkela
+- Sangli
+- Siliguri
+- Solapur
+- Srinagar
+- Surat
+- Thiruvananthapuram
+- Thrissur
+- Tiruchirappalli
+- Tirunelveli
+- Tiruppur
+- Tiruvannamalai
+- Ujjain
+- Bijapur
+- Vadodara
+- Varanasi
+- Vijayawada
+- Visakhapatnam
+- Vellore
+- Warangal
 
-## synonym:Nashik
-- nashik
-- Nasik
-- nasik
-
-## synonym:Pondicherry
-- pondicherry
-- puducherry
-- Puducherry
+## lookup:cuisine
+- american
+- chinese
+- italian
+- mexican
+- north indian
+- south indian
