@@ -62,6 +62,7 @@ class ActionSearchRestaurants(Action):
 
             dispatcher.utter_message("-----" + response)
             response = build_table(search_results, 'blue_light')
+            response = ""  # For creating stories lets keep message empty
 
         else:
             response = "Sorry No Resturants Found !!"
