@@ -467,7 +467,7 @@
     - utter_goodbye
     - action_restart
 
-## interactive_story 18_location_provided
+## interactive_story 18_location_provided_invalid
 * greet
     - utter_greet
 * restaurant_search{"location": "panvel"}
