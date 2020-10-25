@@ -85,6 +85,7 @@
 - its ok
 - yes why not
 - yes please go ahead
+- y
 
 ## intent:goodbye
 - bye
@@ -201,16 +202,17 @@
 - hey bot how are you
 - hello how are you
 - Hola
+- Ola
 
 ## intent:get_budget
 - I want to eat within [700](budget) rs
-- I want to eat at a place between [posh]{"entity":"budget","value":"701"}
+- I want to eat at a place between [posh]{"entity": "budget", "value": "701"}
 - Can I get something in [200](budget)
 - [701](budget)
 - [299](budget)
 - [300](budget)
 - [700](budget)
-- I want to eat [cheap]{"entity":"budget","value":"299"}
+- I want to eat [cheap]{"entity": "budget", "value": "299"}
 - I am fine with an expensive place
 - I am looking for a dinner place at less than 300
 - I am looking for a cheap breakfast option
@@ -249,6 +251,8 @@
 - share some more restaurant names with me
 - share this over mail
 - share this information with me over email
+- [ishant30oct@gmail.com](email)
+- [ishant30oct@gmail.com](email)
 
 ## intent:restaurant_search
 - i'm looking for a place to eat
@@ -471,9 +475,26 @@
 - I’m hungry. Looking out for some good restaurants
 - [bengaluru]{"entity": "location", "value": "Bengaluru"}
 - [American](cuisine)
+- I am hungry and looking for places to eat
+- [Delhi](location)
+- [South Indian]{"entity": "cuisine", "value": "south indian"}
+- I am looking for [american](cuisine) food
+- [pune](location)
+- I have changed my mind now want to eat [south indian](cuisine)
+- I am looking for places to eat in [Pune](location)
+- [North Indian]{"entity": "cuisine", "value": "north indian"}
+- Can you help me look for food in [Hyderabad](location)?
+- please tell me hotels in [Kolkata](location)
+- do you think you can look for eateries for me in [Bhopal](location)?
+
+## synonym:299
+- cheap
 
 ## synonym:4
 - four
+
+## synonym:701
+- posh
 
 ## synonym:Allahabad
 - prayagraj
@@ -487,12 +508,12 @@
 - amratsar
 
 ## synonym:Bengaluru
+- bengaluru
 - Bangalore
 - bngalore
 - bengalluru
 - Bangalor
 - bangalore
-- bengaluru
 
 ## synonym:Chandigarh
 - chandigarh
@@ -612,10 +633,10 @@
 - North Indian
 
 ## synonym:south indian
+- South Indian
 - south-indian
 - southindian
 - south-indina
-- South Indian
 
 ## synonym:vegetarian
 - veggie
