@@ -1,0 +1,13 @@
+version: "2.0"
+nlu:
+- intent: restaurant_search
+  examples: |
+    - i want to eat [chinese](cuisine) in [kolkata]{"entity": "location", "value": "Kolkata"}  for [700](budget)
+    - [bangalore]{"entity": "location", "value": "Bengaluru"}
+    - [Chinese]{"entity": "cuisine", "value": "chinese"}
+- intent: get_email
+  examples: |
+    - [amit.pinaki@gmail.com](email)
+- intent: greet
+  examples: |
+    - hi

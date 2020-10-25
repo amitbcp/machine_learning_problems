@@ -2,8 +2,8 @@ session_config:
   session_expiration_time: 0
   carry_over_slots_to_new_session: true
 intents:
-  - restaurant_search
   - greet
+  - restaurant_search
   - get_budget
   - get_email
   - goodbye
@@ -37,6 +37,13 @@ slots:
   check_op:
     type: bool
     influence_conversation: true
+  check_search_validity:
+    type: categorical
+    influence_conversation: true
+    values:
+      - valid
+      - invalid
+      - __other__
   cuisine:
     type: text
     influence_conversation: true
@@ -88,7 +95,6 @@ responses:
     - text: Hey, How is it going How May I help you Today
   utter_get_budget:
     - text: What would be your preferred budget?
-    - text: What is the budget prince range?
       buttons:
         - title: upto 300 INR
           payload: '/get_budget{"budget": "299"}'
@@ -104,13 +110,14 @@ responses:
   utter_location_invalid:
     - text: We're Sorry. Currently we don't operate in this location.
 actions:
+  - action_ask_restaurant
   - action_check_location
   - action_cuisine_valid
   - action_location_valid
   - action_restart
-  - action_restaurant
   - action_search_restaurants
   - action_send_email
+  - action_slot_resetclear
   - utter_ask_cuisine
   - utter_ask_email
   - utter_ask_howcanhelp

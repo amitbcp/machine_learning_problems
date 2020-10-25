@@ -203,7 +203,14 @@
 - Hola
 
 ## intent:get_budget
-- I want to eat at a place between 300 and 700
+- I want to eat within [700](budget) rs
+- I want to eat at a place between [posh]{"entity":"budget","value":"701"}
+- Can I get something in [200](budget)
+- [701](budget)
+- [299](budget)
+- [300](budget)
+- [700](budget)
+- I want to eat [cheap]{"entity":"budget","value":"299"}
 - I am fine with an expensive place
 - I am looking for a dinner place at less than 300
 - I am looking for a cheap breakfast option

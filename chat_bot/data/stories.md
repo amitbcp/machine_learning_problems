@@ -1,144 +1,44 @@
-## complete path
-* greet
-    - utter_greet
-* restaurant_search
-    - utter_ask_location
-* restaurant_search{"location": "delhi"}
-    - slot{"location": "delhi"}
-    - utter_ask_cuisine
-* restaurant_search{"cuisine": "chinese"}
+<!-- markdownlint-disable -->
+## interactive_story 1_cuisine_location_budget_provided
+* restaurant_search{"cuisine": "chinese", "location": "Kolkata", "budget": "700"}
+    - slot{"budget": "700"}
     - slot{"cuisine": "chinese"}
+    - slot{"location": "Kolkata"}
+    - action_check_location
+    - slot{"check_location_validity": "valid"}
+    - action_cuisine_valid
+    - slot{"check_cuisine_validity": "valid"}
     - action_search_restaurants
-    - slot{"location": "delhi"}
+    - slot{"email_message": ""}
+    - utter_ask_email
+* get_email{"email": "amit.pinaki@gmail.com"}
+    - slot{"email": "amit.pinaki@gmail.com"}
+    - action_send_email
+    - utter_confirm_email
     - utter_goodbye
-    - export
+    - action_restart
 
-## location specified
+## interactive_story 2_full_conversation
 * greet
     - utter_greet
-* restaurant_search{"location": "delhi"}
-    - slot{"location": "delhi"}
-    - utter_ask_cuisine
-* restaurant_search{"cuisine": "chinese"}
-    - slot{"cuisine": "chinese"}
-    - action_search_restaurants
-* affirm
-    - utter_goodbye
-    - export
-
-## complete path 2
-* greet
-    - utter_greet
-* restaurant_search
-    - utter_ask_location
-* restaurant_search{"location": "delhi"}
-    - slot{"location": "delhi"}
-    - utter_ask_cuisine
-* restaurant_search{"cuisine": "North Indian"}
-    - slot{"cuisine": "North Indian"}
-    - action_search_restaurants
-    - utter_goodbye
-
-## complete path 3
-* greet
-    - utter_greet
-* restaurant_search
-    - utter_ask_location
-* restaurant_search{"location": "italy"}
-    - slot{"location": "italy"}
-	- utter_ask_cuisine
-* restaurant_search{"cuisine": "chinese"}
-    - slot{"cuisine": "chinese"}
-    - action_search_restaurants
-* goodbye
-    - utter_goodbye
-
-## complete path 4
-* greet
-    - utter_greet
-* restaurant_search
-    - utter_ask_location
-* restaurant_search{"location": "delhi"}
-    - slot{"location": "delhi"}
-    - utter_ask_cuisine
-* restaurant_search{"cuisine": "chinese"}
-    - slot{"cuisine": "chinese"}
-    - action_search_restaurants
-    - slot{"location": "delhi"}
-    - export
-
-
-## interactive_story_1
-* greet
-    - utter_greet
-* restaurant_search{"location": "mumbai"}
-    - slot{"location": "mumbai"}
-    - utter_ask_cuisine
-* restaurant_search{"cuisine": "chinese"}
-    - slot{"cuisine": "chinese"}
-    - action_search_restaurants
-    - slot{"location": "mumbai"}
-* stop
-
-## interactive_story_1
-* greet
-    - utter_greet
-* restaurant_search
-    - utter_ask_location
-* restaurant_search{"location": "mumbai"}
-    - slot{"location": "mumbai"}
-    - utter_ask_cuisine
-* restaurant_search{"cuisine": "Italian"}
-    - slot{"cuisine": "Italian"}
-    - action_search_restaurants
-    - slot{"location": "mumbai"}
-
-## interactive_story_1
-* greet
-    - utter_greet
-* restaurant_search{"cuisine": "chinese", "location": "delhi"}
-    - slot{"cuisine": "chinese"}
-    - slot{"location": "delhi"}
-    - action_search_restaurants
-    - slot{"location": "delhi"}
-* affirm
-    - utter_goodbye
-    
-    
-## happy_path
-* greet
-    - utter_greet
-* restaurant_search{"cuisine": "italian", "location": "mumbai"}
-    - slot{"cuisine": "italian"}
-    - slot{"location": "mumbai"}
-    - action_search_restaurants
-    - slot{"location": "mumbai"}
-* affirm
-    - utter_goodbye
-
-
-## interactive_story_1
-* greet
-    - utter_greet
-* restaurant_search{"cuisine": "chinese"}
-    - slot{"cuisine": "chinese"}
-    - utter_ask_location
-* restaurant_search{"location": "delhi"}
-    - slot{"location": "delhi"}
-    - action_search_restaurants
-    - slot{"location": "delhi"}
-* affirm
-    - utter_goodbye
-
-* greet
-    - utter_greet
-* restaurant_search
-    - utter_ask_location
 * restaurant_search{"location": "Bengaluru"}
     - slot{"location": "Bengaluru"}
+    - action_check_location
+    - slot{"check_location_validity": "valid"}
     - utter_ask_cuisine
-* restaurant_search{"cuisine": "American"}
-    - slot{"cuisine": "American"}
+* restaurant_search{"cuisine": "chinese"}
+    - slot{"cuisine": "chinese"}
+    - action_cuisine_valid
+    - slot{"check_cuisine_validity": "valid"}
+    - utter_get_budget
+* get_budget{"budget": "701"}
+    - slot{"budget": "701"}
     - action_search_restaurants
-    - slot{"location": "Bengaluru"}
+    - slot{"email_message": ""}
+    - utter_ask_email
+* get_email{"email": "amit.pinaki@gmail.com"}
+    - slot{"email": "amit.pinaki@gmail.com"}
+    - action_send_email
+    - utter_confirm_email
     - utter_goodbye
+    - action_restart

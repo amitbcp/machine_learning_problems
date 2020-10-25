@@ -5,12 +5,12 @@ import pandas as pd
 from pretty_html_table import build_table
 
 
-def send_mail(body):
+def send_mail(recipient, body):
 
     message = MIMEMultipart()
     message['Subject'] = 'Top 5 Suggested Restuarants'
     message['From'] = 'search.foodie@gmail.com'
-    message['To'] = 'ishant30oct@gmail.com '
+    message['To'] = recipient
 
     body_content = body
     message.attach(MIMEText(body_content, "html"))
@@ -50,7 +50,7 @@ def get_gdp_data():
 def send_country_list():
     gdp_data = get_gdp_data()
     output = build_table(gdp_data, 'blue_light')
-    send_mail(output)
+    send_mail("ishant30oct@gmail.com ", output)
     return "Mail sent successfully."
 
 
