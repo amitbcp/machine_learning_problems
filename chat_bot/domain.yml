@@ -2,13 +2,13 @@ session_config:
   session_expiration_time: 0
   carry_over_slots_to_new_session: true
 intents:
-- greet
 - restaurant_search
-- get_email
 - get_budget
+- stop
+- greet
+- get_email
 - affirm
 - goodbye
-- stop
 entities:
 - budget
 - cuisine
@@ -16,6 +16,7 @@ entities:
 - location
 - people
 - price
+- stop
 slots:
   budget:
     type: text
