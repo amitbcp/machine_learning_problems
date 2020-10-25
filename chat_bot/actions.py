@@ -45,6 +45,7 @@ class ActionSearchRestaurants(Action):
         loc = tracker.get_slot('location')
         cuisine = tracker.get_slot('cuisine')
         budget = tracker.get_slot('budget')
+        search_validity = "valid"
         print("Location : {} || Cuisine : {} || Budget : {}".format(
           loc, cuisine, budget))
         search_results = self.get_restuarant(loc, cuisine, budget)
@@ -66,11 +67,12 @@ class ActionSearchRestaurants(Action):
 
         else:
             response = "Sorry No Resturants Found !!"
+            search_validity = "invalid"
             dispatcher.utter_message("-----" + response)
 
         # response_body = build_table(search_results, 'blue_light')
         return [
-          # SlotSet('location', loc),
+          SlotSet("check_search_validity", search_validity),
           SlotSet("email_message", response)
         ]
 
@@ -136,14 +138,6 @@ class ActionSearchRestaurants(Action):
         else:
             return results[(results.budget_for2people <= 700) &
                            (results.budget_for2people >= 300)]
-
-    def get_budget(self, row):
-        if int(row['budget_for2people']) < 300:
-            return 299
-        elif 300 <= int(row['budget_for2people']) < 700:
-            return 700
-        else:
-            return 701
 
 
 """ Custom action to validate input location
