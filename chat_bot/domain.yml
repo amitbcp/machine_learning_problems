@@ -2,20 +2,20 @@ session_config:
   session_expiration_time: 0
   carry_over_slots_to_new_session: true
 intents:
-  - greet
-  - restaurant_search
-  - get_budget
-  - get_email
-  - goodbye
-  - stop
-  - affirm
+- greet
+- get_budget
+- affirm
+- restaurant_search
+- get_email
+- goodbye
+- stop
 entities:
-  - budget
-  - cuisine
-  - email
-  - location
-  - people
-  - price
+- budget
+- cuisine
+- email
+- location
+- people
+- price
 slots:
   budget:
     type: text
@@ -24,16 +24,16 @@ slots:
     type: categorical
     influence_conversation: true
     values:
-      - valid
-      - invalid
-      - __other__
+    - valid
+    - invalid
+    - __other__
   check_location_validity:
     type: categorical
     influence_conversation: true
     values:
-      - valid
-      - invalid
-      - __other__
+    - valid
+    - invalid
+    - __other__
   check_op:
     type: bool
     influence_conversation: true
@@ -41,9 +41,9 @@ slots:
     type: categorical
     influence_conversation: true
     values:
-      - valid
-      - invalid
-      - __other__
+    - valid
+    - invalid
+    - __other__
   cuisine:
     type: text
     influence_conversation: true
@@ -58,75 +58,75 @@ slots:
     influence_conversation: true
 responses:
   utter_ask_cuisine:
-    - text: what kind of cuisine would you like to eat today?
-      buttons:
-        - title: Chinese
-          payload: Chinese
-        - title: Mexican
-          payload: Mexican
-        - title: Italian
-          payload: Italian
-        - title: American
-          payload: American
-        - title: South Indian
-          payload: South Indian
-        - title: North Indian
-          payload: North Indian
+  - text: what kind of cuisine would you like to eat today?
+    buttons:
+    - title: Chinese
+      payload: Chinese
+    - title: Mexican
+      payload: Mexican
+    - title: Italian
+      payload: Italian
+    - title: American
+      payload: American
+    - title: South Indian
+      payload: South Indian
+    - title: North Indian
+      payload: North Indian
   utter_ask_howcanhelp:
-    - text: how can I help you?
+  - text: how can I help you?
   utter_ask_location:
-    - text: In what location?
-    - text: Where are you looking to eat today?
-    - text: Can you tell me the location you are looking for?
+  - text: In what location?
+  - text: Where are you looking to eat today?
+  - text: Can you tell me the location you are looking for?
   utter_default:
-    - text: i cannot understand
-    - text: Pardon! I am not able to understand
+  - text: i cannot understand
+  - text: Pardon! I am not able to understand
   utter_confirm_email:
-    - text: We have sent you an confirmation email, Please check.
+  - text: We have sent you an confirmation email, Please check.
   utter_goodbye:
-    - text: goodbye :(
-    - text: Bye-bye
-    - text: Adios Amigos!
-    - text: See ya!
-    - text: See you when I see you
+  - text: goodbye :(
+  - text: Bye-bye
+  - text: Adios Amigos!
+  - text: See ya!
+  - text: See you when I see you
   utter_greet:
-    - text: hey there! How may i help you
-    - text: Hi, How can I help you!
-    - text: Hey, How is it going How May I help you Today
+  - text: hey there! How may i help you
+  - text: Hi, How can I help you!
+  - text: Hey, How is it going How May I help you Today
   utter_get_budget:
-    - text: What would be your preferred budget?
-      buttons:
-        - title: upto 300 INR
-          payload: '/get_budget{"budget": "299"}'
-        - title: 300 - 700 INR
-          payload: '/get_budget{"budget": "700"}'
-        - title: 700 INR and above
-          payload: '/get_budget{"budget": "701"}'
+  - text: What would be your preferred budget?
+    buttons:
+    - title: upto 300 INR
+      payload: '/get_budget{"budget": "299"}'
+    - title: 300 - 700 INR
+      payload: '/get_budget{"budget": "700"}'
+    - title: 700 INR and above
+      payload: '/get_budget{"budget": "701"}'
   utter_ask_email:
-    - text: Please provide your email id.
-    - text: Enter you email id, so that an confirmation can be sent.
+  - text: Please provide your email id.
+  - text: Enter you email id, so that an confirmation can be sent.
   utter_cuisine_invalid:
-    - text: Sorry. Currently we don't support that cuisine. Please chose from Chinese, Italian, South Indian, North Indian
+  - text: Sorry. Currently we don't support that cuisine. Please chose from Chinese, Italian, South Indian, North Indian
   utter_location_invalid:
-    - text: We're Sorry. Currently we don't operate in this location.
+  - text: We're Sorry. Currently we don't operate in this location.
 actions:
-  - action_ask_restaurant
-  - action_check_location
-  - action_cuisine_valid
-  - action_location_valid
-  - action_restart
-  - action_search_restaurants
-  - action_send_email
-  - action_slot_resetclear
-  - utter_ask_cuisine
-  - utter_ask_email
-  - utter_ask_howcanhelp
-  - utter_ask_location
-  - utter_confirm_email
-  - utter_cuisine_invalid
-  - utter_default
-  - utter_get_budget
-  - utter_goodbye
-  - utter_greet
-  - utter_location_invalid
-version: "2.0"
+- action_ask_restaurant
+- action_check_location
+- action_cuisine_valid
+- action_location_valid
+- action_restart
+- action_search_restaurants
+- action_send_email
+- action_slot_resetclear
+- utter_ask_cuisine
+- utter_ask_email
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_confirm_email
+- utter_cuisine_invalid
+- utter_default
+- utter_get_budget
+- utter_goodbye
+- utter_greet
+- utter_location_invalid
+version: '2.0'
