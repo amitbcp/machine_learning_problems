@@ -203,7 +203,6 @@
 - hello how are you
 - Hola
 - Ola
-- chatbot what is up
 
 ## intent:get_budget
 - I want to eat within [700](budget) rs
@@ -254,6 +253,7 @@
 - share this information with me over email
 - [ishant30oct@gmail.com](email)
 - [amit.pinaki@gmail.com](email)
+- [ishant30oct@gmail.com](email)
 
 ## intent:restaurant_search
 - i'm looking for a place to eat
@@ -584,8 +584,8 @@
 - Mangaluru
 
 ## synonym:Mumbai
-- mumbai
 - Bombay
+- mumbai
 - bombay
 
 ## synonym:Mysore
@@ -647,10 +647,10 @@
 - moderate
 
 ## synonym:north indian
-- North Indian
 - north-indian
 - northindian
 - north-indina
+- North Indian
 
 ## synonym:south indian
 - South Indian
