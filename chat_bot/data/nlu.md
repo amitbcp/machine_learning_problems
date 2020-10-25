@@ -204,6 +204,24 @@
 - Hola
 - Ola
 
+## intent:stop
+- no
+- stop
+- don't
+- do not
+- please no
+- no please
+- dont want to do tha
+- can't
+- dont send
+- don't send
+- exit
+- quit
+- end
+- stop bot
+- [no dont want to](stop)
+- [no](stop)
+
 ## intent:get_budget
 - I want to eat within [700](budget) rs
 - I want to eat at a place between [posh]{"entity": "budget", "value": "701"}
@@ -501,12 +519,13 @@
 - looking for restraunts in [nerul](location)
 - looking for food in [panvel](location)
 - i am looking for food in [nerul](location)
-- [mumbai]{"entity": "location", "value": "Mumbai"}
-- [Chinese]{"entity": "cuisine", "value": "chinese"}
 - [500](budget) rs food in [kolkata]{"entity": "location", "value": "Kolkata"}
-
-## intent:stop
-- [no dont want to](stop)
+- I am looking for restraunts in [pune](location) serving [south indian](cuisine) food
+- i am looking for [south indian](cuisine) restraunt
+- [nerul](location)
+- [mumbai]{"entity": "location", "value": "Mumbai"}
+- i am looking for [north indian](cuisine) food
+- [pune](location)
 
 ## synonym:299
 - cheap
@@ -521,6 +540,10 @@
 
 ## synonym:701
 - posh
+- expensive
+- expensive lunch
+- costly
+- pricey
 
 ## synonym:Allahabad
 - prayagraj
@@ -575,8 +598,8 @@
 - jamsedpur
 
 ## synonym:Kolkata
-- Calcutta
 - kolkata
+- Calcutta
 - kolkatta
 - calcutta
 - calcuta
@@ -590,8 +613,8 @@
 - Mangaluru
 
 ## synonym:Mumbai
-- Bombay
 - mumbai
+- Bombay
 - bombay
 
 ## synonym:Mysore
@@ -653,10 +676,10 @@
 - moderate
 
 ## synonym:north indian
+- North Indian
 - north-indian
 - northindian
 - north-indina
-- North Indian
 
 ## synonym:south indian
 - South Indian

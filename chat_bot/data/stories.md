@@ -545,3 +545,83 @@
 * stop{"stop": "no dont want to"}
     - utter_goodbye
     - action_restart
+
+* greet
+    - utter_greet
+* restaurant_search{"location": "pune", "cuisine": "south indian"}
+    - slot{"cuisine": "south indian"}
+    - slot{"location": "pune"}
+    - action_check_location
+    - action_cuisine_valid
+    - action_location_valid
+* restaurant_search{"location": "pune"}
+    - slot{"location": "pune"}
+    - action_check_location
+    - action_cuisine_valid
+    - action_check_location
+    - action_cuisine_valid
+    - action_check_location
+    - utter_get_budget
+* get_budget{"budget": "701"}
+    - slot{"budget": "701"}
+    - action_search_restaurants
+    - utter_ask_email
+    - utter_ask_email
+* stop{"stop": "no"}
+    - utter_goodbye
+    - action_restart
+
+* greet
+    - utter_greet
+* restaurant_search{"cuisine": "south indian"}
+    - slot{"cuisine": "south indian"}
+    - action_cuisine_valid
+    - slot{"check_cuisine_validity": "valid"}
+    - utter_ask_location
+* restaurant_search{"location": "nerul"}
+    - slot{"location": "nerul"}
+    - action_check_location
+    - slot{"check_location_validity": "invalid"}
+    - utter_location_invalid
+    - utter_ask_location
+* restaurant_search{"location": "Mumbai"}
+    - slot{"location": "Mumbai"}
+    - action_check_location
+    - slot{"check_location_validity": "valid"}
+    - action_search_restaurants
+    - utter_get_budget
+* get_budget{"budget": "701"}
+    - slot{"budget": "701"}
+    - action_search_restaurants
+    - slot{"check_search_validity": "valid"}
+    - slot{"email_message": ""}
+    - utter_ask_email
+* get_email{"email": "ishant30oct@gmail.com"}
+    - slot{"email": "ishant30oct@gmail.com"}
+    - action_send_email
+    - utter_confirm_email
+    - utter_goodbye
+    - action_restart
+
+* greet
+    - utter_greet
+* restaurant_search{"cuisine": "north indian"}
+    - slot{"cuisine": "north indian"}
+    - action_cuisine_valid
+    - slot{"check_cuisine_validity": "valid"}
+    - utter_ask_location
+* restaurant_search{"location": "pune"}
+    - slot{"location": "pune"}
+    - action_check_location
+    - slot{"check_location_validity": "valid"}
+    - utter_get_budget
+* get_budget{"budget": "701"}
+    - slot{"budget": "701"}
+    - action_search_restaurants
+    - slot{"check_search_validity": "valid"}
+    - slot{"email_message": ""}
+    - utter_ask_email
+    - utter_ask_email
+* stop
+    - utter_goodbye
+    - action_restart
