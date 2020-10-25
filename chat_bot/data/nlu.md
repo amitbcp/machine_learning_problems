@@ -213,17 +213,17 @@
 - [300](budget)
 - [700](budget)
 - I want to eat [cheap]{"entity": "budget", "value": "299"}
-- I am fine with an expensive place
-- I am looking for a dinner place at less than 300
-- I am looking for a cheap breakfast option
+- I am fine with an [expensive]{"entity": "budget", "value": "701"} place
+- I am looking for a dinner place at less than [300]{"entity": "budget", "value": "299"}
+- I am looking for a [cheap]{"entity": "budget", "value": "299"}  breakfast option
 - I am looking for mid range hotels to have a lunch
-- I am looking for place to eat and expensive lunch
-- expensive
-- costly
-- pricey
-- cheap
-- reasonable
-- economical
+- I am looking for place to eat and [expensive lunch]{"entity": "budget", "value": "701"}
+- [expensive]{"entity": "budget", "value": "701"}
+- [costly]{"entity": "budget", "value": "701"}
+- [pricey]{"entity": "budget", "value": "701"}
+- [cheap]{"entity": "budget", "value": "299"}
+- [reasonable]{"entity": "budget", "value": "700"}
+- [economical]{"entity": "budget", "value": "700"}
 
 ## intent:get_email
 - can u mail me the information to [abc@abc.com](email)?
@@ -503,15 +503,21 @@
 - i am looking for food in [nerul](location)
 - [mumbai]{"entity": "location", "value": "Mumbai"}
 - [Chinese]{"entity": "cuisine", "value": "chinese"}
+- [500](budget) rs food in [kolkata]{"entity": "location", "value": "Kolkata"}
 
 ## intent:stop
 - [no dont want to](stop)
 
 ## synonym:299
 - cheap
+- 300
 
 ## synonym:4
 - four
+
+## synonym:700
+- reasonable
+- economical
 
 ## synonym:701
 - posh
