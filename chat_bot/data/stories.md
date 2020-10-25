@@ -504,3 +504,44 @@
     - utter_confirm_email
     - utter_goodbye
     - action_restart
+
+## interactive_story 19_location_provided_invalid
+* greet
+    - utter_greet
+* restaurant_search{"location": "nerul"}
+    - slot{"location": "nerul"}
+    - action_check_location
+    - slot{"check_location_validity": "invalid"}
+    - utter_location_invalid
+    - utter_ask_location
+* restaurant_search{"location": "Mumbai"}
+    - slot{"location": "Mumbai"}
+    - action_check_location
+    - slot{"check_location_validity": "valid"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "chinese"}
+    - slot{"cuisine": "chinese"}
+    - action_cuisine_valid
+    - slot{"check_cuisine_validity": "valid"}
+    - utter_get_budget
+* get_budget{"budget": "700"}
+    - slot{"budget": "700"}
+    - action_search_restaurants
+    - slot{"check_search_validity": "invalid"}
+    - slot{"email_message": "Sorry No Resturants Found !!"}
+    - utter_get_budget
+* get_budget{"budget": "299"}
+    - slot{"budget": "299"}
+    - action_search_restaurants
+    - slot{"check_search_validity": "invalid"}
+    - slot{"email_message": "Sorry No Resturants Found !!"}
+    - utter_get_budget
+* get_budget{"budget": "701"}
+    - slot{"budget": "701"}
+    - action_search_restaurants
+    - slot{"check_search_validity": "valid"}
+    - slot{"email_message": ""}
+    - utter_ask_email
+* stop{"stop": "no dont want to"}
+    - utter_goodbye
+    - action_restart

@@ -3,6 +3,17 @@ digraph  {
 "-1" [class=end, fillcolor=red, fontsize=12, label=END, style=filled];
 1 [class=active, fontsize=12, label=action_session_start];
 2 [class="", fontsize=12, label=utter_greet];
+<<<<<<< HEAD
+"-3" [class=ellipsis, label="..."];
+4 [class="dashed active", fontsize=12, label=action_restart];
+9 [class=intent, fillcolor=lightblue, label=hey, shape=rect, style=filled];
+0 -> "-1"  [class="", key=NONE, label=""];
+0 -> 1  [class=active, key=NONE, label=""];
+1 -> 4  [class=active, key=NONE, label=""];
+1 -> 9  [class="", key=0];
+2 -> "-3"  [class="", key=NONE, label=""];
+9 -> 2  [class="", key=0];
+=======
 4 [class="dashed active", fontsize=12, label=utter_greet];
 "-4" [class=ellipsis, label="..."];
 8 [class="", fontsize=12, label=action_check_location];
@@ -21,4 +32,5 @@ digraph  {
 14 -> 2  [class="", key=0];
 15 -> 2  [class="", key=0];
 16 -> 8  [class="", key=0];
+>>>>>>> 37b28da56a91e3f0f02aa10439a0eeeab54eddda
 }
