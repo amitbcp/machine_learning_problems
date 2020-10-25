@@ -203,7 +203,6 @@
 - hello how are you
 - Hola
 - Ola
-- chatbot what is up
 
 ## intent:get_budget
 - I want to eat within [700](budget) rs
@@ -253,7 +252,6 @@
 - share this over mail
 - share this information with me over email
 - [ishant30oct@gmail.com](email)
-- [amit.pinaki@gmail.com](email)
 - [ishant30oct@gmail.com](email)
 
 ## intent:restaurant_search
@@ -488,21 +486,6 @@
 - Can you help me look for food in [Hyderabad](location)?
 - please tell me hotels in [Kolkata](location)
 - do you think you can look for eateries for me in [Bhopal](location)?
-- suggest me food options in [raipur](location)
-- quickly tell me restraunts in [patna](location)
-- Hello there looking for food in [banglore](location)
-- looking for food in [chandigarh]{"entity": "location", "value": "Chandigarh"}
-- looking for some food, where can i find some in [ahmednagar](location)
-- looking for food in [ahmednagar](location)
-- show me restraunts in [bhilai](location)
-- very hungry, show me places to eat in [nerul](location)
-- looking for food in navi [mumbai]{"entity": "location", "value": "Mumbai"}
-- looking for food in [nerul](location)
-- [mumbai]{"entity": "location", "value": "Mumbai"}
-- looking for restraunts in [nerul](location)
-- [mumbai]{"entity": "location", "value": "Mumbai"}
-- [North Indian]{"entity": "cuisine", "value": "north indian"}
-- looking for food in [panvel](location)
 
 ## synonym:299
 - cheap
@@ -581,8 +564,8 @@
 - Mangaluru
 
 ## synonym:Mumbai
-- mumbai
 - Bombay
+- mumbai
 - bombay
 
 ## synonym:Mysore
@@ -644,10 +627,10 @@
 - moderate
 
 ## synonym:north indian
-- North Indian
 - north-indian
 - northindian
 - north-indina
+- North Indian
 
 ## synonym:south indian
 - South Indian
