@@ -2,12 +2,12 @@ session_config:
   session_expiration_time: 0
   carry_over_slots_to_new_session: true
 intents:
+- restaurant_search
+- affirm
+- get_email
 - stop
 - get_budget
 - greet
-- get_email
-- restaurant_search
-- affirm
 - goodbye
 entities:
 - budget
@@ -98,11 +98,11 @@ responses:
   - text: What would be your preferred budget?
     buttons:
     - title: upto 300 INR
-      payload: '/get_budget{"budget": "299"}'
+      payload: '/get_budget{{"budget": "299"}}'
     - title: 300 - 700 INR
-      payload: '/get_budget{"budget": "700"}'
+      payload: '/get_budget{{"budget": "700"}}'
     - title: 700 INR and above
-      payload: '/get_budget{"budget": "701"}'
+      payload: '/get_budget{{"budget": "701"}}'
   utter_ask_email:
   - text: Please provide your email id.
   - text: Enter you email id, so that an confirmation can be sent.

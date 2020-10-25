@@ -86,6 +86,7 @@
 - yes why not
 - yes please go ahead
 - y
+- got it
 
 ## intent:goodbye
 - bye
@@ -242,6 +243,7 @@
 - [cheap]{"entity": "budget", "value": "299"}
 - [reasonable]{"entity": "budget", "value": "700"}
 - [economical]{"entity": "budget", "value": "700"}
+- increase the budget
 
 ## intent:get_email
 - can u mail me the information to [abc@abc.com](email)?
@@ -271,7 +273,11 @@
 - share this information with me over email
 - [ishant30oct@gmail.com](email)
 - [amit.pinaki@gmail.com](email)
-- [ishant30oct@gmail.com](email)
+- [abc@gmail.com](email)
+- [amit.p@gmail.com](email)
+- [a@gmail.com](email)
+- [amit.pinaki@gmail.com](email)
+- did not get email
 
 ## intent:restaurant_search
 - i'm looking for a place to eat
@@ -520,12 +526,27 @@
 - looking for food in [panvel](location)
 - i am looking for food in [nerul](location)
 - [500](budget) rs food in [kolkata]{"entity": "location", "value": "Kolkata"}
-- I am looking for restraunts in [pune](location) serving [south indian](cuisine) food
-- i am looking for [south indian](cuisine) restraunt
-- [nerul](location)
-- [mumbai]{"entity": "location", "value": "Mumbai"}
-- i am looking for [north indian](cuisine) food
-- [pune](location)
+- can i get food ?
+- [bangladesh](location)
+- [kashmiri](location)
+- [cheap]{"entity": "budget", "value": "299"} [chinese](cuisine) food
+- [india](location)
+- [ita](cuisine) food in [delli](location)
+- [usa](location)
+- get me food
+- show me somoething else
+- [no](stop) show some other cuisine
+- find food for [200](budget) rs
+- [Mexican](cuisine)
+- get me best food in [400](budget) rs
+- [patna](location)
+- [chineese]{"entity": "cuisine", "value": "chinese"} food for [400](budget)
+- [kolkata]{"entity": "location", "value": "Kolkata"}
+
+## intent:stop
+- [no dont want to](stop)
+- in your face
+- [no](stop)
 
 ## synonym:299
 - cheap
@@ -671,9 +692,12 @@
 - Chinese
 - Chines
 - Chinase
+- chineese
+- Chineese
 
 ## synonym:mid
 - moderate
+- average
 
 ## synonym:north indian
 - North Indian
