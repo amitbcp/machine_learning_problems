@@ -87,6 +87,8 @@
 - yes please go ahead
 - y
 - got it
+- got it bro
+- got it fucker
 
 ## intent:goodbye
 - bye
@@ -208,6 +210,8 @@
 - what are you doing?
 - hey what is happening?
 - hi what are you doing?
+- Hello !
+- haan
 
 ## intent:stop
 - no
@@ -227,6 +231,10 @@
 - [no dont want to](stop)
 - [no](stop)
 - in your face
+- no i want to search more
+- fuck off
+- got it , now fuck off
+- abc
 
 ## intent:get_budget
 - I want to eat within [700](budget) rs
@@ -249,6 +257,7 @@
 - [reasonable]{"entity": "budget", "value": "700"}
 - [economical]{"entity": "budget", "value": "700"}
 - increase the budget
+- [cheap]{"entity": "budget", "value": "299"} food for lunch
 
 ## intent:get_email
 - can u mail me the information to [abc@abc.com](email)?
@@ -283,7 +292,11 @@
 - [a@gmail.com](email)
 - did not get email
 - [a.pranshu15@gmail.com](email)
-- [amit.pinaki@gmail.com](email)
+- [a@a.com](email)
+- [abc@abc.com](email)
+- [amit@gmail.com](email)
+- [a@abc.com](email)
+- [amit@gmail.com](email)
 
 ## intent:restaurant_search
 - i'm looking for a place to eat
@@ -558,10 +571,31 @@
 - i am hungry and looking for pizza to eat
 - looking for place to eat
 - i want to look for restraunts and wanting pizza
-- [bengaluru]{"entity": "location", "value": "Bengaluru"}
-- [Italian](cuisine)
 - please show me restraunts in [hyderabad]{"entity": "location", "value": "Hyderabad"}
-- [American](cuisine)
+- i dont know
+- food in [50](budget) rs
+- Can you suggest some good restaurants in [Rishikesh](location)
+- Okay. Show me some in [Allahabad](location)
+- in [mubaim](location)
+- in [Mumbai](location)
+- [50](budget) rs [mexican](cuisine) food
+- show me [north indian](cuisine) food
+- get me [cheap]{"entity": "budget", "value": "299"} food in [Bangalore]{"entity": "location", "value": "Bengaluru"}
+- show me something in [pune](location) now
+- get me [chinese](cuisine) in [delhi](location) for [50](budget)rs
+- no show me something else
+- show me some other cuisine
+- [cheap]{"entity": "budget", "value": "299"} food for dinner in [delhi](location)
+- no
+- [chinese](cuisine) food for [10](budget) in [chennai](location)
+- show me [italian](cuisine) restuarant
+- no, show me in [pune](location)
+- get me [italian](cuisine) food in [nepal](location)
+- [cheap]{"entity": "budget", "value": "299"} [american](cuisine) food in [chennai]{"entity": "location", "value": "Chennai"}
+- [South Indian]{"entity": "cuisine", "value": "south indian"}
+- get weird food in [India](location)
+- [pune](location)
+- [Chinese]{"entity": "cuisine", "value": "chinese"}
 
 ## synonym:299
 - cheap

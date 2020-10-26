@@ -2,13 +2,13 @@ session_config:
   session_expiration_time: 0
   carry_over_slots_to_new_session: true
 intents:
-- get_budget
-- get_email
-- restaurant_search
-- greet
 - affirm
+- restaurant_search
+- get_email
+- get_budget
 - stop
 - goodbye
+- greet
 entities:
 - budget
 - cuisine
@@ -110,6 +110,14 @@ responses:
   - text: Sorry. Currently we don't support that cuisine. Please chose from Chinese, Italian, South Indian, North Indian
   utter_location_invalid:
   - text: We're Sorry. Currently we don't operate in this location.
+  utter_location_retry:
+  - text: Would you like to check other locations ?
+  utter_search_invalid_budget:
+  - text: We're Sorry. Would you like to increase your Budget ?
+  utter_search_invalid_location:
+  - text: Would you like to change the location ?
+  utter_search_invalid_cuisine:
+  - text: Would you like to change the cuisine ?
 actions:
 - action_ask_restaurant
 - action_check_location
@@ -130,4 +138,8 @@ actions:
 - utter_goodbye
 - utter_greet
 - utter_location_invalid
+- utter_location_retry
+- utter_search_invalid_budget
+- utter_search_invalid_cuisine
+- utter_search_invalid_location
 version: '2.0'
