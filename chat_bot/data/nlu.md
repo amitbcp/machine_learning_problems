@@ -93,6 +93,11 @@
 - okay
 - what are you doing right now
 - oka that is all
+- thanku
+- recived
+- got it thanks
+- got it fellow
+- mil gaya
 
 ## intent:goodbye
 - bye
@@ -132,6 +137,10 @@
 - yes thank you
 - Bye
 - babye
+- no bye
+- thank you bye
+- recived bye
+- yo baby
 
 ## intent:greet
 - hey
@@ -248,6 +257,7 @@
 - fuck off
 - got it , now fuck off
 - abc
+- [no](stop)
 
 ## intent:get_budget
 - I want to eat within [700](budget) rs
@@ -312,6 +322,8 @@
 - [a@abc.com](email)
 - can you send me that on email?
 - [amit.pinaki@gmail.com](email)
+- yes. [amit.@gmail.com](email)
+- [a@abc.vom](email)
 
 ## intent:restaurant_search
 - i'm looking for a place to eat
@@ -630,6 +642,37 @@
 - i said looking for [mexican](cuisine) hotels in [hyderabad]{"entity": "location", "value": "Hyderabad"} area
 - asking again [mexican](cuisine) hotels in [hyderabad]{"entity": "location", "value": "Hyderabad"} area
 - hey, want to eat some [indian](cuisine) food
+- [cheap]{"entity": "budget", "value": "299"} [mexican](cuisine) food in [pune](location)
+- get me [chinese](cuisine) food in [tilak](location) [nagar](location)
+- [tilak nagar, delhi](location)
+- yes in [agra](location)
+- show me something else
+- [cheap]{"entity": "budget", "value": "299"} [mexican](cuisine) food in [chennai]{"entity": "location", "value": "Chennai"}
+- [no](stop)
+- [cheap]{"entity": "budget", "value": "299"} [mexican](cuisine) food in [kolkata]{"entity": "location", "value": "Kolkata"}
+- [cheap]{"entity": "budget", "value": "299"} [mexican](cuisine) food
+- [cheap]{"entity": "budget", "value": "299"} food in [kolkata]{"entity": "location", "value": "Kolkata"}
+- [expensive]{"entity": "budget", "value": "701"} place to eat [chinese](cuisine) in [delhi](location)
+- [cheap]{"entity": "budget", "value": "299"} food in [delhi](location)
+- [cheap]{"entity": "budget", "value": "299"} [chinese](cuisine) food in [kolkata]{"entity": "location", "value": "Kolkata"}
+- [cheap]{"entity": "budget", "value": "299"} [american](cuisine) food in [kolkata]{"entity": "location", "value": "Kolkata"}
+- [cheap]{"entity": "budget", "value": "299"} [american](cuisine) food in [delhi](location)
+- [posh]{"entity": "budget", "value": "701"} place to eat [chinese](cuisine) food in [kolkata]{"entity": "location", "value": "Kolkata"}
+- great [chinese](cuisine) food in [nepal](location)
+- yes please in [delhi](location)
+- get medium priced [chinese](cuisine) food in [kolkata]{"entity": "location", "value": "Kolkata"}
+- i waant to eat in [kolkata]{"entity": "location", "value": "Kolkata"} [chinese](cuisine) food
+- [chinese](cuisine) in chennar
+- [chennai]{"entity": "location", "value": "Chennai"}
+- get me [chinese](cuisine) food in [mumbai]{"entity": "location", "value": "Mumbai"}
+- [cheap]{"entity": "budget", "value": "299"} [chinese](cuisine) food [kolakta](location)
+- [kolkata]{"entity": "location", "value": "Kolkata"}
+- [cheap]{"entity": "budget", "value": "299"} [chinese](cuisine) food in kol
+- [Italian](cuisine)
+- [cheap]{"entity": "budget", "value": "299"} [chinese](cuisine) food in [kolkaaata](location)
+- [cheap]{"entity": "budget", "value": "299"} [chinese](cuisine) food in [kolakata](location)
+- [chennai]{"entity": "location", "value": "Chennai"}
+- [cheap]{"entity": "budget", "value": "299"} [american](cuisine) food in [bombay]{"entity": "location", "value": "Mumbai"}
 - [Mexican](cuisine)
 - [delhi](location)
 
