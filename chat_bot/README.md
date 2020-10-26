@@ -77,8 +77,9 @@ $ conda create -n rasa
 $ conda install pip
 $ pip install -r requirements.txt
 ```
-Install the spacy en library
+Install the rasa and spacy en library
 ```sh
+$ pip install rasa
 $ pip install ‘rasa[spacy]’ 
 $ python -m spacy download en_core_web_md
 $ python -m spacy link en_core_web_md en 
