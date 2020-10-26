@@ -89,6 +89,10 @@
 - got it
 - got it bro
 - got it fucker
+- nnn
+- okay
+- what are you doing right now
+- oka that is all
 
 ## intent:goodbye
 - bye
@@ -126,6 +130,8 @@
 - bye meet you soon
 - bbye meet you soon
 - yes thank you
+- Bye
+- babye
 
 ## intent:greet
 - hey
@@ -212,6 +218,13 @@
 - hi what are you doing?
 - Hello !
 - haan
+- what is up
+- what?
+- good afternoon sir
+- hello what are you doing bot?
+- i am aware that you are a bot
+- what happend?
+- what is wrong?
 
 ## intent:stop
 - no
@@ -258,6 +271,7 @@
 - [economical]{"entity": "budget", "value": "700"}
 - increase the budget
 - [cheap]{"entity": "budget", "value": "299"} food for lunch
+- increase budget then
 
 ## intent:get_email
 - can u mail me the information to [abc@abc.com](email)?
@@ -296,7 +310,8 @@
 - [abc@abc.com](email)
 - [amit@gmail.com](email)
 - [a@abc.com](email)
-- [amit@gmail.com](email)
+- can you send me that on email?
+- [amit.pinaki@gmail.com](email)
 
 ## intent:restaurant_search
 - i'm looking for a place to eat
@@ -592,10 +607,31 @@
 - no, show me in [pune](location)
 - get me [italian](cuisine) food in [nepal](location)
 - [cheap]{"entity": "budget", "value": "299"} [american](cuisine) food in [chennai]{"entity": "location", "value": "Chennai"}
-- [South Indian]{"entity": "cuisine", "value": "south indian"}
 - get weird food in [India](location)
-- [pune](location)
-- [Chinese]{"entity": "cuisine", "value": "chinese"}
+- I am looking for some restraunts in [nerul](location)
+- looking for restraunts in [new](location) [delhi](location)
+- looking for restraunts in [mumbai]{"entity": "location", "value": "Mumbai"}
+- show me restraunts in [hyderabad]{"entity": "location", "value": "Hyderabad"}
+- hey! I am looking for restraunts in [mumbai]{"entity": "location", "value": "Mumbai"}
+- show me some hotels in [south delhi](location)
+- need to eat out today
+- looking for restraunts in [pune](location)
+- please show me some restraunts in [pune](location) who served [mexican](cuisine) food
+- need to go out today for some [american](cuisine) food in [bengaluru]{"entity": "location", "value": "Bengaluru"}
+- I asked you to look for [american](cuisine) food in [bengaluru]{"entity": "location", "value": "Bengaluru"}
+- please show me some hotels in [pune](location)
+- food is very important, where to find [italian](cuisine)
+- i am looking for some [indian](cuisine) food in [kolkata]{"entity": "location", "value": "Kolkata"}
+- find me some food
+- umm [bengaluru]{"entity": "location", "value": "Bengaluru"}
+- i am goind out in the evening i stay in [hyderabad]{"entity": "location", "value": "Hyderabad"} i want to eat [american](cuisine) food
+- ola, want [mexican](cuisine) food in [delhi](location) area where to go?
+- show me [mexican](cuisine) hotels in [hyderbad](location)
+- i said looking for [mexican](cuisine) hotels in [hyderabad]{"entity": "location", "value": "Hyderabad"} area
+- asking again [mexican](cuisine) hotels in [hyderabad]{"entity": "location", "value": "Hyderabad"} area
+- hey, want to eat some [indian](cuisine) food
+- [Mexican](cuisine)
+- [delhi](location)
 
 ## synonym:299
 - cheap

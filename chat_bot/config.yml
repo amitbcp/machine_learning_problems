@@ -23,3 +23,10 @@ policies:
     max_history: 5
     epochs: 200
   - name: RulePolicy
+    # Confidence of the prediction if no rule matched and de-facto threshold for a
+    # core fallback.
+    core_fallback_threshold: 0.3
+    # Name of the action which should be predicted if no rule matched.
+    core_fallback_action_name: "utter_greet"
+    # If `True` `core_fallback_action_name` is predicted in case no rule matched.
+    enable_fallback_prediction: True
