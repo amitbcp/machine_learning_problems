@@ -1,0 +1,9 @@
+version: "2.0"
+rules:
+
+- rule: ask for location again of slot of check_location_validity is invalid
+  condition:
+  - slot_was_set:
+    - check_location_validity: invalid
+  steps:
+  - action: utter_ask_location
