@@ -54,4 +54,4 @@ def send_country_list():
     return "Mail sent successfully."
 
 
-send_country_list()
+# send_country_list()
