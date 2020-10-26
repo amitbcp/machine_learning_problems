@@ -1,7 +1,11 @@
-This bot searches for,
-1.  hotels at a location supports tier 1 and tier 2 cities
-2.  cuisine of choice, you can choose from Chinese, Mexican, Italian, American, North Indian, Sounth Indian 
-3.  you can give budget constraints
+# search foodie bot
+
+A chatbot using open source chat framework [RASA](https://rasa.com/). It integrates with [Zomato API](https://developers.zomato.com/) to fetch location based restaurant information.
+
+This bot can do searches for,
+1.  Hotels at a location supports tier 1 and tier 2 cities
+2.  Cuisine of choice, you can choose from Chinese, Mexican, Italian, American, North Indian, Sounth Indian 
+3.  Budget constraints you provide  
 
 Some examples are as follows:
 ```
@@ -69,6 +73,8 @@ Download this repo and cd into the folder
 
 Install the dependencies
 ```sh
+$ conda create -n rasa
+$ conda install pip
 $ pip install -r requirements.txt
 ```
 Install the spacy en library

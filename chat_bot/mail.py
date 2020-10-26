@@ -8,7 +8,7 @@ from pretty_html_table import build_table
 def send_mail(recipient, body):
 
     message = MIMEMultipart()
-    message['Subject'] = 'Top 5 Suggested Restuarants'
+    message['Subject'] = 'Top Suggested Restuarants'
     message['From'] = 'search.foodie@gmail.com'
     message['To'] = recipient
 

@@ -51,7 +51,7 @@ class ActionSearchRestaurants(Action):
         search_results = self.get_restuarant(loc, cuisine, budget)
         print("Results Shape after Buget Filtering : {}".format(
           search_results.shape[0]))
-        search_results = search_results.head(5)
+        search_results = search_results.head(10)
 
         if search_results.shape[0] > 0:
             response = 'Showing you top results:' + "\n"
@@ -63,8 +63,8 @@ class ActionSearchRestaurants(Action):
 
             dispatcher.utter_message("-----" + response)
             response = build_table(search_results, 'blue_light')
-            # response = "Here are your search results ! Enjoy Eating :) \n" + response
-            response = ""  # For creating stories lets keep message empty
+            response = "Here are your search results ! Enjoy Eating :) \n" + response
+            # response = ""  # For creating stories lets keep message empty
 
         else:
             response = "Sorry No Resturants Found !!"
