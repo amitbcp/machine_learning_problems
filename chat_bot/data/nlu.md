@@ -98,6 +98,8 @@
 - got it thanks
 - got it fellow
 - mil gaya
+- received
+- haan ji
 
 ## intent:goodbye
 - bye
@@ -234,6 +236,7 @@
 - i am aware that you are a bot
 - what happend?
 - what is wrong?
+- geylo
 
 ## intent:stop
 - no
@@ -257,7 +260,6 @@
 - fuck off
 - got it , now fuck off
 - abc
-- [no](stop)
 
 ## intent:get_budget
 - I want to eat within [700](budget) rs
@@ -321,9 +323,9 @@
 - [amit@gmail.com](email)
 - [a@abc.com](email)
 - can you send me that on email?
-- [amit.pinaki@gmail.com](email)
 - yes. [amit.@gmail.com](email)
 - [a@abc.vom](email)
+- [a@a.com](email)
 
 ## intent:restaurant_search
 - i'm looking for a place to eat
@@ -666,15 +668,21 @@
 - [chennai]{"entity": "location", "value": "Chennai"}
 - get me [chinese](cuisine) food in [mumbai]{"entity": "location", "value": "Mumbai"}
 - [cheap]{"entity": "budget", "value": "299"} [chinese](cuisine) food [kolakta](location)
-- [kolkata]{"entity": "location", "value": "Kolkata"}
 - [cheap]{"entity": "budget", "value": "299"} [chinese](cuisine) food in kol
-- [Italian](cuisine)
 - [cheap]{"entity": "budget", "value": "299"} [chinese](cuisine) food in [kolkaaata](location)
 - [cheap]{"entity": "budget", "value": "299"} [chinese](cuisine) food in [kolakata](location)
-- [chennai]{"entity": "location", "value": "Chennai"}
 - [cheap]{"entity": "budget", "value": "299"} [american](cuisine) food in [bombay]{"entity": "location", "value": "Mumbai"}
+- [expensive]{"entity": "budget", "value": "701"} [chinese](cuisine) food in [kolkata]{"entity": "location", "value": "Kolkata"}
+- [cheap]{"entity": "budget", "value": "299"} [american](cuisine) food in [alibag](location)
+- i want to eat food
+- in [alibag](location) i want to eat [cheap]{"entity": "budget", "value": "299"} [chinese](cuisine) food tomorrow
+- [chennai]{"entity": "location", "value": "Chennai"}
+- [cheap]{"entity": "budget", "value": "299"} [american](cuisine) food in [kolkata]{"entity": "location", "value": "Kolkata"}
+- [china](location)
+- [kolkata]{"entity": "location", "value": "Kolkata"}
 - [Mexican](cuisine)
-- [delhi](location)
+- [chinese](cuisine)
+- [South Indian]{"entity": "cuisine", "value": "south indian"}
 
 ## synonym:299
 - cheap
@@ -763,8 +771,8 @@
 
 ## synonym:Mumbai
 - mumbai
-- Bombay
 - bombay
+- Bombay
 
 ## synonym:Mysore
 - mysore

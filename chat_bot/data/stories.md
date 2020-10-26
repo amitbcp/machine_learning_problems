@@ -46,8 +46,6 @@
 ## interactive_story 3_full_conversation
 * greet
     - utter_greet
-* restaurant_search
-    - action_ask_restaurant
 * restaurant_search{"location": "Delhi"}
     - slot{"location": "Delhi"}
     - action_check_location
@@ -2733,5 +2731,249 @@
     - slot{"email_message": ""}
     - utter_ask_email
 * stop
+    - utter_goodbye
+    - action_restart
+
+## interactive_story 83
+* restaurant_search{"budget": "299", "cuisine": "chinese", "location": "Kolkata"}
+    - slot{"budget": "299"}
+    - slot{"cuisine": "chinese"}
+    - slot{"location": "Kolkata"}
+    - action_check_location
+    - slot{"check_location_validity": "valid"}
+    - action_cuisine_valid
+    - slot{"check_cuisine_validity": "valid"}
+    - action_search_restaurants
+    - slot{"check_search_validity": "invalid"}
+    - slot{"email_message": "Sorry No Resturants Found !!"}
+    - utter_search_invalid_cuisine
+* affirm
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "American"}
+    - slot{"cuisine": "American"}
+    - action_cuisine_valid
+    - slot{"check_cuisine_validity": "valid"}
+    - action_search_restaurants
+    - slot{"check_search_validity": "invalid"}
+    - slot{"email_message": "Sorry No Resturants Found !!"}
+    - utter_search_invalid_budget
+* affirm
+    - utter_get_budget
+* get_budget{"budget": "701"}
+    - slot{"budget": "701"}
+    - action_search_restaurants
+    - slot{"check_search_validity": "valid"}
+    - slot{"email_message": ""}
+    - utter_ask_email
+* get_email{"email": "abc@abc.com"}
+    - slot{"email": "abc@abc.com"}
+    - action_send_email
+    - utter_confirm_email
+* affirm
+    - utter_goodbye
+    - action_restart
+
+## interactive_story 84
+* greet
+    - utter_greet
+* restaurant_search{"budget": "701", "cuisine": "chinese", "location": "Kolkata"}
+    - slot{"budget": "701"}
+    - slot{"cuisine": "chinese"}
+    - slot{"location": "Kolkata"}
+    - action_check_location
+    - slot{"check_location_validity": "valid"}
+    - action_cuisine_valid
+    - slot{"check_cuisine_validity": "valid"}
+    - action_search_restaurants
+    - slot{"check_search_validity": "valid"}
+    - slot{"email_message": ""}
+    - utter_ask_email
+* get_email{"email": "amit.pinaki@gmail.com"}
+    - slot{"email": "amit.pinaki@gmail.com"}
+    - action_send_email
+    - utter_confirm_email
+* affirm
+    - utter_goodbye
+    - action_restart
+
+## interactive_story 85
+* restaurant_search{"budget": "299", "cuisine": "american", "location": "alibag"}
+    - slot{"budget": "299"}
+    - slot{"cuisine": "american"}
+    - slot{"location": "alibag"}
+    - action_check_location
+    - slot{"check_location_validity": "invalid"}
+    - utter_location_invalid
+    - utter_location_retry
+* restaurant_search{"location": "delhi"}
+    - slot{"location": "delhi"}
+    - action_check_location
+    - slot{"check_location_validity": "valid"}
+    - action_cuisine_valid
+    - slot{"check_cuisine_validity": "valid"}
+    - action_search_restaurants
+    - slot{"check_search_validity": "invalid"}
+    - slot{"email_message": "Sorry No Resturants Found !!"}
+    - utter_search_invalid_budget
+* affirm
+    - utter_get_budget
+* get_budget{"budget": "701"}
+    - slot{"budget": "701"}
+    - action_search_restaurants
+    - slot{"check_search_validity": "valid"}
+    - slot{"email_message": ""}
+    - utter_ask_email
+* get_email{"email": "a@a.com"}
+    - slot{"email": "a@a.com"}
+    - action_send_email
+    - utter_confirm_email
+* affirm
+    - utter_goodbye
+    - action_restart
+
+## interactive_story 86
+* greet
+    - utter_greet
+* restaurant_search
+    - utter_ask_location
+* restaurant_search{"location": "Kolkata"}
+    - slot{"location": "Kolkata"}
+    - action_check_location
+    - slot{"check_location_validity": "valid"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "Mexican"}
+    - slot{"cuisine": "Mexican"}
+    - action_cuisine_valid
+    - slot{"check_cuisine_validity": "valid"}
+    - utter_get_budget
+* get_budget{"budget": "701"}
+    - slot{"budget": "701"}
+    - action_search_restaurants
+    - slot{"check_search_validity": "valid"}
+    - slot{"email_message": ""}
+    - utter_ask_email
+* get_email{"email": "a@a.com"}
+    - slot{"email": "a@a.com"}
+    - action_send_email
+    - utter_confirm_email
+* affirm
+    - utter_goodbye
+    - action_restart
+
+## interactive_story 87
+* restaurant_search{"location": "alibag", "budget": "299", "cuisine": "chinese"}
+    - slot{"budget": "299"}
+    - slot{"cuisine": "chinese"}
+    - slot{"location": "alibag"}
+    - action_check_location
+    - slot{"check_location_validity": "invalid"}
+    - utter_location_invalid
+    - utter_location_retry
+* affirm
+    - utter_ask_location
+* restaurant_search{"location": "Chennai"}
+    - slot{"location": "Chennai"}
+    - action_check_location
+    - slot{"check_location_validity": "valid"}
+    - action_cuisine_valid
+    - slot{"check_cuisine_validity": "valid"}
+    - action_search_restaurants
+    - slot{"check_search_validity": "valid"}
+    - slot{"email_message": ""}
+    - utter_ask_email
+* get_email{"email": "a@a.com"}
+    - slot{"email": "a@a.com"}
+    - action_send_email
+    - utter_confirm_email
+* affirm
+    - utter_goodbye
+    - action_restart
+
+## interactive_story 88
+* restaurant_search{"budget": "299", "cuisine": "american", "location": "Kolkata"}
+    - slot{"budget": "299"}
+    - slot{"cuisine": "american"}
+    - slot{"location": "Kolkata"}
+    - action_check_location
+    - slot{"check_location_validity": "valid"}
+    - action_cuisine_valid
+    - slot{"check_cuisine_validity": "valid"}
+    - action_search_restaurants
+    - slot{"check_search_validity": "valid"}
+    - slot{"email_message": ""}
+    - utter_ask_email
+* get_email{"email": "a@a.com"}
+    - slot{"email": "a@a.com"}
+    - action_send_email
+    - utter_confirm_email
+* affirm
+    - utter_goodbye
+    - action_restart
+
+## interactive_story 89
+* restaurant_search
+    - utter_ask_location
+* restaurant_search{"location": "china"}
+    - slot{"location": "china"}
+    - action_check_location
+    - slot{"check_location_validity": "invalid"}
+    - utter_location_invalid
+    - utter_location_retry
+* affirm
+    - utter_ask_location
+* restaurant_search{"location": "Kolkata"}
+    - slot{"location": "Kolkata"}
+    - action_check_location
+    - slot{"check_location_validity": "valid"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "Mexican"}
+    - slot{"cuisine": "Mexican"}
+    - action_cuisine_valid
+    - slot{"check_cuisine_validity": "valid"}
+    - utter_get_budget
+* get_budget{"budget": "701"}
+    - slot{"budget": "701"}
+    - action_search_restaurants
+    - slot{"check_search_validity": "valid"}
+    - slot{"email_message": ""}
+* get_email{"email": "a@a.com"}
+    - slot{"email": "a@a.com"}
+    - action_send_email
+    - utter_confirm_email
+* affirm
+    - utter_goodbye
+    - action_restart
+
+## interactive_story 90
+* restaurant_search{"cuisine": "chinese"}
+    - slot{"cuisine": "chinese"}
+    - action_cuisine_valid
+    - slot{"check_cuisine_validity": "valid"}
+    - utter_ask_location
+* restaurant_search{"location": "Chennai"}
+    - slot{"location": "Chennai"}
+    - action_check_location
+    - slot{"check_location_validity": "valid"}
+    - utter_get_budget
+* get_budget{"budget": "701"}
+    - slot{"budget": "701"}
+    - action_search_restaurants
+    - slot{"check_search_validity": "valid"}
+    - slot{"email_message": ""}
+    - utter_ask_email
+    - utter_ask_email
+* restaurant_search
+    - utter_search_invalid_cuisine
+* affirm
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "south indian"}
+    - slot{"cuisine": "south indian"}
+    - action_cuisine_valid
+    - slot{"check_cuisine_validity": "valid"}
+    - action_search_restaurants
+    - slot{"check_search_validity": "valid"}
+    - slot{"email_message": ""}
+    - utter_ask_email
+* affirm
     - utter_goodbye
     - action_restart
