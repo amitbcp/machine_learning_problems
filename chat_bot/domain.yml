@@ -2,11 +2,11 @@ session_config:
   session_expiration_time: 0
   carry_over_slots_to_new_session: true
 intents:
+- get_budget
 - affirm
+- get_email
 - restaurant_search
 - stop
-- get_email
-- get_budget
 - goodbye
 - greet
 entities:

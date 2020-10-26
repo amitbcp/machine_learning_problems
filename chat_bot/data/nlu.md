@@ -103,6 +103,7 @@
 - no . thanks !
 - no. thanks
 - no thanks
+- i'll prefer [chines]{"entity": "cuisine", "value": "chinese"}
 
 ## intent:goodbye
 - bye
@@ -266,7 +267,6 @@
 - abc
 - [no. thanks](stop)
 - no thanks
-- [no](stop)
 
 ## intent:get_budget
 - I want to eat within [700](budget) rs
@@ -333,7 +333,8 @@
 - can you send me that on email?
 - yes. [amit.@gmail.com](email)
 - [a@abc.vom](email)
-- [a@a.com](email)
+- yes at [a@a.com](email)
+- yes. Please send it to xyz@sth.edu
 
 ## intent:restaurant_search
 - i'm looking for a place to eat
@@ -689,14 +690,14 @@
 - [mubaim](location)
 - I’m hungry. Looking out for some good [chinese](cuisine) restaurants in [chandigarh]{"entity": "location", "value": "Chandigarh"}
 - [cheap]{"entity": "budget", "value": "299"} [chinese](cuisine) in [kolkata]{"entity": "location", "value": "Kolkata"}
-- I’m hungry. Looking out for some good [chinese](cuisine) restaurants in [chandigarh]{"entity": "location", "value": "Chandigarh"}
 - good [chinese](cuisine) restaurants in [kolkata]{"entity": "location", "value": "Kolkata"}
 - looking out for some good restaurants
-- [kolkata]{"entity": "location", "value": "Kolkata"}
-- [South Indian]{"entity": "cuisine", "value": "south indian"}
 - suggest some good restaurants
-- [Italian](cuisine)
+- [bengaluru]{"entity": "location", "value": "Bengaluru"}
+- [South Indian]{"entity": "cuisine", "value": "south indian"}
 - Can you suggest some good restaurants in [Rishikesh](location)
+- [Allahabad](location)
+- [kolkata]{"entity": "location", "value": "Kolkata"}
 
 ## synonym:299
 - cheap
