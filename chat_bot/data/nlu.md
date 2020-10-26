@@ -204,6 +204,10 @@
 - hello how are you
 - Hola
 - Ola
+- what is going on?
+- what are you doing?
+- hey what is happening?
+- hi what are you doing?
 
 ## intent:stop
 - no
@@ -222,6 +226,7 @@
 - stop bot
 - [no dont want to](stop)
 - [no](stop)
+- in your face
 
 ## intent:get_budget
 - I want to eat within [700](budget) rs
@@ -276,8 +281,9 @@
 - [abc@gmail.com](email)
 - [amit.p@gmail.com](email)
 - [a@gmail.com](email)
-- [amit.pinaki@gmail.com](email)
 - did not get email
+- [a.pranshu15@gmail.com](email)
+- [amit.pinaki@gmail.com](email)
 
 ## intent:restaurant_search
 - i'm looking for a place to eat
@@ -542,11 +548,20 @@
 - [patna](location)
 - [chineese]{"entity": "cuisine", "value": "chinese"} food for [400](budget)
 - [kolkata]{"entity": "location", "value": "Kolkata"}
-
-## intent:stop
-- [no dont want to](stop)
-- in your face
-- [no](stop)
+- i am looking for [american](cuisine) food in [alibaug](location)
+- [japan](location)
+- [new delhi]{"entity": "location", "value": "Delhi"}
+- i am looking for [chinese](cuisine) food that is [expensive]{"entity": "budget", "value": "701"}
+- i want to go for a walk and eat some [north indian](cuisine) food in [bengaluru]{"entity": "location", "value": "Bengaluru"}
+- show me restraunts
+- looking for some [italian](cuisine) food
+- i am hungry and looking for pizza to eat
+- looking for place to eat
+- i want to look for restraunts and wanting pizza
+- [bengaluru]{"entity": "location", "value": "Bengaluru"}
+- [Italian](cuisine)
+- please show me restraunts in [hyderabad]{"entity": "location", "value": "Hyderabad"}
+- [American](cuisine)
 
 ## synonym:299
 - cheap
@@ -597,13 +612,13 @@
 
 ## synonym:Delhi
 - New Delhi
+- new delhi
 - Delhi
 - NewDelhi
 - Dilli
 - Dellhi
 - newdelhi
 - Newdelhi
-- new delhi
 - new Delhi
 
 ## synonym:Hyderabad
@@ -690,9 +705,9 @@
 ## synonym:chinese
 - chines
 - Chinese
+- chineese
 - Chines
 - Chinase
-- chineese
 - Chineese
 
 ## synonym:mid
