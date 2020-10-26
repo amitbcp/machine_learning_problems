@@ -100,6 +100,9 @@
 - mil gaya
 - received
 - haan ji
+- no . thanks !
+- no. thanks
+- no thanks
 
 ## intent:goodbye
 - bye
@@ -237,6 +240,7 @@
 - what happend?
 - what is wrong?
 - geylo
+- Hello!
 
 ## intent:stop
 - no
@@ -260,6 +264,9 @@
 - fuck off
 - got it , now fuck off
 - abc
+- [no. thanks](stop)
+- no thanks
+- [no](stop)
 
 ## intent:get_budget
 - I want to eat within [700](budget) rs
@@ -284,6 +291,7 @@
 - increase the budget
 - [cheap]{"entity": "budget", "value": "299"} food for lunch
 - increase budget then
+- yes , [500](budget)
 
 ## intent:get_email
 - can u mail me the information to [abc@abc.com](email)?
@@ -676,13 +684,19 @@
 - [cheap]{"entity": "budget", "value": "299"} [american](cuisine) food in [alibag](location)
 - i want to eat food
 - in [alibag](location) i want to eat [cheap]{"entity": "budget", "value": "299"} [chinese](cuisine) food tomorrow
-- [chennai]{"entity": "location", "value": "Chennai"}
-- [cheap]{"entity": "budget", "value": "299"} [american](cuisine) food in [kolkata]{"entity": "location", "value": "Kolkata"}
 - [china](location)
+- want food
+- [mubaim](location)
+- I’m hungry. Looking out for some good [chinese](cuisine) restaurants in [chandigarh]{"entity": "location", "value": "Chandigarh"}
+- [cheap]{"entity": "budget", "value": "299"} [chinese](cuisine) in [kolkata]{"entity": "location", "value": "Kolkata"}
+- I’m hungry. Looking out for some good [chinese](cuisine) restaurants in [chandigarh]{"entity": "location", "value": "Chandigarh"}
+- good [chinese](cuisine) restaurants in [kolkata]{"entity": "location", "value": "Kolkata"}
+- looking out for some good restaurants
 - [kolkata]{"entity": "location", "value": "Kolkata"}
-- [Mexican](cuisine)
-- [chinese](cuisine)
 - [South Indian]{"entity": "cuisine", "value": "south indian"}
+- suggest some good restaurants
+- [Italian](cuisine)
+- Can you suggest some good restaurants in [Rishikesh](location)
 
 ## synonym:299
 - cheap
