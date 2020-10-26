@@ -51,7 +51,7 @@ class ActionSearchRestaurants(Action):
         search_results = self.get_restuarant(loc, cuisine, budget)
         print("Results Shape after Buget Filtering : {}".format(
           search_results.shape[0]))
-        search_results = search_results.head(5)
+        search_results = search_results.head(10)
 
         if search_results.shape[0] > 0:
             response = 'Showing you top results:' + "\n"
@@ -63,8 +63,8 @@ class ActionSearchRestaurants(Action):
 
             dispatcher.utter_message("-----" + response)
             response = build_table(search_results, 'blue_light')
-            # response = "Here are your search results ! Enjoy Eating :) \n" + response
-            response = ""  # For creating stories lets keep message empty
+            response = "Here are your search results ! Enjoy Eating :) \n" + response
+            # response = ""  # For creating stories lets keep message empty
 
         else:
             response = "Sorry No Resturants Found !!"
@@ -95,7 +95,7 @@ class ActionSearchRestaurants(Action):
 
         lat, lon, city_id = self.get_location(loc)
         restuarant_detail = zomato.restaurant_search(
-          "", lat, lon, str(cuisines_dict.get(cuisine)), limit=25)
+          "", lat, lon, str(cuisines_dict.get(cuisine)), limit=100)
         response = json.loads(restuarant_detail)
         # print("Zomato Response :: \n{}".format(response))
         if response["results_found"] == 0:
@@ -133,11 +133,11 @@ class ActionSearchRestaurants(Action):
     def filter_budget(self, results, user_budget):
         user_budget = int(user_budget)
         if user_budget <= 299:
-            return results[results.budget_for2people <= 299]
+            return results[results.budget_for2people <= user_budget]
         elif user_budget > 700:
-            return results[results.budget_for2people > 700]
+            return results[results.budget_for2people > user_budget]
         else:
-            return results[(results.budget_for2people <= 700) &
+            return results[(results.budget_for2people <= user_budget) &
                            (results.budget_for2people >= 300)]
 
 
