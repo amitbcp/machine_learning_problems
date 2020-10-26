@@ -95,7 +95,7 @@ class ActionSearchRestaurants(Action):
 
         lat, lon, city_id = self.get_location(loc)
         restuarant_detail = zomato.restaurant_search(
-          "", lat, lon, str(cuisines_dict.get(cuisine)), limit=25)
+          "", lat, lon, str(cuisines_dict.get(cuisine)), limit=100)
         response = json.loads(restuarant_detail)
         # print("Zomato Response :: \n{}".format(response))
         if response["results_found"] == 0:
@@ -133,11 +133,11 @@ class ActionSearchRestaurants(Action):
     def filter_budget(self, results, user_budget):
         user_budget = int(user_budget)
         if user_budget <= 299:
-            return results[results.budget_for2people <= 299]
+            return results[results.budget_for2people <= user_budget]
         elif user_budget > 700:
-            return results[results.budget_for2people > 700]
+            return results[results.budget_for2people > user_budget]
         else:
-            return results[(results.budget_for2people <= 700) &
+            return results[(results.budget_for2people <= user_budget) &
                            (results.budget_for2people >= 300)]
 
 
