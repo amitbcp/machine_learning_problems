@@ -1,6 +1,6 @@
 appdirs==1.4.3
 appnope==0.1.0
-bleach==3.1.4
+bleach==3.3.0
 bokeh==0.12.4
 decorator==4.0.11
 entrypoints==0.2.2
@@ -9,7 +9,7 @@ ipykernel==4.5.2
 ipython==5.3.0
 ipython-genutils==0.2.0
 ipywidgets==6.0.0
-Jinja2==2.10.1
+Jinja2==2.11.3
 jsonschema==2.6.0
 jupyter==1.0.0
 jupyter-client==5.0.0
@@ -27,10 +27,10 @@ pexpect==4.2.1
 pickleshare==0.7.4
 prompt-toolkit==1.0.14
 ptyprocess==0.5.1
-Pygments==2.2.0
+Pygments==2.7.4
 pyparsing==2.2.0
 python-dateutil==2.6.0
-PyYAML==5.2
+PyYAML==5.4
 pyzmq==16.0.2
 qtconsole==4.3.0
 requests==2.20.0
